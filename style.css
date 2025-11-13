@@ -1,84 +1,64 @@
-/* General Styles */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f8f9fa;
-    color: #333;
-}
+<!-- ============================= -->
+<p>AWS Cloud Engineer • DevOps Associate • Cloud Support Engineer</p>
+<a href="#projects" class="btn">Explore Projects</a>
+</div>
+</header>
 
-/* Header */
-.header {
-    background: #0a3d62;
-    color: white;
-    padding: 40px 20px;
-    text-align: center;
-}
 
-.header h1 {
-    margin: 0;
-    font-size: 2rem;
-}
+<section class="section" id="about" data-aos="fade-up">
+<h2>About Me</h2>
+<p>
+Cloud Engineer with deep experience in deploying secure and scalable AWS architectures.
+Expertise includes EC2, RDS, S3, IAM, VPC, Linux, monitoring, logging systems, and DevOps automation.
+Passionate about solving cloud infrastructure challenges.
+</p>
+</section>
 
-.header p {
-    margin-top: 10px;
-    font-size: 1rem;
-}
 
-/* Sections */
-.section {
-    padding: 40px 20px;
-    max-width: 900px;
-    margin: auto;
-}
+<section class="section" id="projects" data-aos="fade-up">
+<h2>Projects</h2>
+<div class="project-grid">
+<a href="projects/project1.html" class="project-card" data-aos="zoom-in">
+<h3>Two-tier Web App with Private MySQL</h3>
+<p>Secure VPC, EC2, MySQL</p>
+</a>
+<a href="projects/project2.html" class="project-card" data-aos="zoom-in">
+<h3>Multi-Tier WordPress Deployment</h3>
+<p>Reverse Proxy, NAT, Backup</p>
+</a>
+<a href="projects/project3.html" class="project-card" data-aos="zoom-in">
+<h3>Django CRUD App on AWS</h3>
+<p>Gunicorn, RDS, Migrations</p>
+</a>
+<a href="projects/project4.html" class="project-card" data-aos="zoom-in">
+<h3>PHP Hosting with RDS</h3>
+<p>Nginx, PHP-FPM, MySQL</p>
+</a>
+<a href="projects/project5.html" class="project-card" data-aos="zoom-in">
+<h3>SFTP → S3 Secure Workflow</h3>
+<p>IAM, Chroot, Automation</p>
+</a>
+<a href="projects/project6.html" class="project-card" data-aos="zoom-in">
+<h3>Centralized Log Mgmt</h3>
+<p>Rsyslog, CloudWatch, Alerts</p>
+</a>
+</div>
+</section>
 
-.section h2 {
-    font-size: 1.6rem;
-    border-left: 5px solid #0a3d62;
-    padding-left: 10px;
-    margin-bottom: 20px;
-    color: #0a3d62;
-}
 
-/* Skills */
-.skills ul {
-    list-style: none;
-    padding: 0;
-}
+<section class="section" id="contact" data-aos="fade-up">
+<h2>Contact</h2>
+<p>Email: rohithjpu1@gmail.com</p>
+<p>Phone: +91 73588 89412</p>
+<p>Location: Chennai, India</p>
+<p>LinkedIn: linkedin.com/in/rohithjp</p>
+</section>
 
-.skills ul li {
-    background: #dff0ff;
-    padding: 10px;
-    margin: 8px 0;
-    border-left: 4px solid #0a3d62;
-}
 
-/* Projects */
-.project {
-    background: white;
-    padding: 20px;
-    margin: 15px 0;
-    border-radius: 6px;
-    border-left: 4px solid #0a3d62;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
+<footer class="footer">© 2025 Rohith Jothilakshmi Periyasamy</footer>
 
-.project h3 {
-    margin-top: 0;
-    color: #0a3d62;
-}
 
-/* Contact */
-.contact p {
-    margin: 6px 0;
-    font-size: 1rem;
-}
-
-/* Footer */
-.footer {
-    background: #0a3d62;
-    color: white;
-    text-align: center;
-    padding: 15px;
-    margin-top: 40px;
-}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>AOS.init({ duration: 1000, once: true });</script>
+</body>
+</html>
