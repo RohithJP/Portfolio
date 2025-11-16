@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project 3 – Centralized Log Management</title>
+
+<link rel="stylesheet" href="../style.css?v=3000">
+
+<style>
+body {
+  padding: 40px;
+  max-width: 900px;
+  margin: auto;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+h1, h2, h3 {
+  font-family: "Orbitron";
+  color: var(--neon-blue);
+  text-shadow: 0 0 12px var(--neon-blue);
+}
+
+.section-box {
+  background: rgba(255,255,255,0.03);
+  padding: 18px 22px;
+  margin: 18px 0;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+code, pre {
+  background: rgba(255,255,255,0.05);
+  padding: 12px;
+  border-radius: 8px;
+  display: block;
+  overflow-x: auto;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+</style>
+</head>
+
+<body>
+
+<a href="../index.html" class="btn" style="margin-bottom:20px; display:inline-block;">← Back to Portfolio</a>
+
+<h1>Centralized Log Management  
+<br>with Rsyslog & CloudWatch</h1>
+
+<p><strong>Goal:</strong> Collect and monitor logs from multiple Linux EC2 instances using Rsyslog and CloudWatch.</p>
+
+<div class="section-box">
+<h2>Project Overview</h2>
+<ul>
+<li>Centralized logging from multiple EC2 servers</li>
+<li>Real-time log forwarding using Rsyslog</li>
+<li>Structured directory output per hostname</li>
+<li>CloudWatch integration for monitoring/alerts</li>
+</ul>
+</div>
+
+<div class="section-box">
+<h2>Techniques Learned</h2>
+
+<h3>1. Rsyslog Configuration</h3>
+<ul>
+<li>TCP ( @@ ) and UDP ( @ ) log forwarding</li>
+<li>Custom templates for log structure</li>
+<li>Hostname-based directories</li>
+</ul>
+
+<h3>2. EC2 & Security Setup</h3>
+<ul>
+<li>Security groups for TCP/UDP 514</li>
+<li>Using <strong>private IP</strong> for VPC log forwarding</li>
+<li>Connectivity tests using <code>nc -vz</code></li>
+</ul>
+
+<h3>3. Testing & Verification</h3>
+<ul>
+<li>Generated logs using <code>logger -t</code></li>
+<li>Validated logs on collector</li>
+<li>Used <code>journalctl -u rsyslog -f</code> for debugging</li>
+</ul>
+
+<h3>4. CloudWatch Integration</h3>
+<ul>
+<li>Installed CloudWatch Agent</li>
+<li>Forwarded remote logs</li>
+<li>Created metric filters (e.g., “failed login”)</li>
+</ul>
+</div>
+
+<div class="section-box">
+<h2>Architecture</h2>
+
+<p><strong>Web Server (EC2)</strong> &nbsp;&nbsp; ➜  
+<strong>Log Collector (EC2)</strong> ➜ <strong>CloudWatch Logs</strong></p>
+
+<p>
+<strong>DB Server (EC2)</strong> &nbsp;&nbsp;&nbsp;&nbsp; ➜  
+</p>
+</div>
+
+<div class="section-box">
+<h2>1⃣ AWS Setup</h2>
+<h3>EC2 Instances</h3>
+<ul>
+<li>Log Collector — Ubuntu 22.04</li>
+<li>Web Server — Ubuntu 22.04</li>
+<li>DB Server — Ubuntu 22.04</li>
+</ul>
+
+<h3>Security Groups</h3>
+<pre><code>
+Log Collector:
+  - TCP 514 (from Web & DB)
+  - UDP 514 (from Web & DB)
+  - SSH 22 (Your IP)
+
+Web/DB:
+  - Outbound 514 → Log Collector private IP
+</code></pre>
+</div>
+
+<div class="section-box">
+<h2>2⃣ Log Collector Setup</h2>
+
+<h3>Create log directory</h3>
+<pre><code>sudo mkdir -p /var/log/remote
+sudo chown syslog:syslog /var/log/remote
+sudo chmod 755 /var/log/remote
+</code></pre>
+
+<h3>Rsyslog Configuration</h3>
+<pre><code>/etc/rsyslog.d/30-remote.conf:
+
+module(load="imtcp")
+input(type="imtcp" port="514")
+
+module(load="imudp")
+input(type="imudp" port="514")
+
+$template RemoteLogs,"/var/log/remote/%HOSTNAME%/user.log"
+
+*.* ?RemoteLogs
+stop
+</code></pre>
+
+<h3>Restart Rsyslog</h3>
+<pre><code>sudo systemctl restart rsyslog
+sudo systemctl enable rsyslog
+sudo ss -tulpn | grep 514
+</code></pre>
+</div>
+
+<div class="section-box">
+<h2>3⃣ Web & DB Server Setup</h2>
+
+<h3>Forward all logs</h3>
+<pre><code>/etc/rsyslog.d/50-remote.conf:
+
+*.* @@&lt;LOG_COLLECTOR_PRIVATE_IP&gt;:514
+</code></pre>
+
+<h3>Restart Rsyslog</h3>
+<pre><code>sudo systemctl restart rsyslog
+sudo systemctl enable rsyslog
+</code></pre>
+
+<h3>Test connection</h3>
+<pre><code>nc -vz &lt;LOG_COLLECTOR_PRIVATE_IP&gt; 514
+</code></pre>
+</div>
+
+<div class="section-box">
+<h2>4⃣ Testing Logs</h2>
+
+<h3>Send test logs</h3>
+<pre><code>logger -p local0.info -t webtest "Web server test log"
+logger -p local0.info -t dbtest "DB server test log"
+</code></pre>
+
+<h3>Verify on collector</h3>
+<pre><code>ls /var/log/remote/
+cat /var/log/remote/ip-&lt;web-ip&gt;/user.log
+cat /var/log/remote/ip-&lt;db-ip&gt;/user.log
+</code></pre>
+</div>
+
+<div class="section-box">
+<h2>5⃣ CloudWatch Integration</h2>
+<pre><code>sudo apt install amazon-cloudwatch-agent -y
+</code></pre>
+
+<p><strong>Log path:</strong> /var/log/remote/*/*.log</p>
+
+<pre><code>sudo systemctl start amazon-cloudwatch-agent
+sudo systemctl enable amazon-cloudwatch-agent
+</code></pre>
+
+<p>Create metric filters for keywords like:</p>
+<ul>
+<li>"error"</li>
+<li>"failed login"</li>
+</ul>
+</div>
+
+<div class="section-box">
+<h2>6⃣ Troubleshooting</h2>
+
+<ul>
+<li><strong>logger</strong> command gives no output — normal</li>
+<li>If logs don’t appear:</li>
+<ul>
+<li>Check Rsyslog config</li>
+<li>Check Security Groups</li>
+<li>Test using <code>nc -vz</code></li>
+<li>Monitor with <code>journalctl -u rsyslog -f</code></li>
+</ul>
+</ul>
+</div>
+
+<div class="section-box">
+<h2>7⃣ Cleanup</h2>
+<ul>
+<li>Terminate EC2 instances</li>
+<li>Delete Security Groups</li>
+<li>Delete CloudWatch Log Groups</li>
+</ul>
+</div>
+
+<div class="section-box">
+<h2>8⃣ Tips for Future</h2>
+<ul>
+<li>Use private IPs inside VPC</li>
+<li>Always use <code>-t</code> tags in logger</li>
+<li>Keep organized directory structure</li>
+<li>Monitor Rsyslog service health</li>
+</ul>
+</div>
+
+<p><strong>Project Status:</strong> Completed ✔</p>
+
+</body>
+</html>
