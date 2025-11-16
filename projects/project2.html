@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project 2 – Automated Web Hosting System</title>
+
+<link rel="stylesheet" href="../style.css?v=2000">
+
+<style>
+body {
+  padding: 40px;
+  max-width: 900px;
+  margin: auto;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+h1, h2, h3 {
+  font-family: "Orbitron";
+  color: var(--neon-blue);
+  text-shadow: 0 0 12px var(--neon-blue);
+}
+
+.section-box {
+  background: rgba(255,255,255,0.03);
+  padding: 18px 22px;
+  margin: 18px 0;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+code, pre {
+  background: rgba(255,255,255,0.05);
+  padding: 12px;
+  border-radius: 8px;
+  display: block;
+  overflow-x: auto;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+</style>
+</head>
+
+<body>
+
+<a href="../index.html" class="btn" style="margin-bottom:20px; display:inline-block;">← Back to Portfolio</a>
+
+<h1>Automated Web Hosting System</h1>
+<p><strong>End-to-end deployment using EC2, S3, Nginx & Bash Automation</strong></p>
+
+<div class="section-box">
+<h2>1️⃣ Project Overview</h2>
+
+<h3>Goal</h3>
+<p>Automate full deployment of a static website using AWS EC2, S3, IAM Role, Bash & Nginx.</p>
+
+<h3>Technologies Used</h3>
+<ul>
+<li>AWS EC2</li>
+<li>AWS S3</li>
+<li>Nginx Web Server</li>
+<li>Bash Automation Script</li>
+<li>AWS CLI</li>
+<li>IAM Roles</li>
+<li>Mac Terminal (SSH, S3 mgmt)</li>
+</ul>
+
+<p><strong>✔ Key Deliverable:</strong> A fully automated EC2 instance that installs Nginx, pulls files from S3, configures firewall, logs setup, and hosts the website instantly.</p>
+</div>
+
+<div class="section-box">
+<h2>2️⃣ Workflow Summary</h2>
+<h3>Mac Terminal Tasks</h3>
+<ul>
+<li>Uploaded website files to S3</li>
+<li>Installed AWS CLI</li>
+<li>SSH debugging & verification</li>
+</ul>
+
+<h3>AWS Console Tasks</h3>
+<ul>
+<li>IAM Role creation (S3 read-only)</li>
+<li>S3 bucket: <strong>rohit-static-site-2025</strong></li>
+<li>Security Group for SSH/HTTP/HTTPS</li>
+<li>EC2 Ubuntu launch</li>
+<li>SSL testing</li>
+</ul>
+</div>
+
+<div class="section-box">
+<h2>3️⃣ What I Learned</h2>
+<ul>
+<li>Automation via Bash & User Data</li>
+<li>AWS networking, EC2, IAM, S3</li>
+<li>Nginx configuration & permissions</li>
+<li>Troubleshooting 403, AWS CLI errors</li>
+<li>SSL configuration basics</li>
+</ul>
+</div>
+
+<div class="section-box">
+<h2>7️⃣ Final User Data Script</h2>
+
+<pre><code>#!/bin/bash
+set -e
+LOG="/var/log/site_setup.log"
+
+echo "=== Site setup started at $(date) ===" >> $LOG
+
+apt-get update -y >> $LOG 2>&1
+apt-get install -y nginx python3-pip unzip curl ufw >> $LOG 2>&1
+
+# Install AWS CLI v2
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "/tmp/awscliv2.zip" >> $LOG 2>&1
+unzip /tmp/awscliv2.zip -d /tmp >> $LOG 2>&1
+/tmp/aws/install >> $LOG 2>&1
+rm -rf /tmp/aws /tmp/awscliv2.zip
+
+systemctl enable nginx
+systemctl start nginx
+
+# Sync S3 → web root
+rm -rf /var/www/html/*
+aws s3 sync s3://rohit-static-site-2025 /var/www/html >> $LOG 2>&1
+
+chown -R www-data:www-data /var/www/html
+chmod -R 755 /var/www/html
+
+# Firewall
+ufw allow OpenSSH
+ufw allow 'Nginx Full'
+ufw --force enable
+
+echo "=== Site setup finished at $(date) ===" >> $LOG
+</code></pre>
+</div>
+
+<div class="section-box">
+<h2>9️⃣ Next Steps</h2>
+<ul>
+<li>CloudFront CDN</li>
+<li>Terraform/IaC automation</li>
+<li>CloudWatch monitoring</li>
+<li>CI/CD deployment</li>
+<li>SSL with Certbot</li>
+</ul>
+</div>
+
+<p><strong>Project Status:</strong> Completed ✔</p>
+
+</body>
+</html>
