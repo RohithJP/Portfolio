@@ -1,64 +1,152 @@
-<!-- ============================= -->
-<p>AWS Cloud Engineer • DevOps Associate • Cloud Support Engineer</p>
-<a href="#projects" class="btn">Explore Projects</a>
-</div>
-</header>
+/* Glassmorphism theme - styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+:root{
+  --bg1: #0f1724;
+  --bg2: linear-gradient(135deg, rgba(15,23,36,1) 0%, rgba(12,18,30,1) 100%);
+  --glass: rgba(255,255,255,0.06);
+  --glass-2: rgba(255,255,255,0.04);
+  --accent: rgba(79,70,229,0.9);
+  --muted: #9aa4b2;
+  --card-radius: 18px;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(79,70,229,0.09), transparent 6%),
+              radial-gradient(900px 400px at 90% 90%, rgba(14,165,233,0.04), transparent 6%),
+              var(--bg1);
+  color:#e6eef8;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  padding:40px;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+}
 
+/* page wrapper */
+.container{
+  width:100%;
+  max-width:1100px;
+  margin: 0 auto;
+  backdrop-filter: blur(8px);
+}
 
-<section class="section" id="about" data-aos="fade-up">
-<h2>About Me</h2>
-<p>
-Cloud Engineer with deep experience in deploying secure and scalable AWS architectures.
-Expertise includes EC2, RDS, S3, IAM, VPC, Linux, monitoring, logging systems, and DevOps automation.
-Passionate about solving cloud infrastructure challenges.
-</p>
-</section>
+/* header / hero */
+.header{
+  display:grid;
+  grid-template-columns: 1fr 360px;
+  gap:24px;
+  align-items:center;
+  margin-bottom:28px;
+}
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--card-radius);
+  padding:20px;
+  box-shadow: 0 8px 30px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+}
 
+/* hero left */
+.hero-title{
+  font-weight:800;
+  font-size:28px;
+  letter-spacing: -0.5px;
+  margin:0 0 6px 0;
+}
+.hero-sub{
+  color:var(--muted);
+  margin:0 0 16px 0;
+}
+.badges{display:flex; gap:8px; flex-wrap:wrap}
+.badge{
+  background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  padding:8px 12px;
+  border-radius:999px;
+  font-size:13px;
+  color: #dfe9ff;
+  border:1px solid rgba(255,255,255,0.03);
+}
 
-<section class="section" id="projects" data-aos="fade-up">
-<h2>Projects</h2>
-<div class="project-grid">
-<a href="projects/project1.html" class="project-card" data-aos="zoom-in">
-<h3>Two-tier Web App with Private MySQL</h3>
-<p>Secure VPC, EC2, MySQL</p>
-</a>
-<a href="projects/project2.html" class="project-card" data-aos="zoom-in">
-<h3>Multi-Tier WordPress Deployment</h3>
-<p>Reverse Proxy, NAT, Backup</p>
-</a>
-<a href="projects/project3.html" class="project-card" data-aos="zoom-in">
-<h3>Django CRUD App on AWS</h3>
-<p>Gunicorn, RDS, Migrations</p>
-</a>
-<a href="projects/project4.html" class="project-card" data-aos="zoom-in">
-<h3>PHP Hosting with RDS</h3>
-<p>Nginx, PHP-FPM, MySQL</p>
-</a>
-<a href="projects/project5.html" class="project-card" data-aos="zoom-in">
-<h3>SFTP → S3 Secure Workflow</h3>
-<p>IAM, Chroot, Automation</p>
-</a>
-<a href="projects/project6.html" class="project-card" data-aos="zoom-in">
-<h3>Centralized Log Mgmt</h3>
-<p>Rsyslog, CloudWatch, Alerts</p>
-</a>
-</div>
-</section>
+/* contact card right */
+.profile{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+.avatar{
+  width:86px;
+  height:86px;
+  border-radius:14px;
+  overflow:hidden;
+  border: 1px solid rgba(255,255,255,0.06);
+  flex-shrink:0;
+}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.contact small{display:block;color:var(--muted);font-size:12px}
+.socials{display:flex;gap:10px;margin-top:8px}
+.icon{
+  width:36px;height:36px;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border:1px solid rgba(255,255,255,0.04);
+}
 
+/* main sections */
+.grid{
+  display:grid;
+  grid-template-columns: 1fr 340px;
+  gap:20px;
+  margin-top:18px;
+}
+.section-title{
+  color:var(--muted);
+  font-size:13px;
+  margin:0 0 10px 0;
+  letter-spacing:0.6px;
+}
 
-<section class="section" id="contact" data-aos="fade-up">
-<h2>Contact</h2>
-<p>Email: rohithjpu1@gmail.com</p>
-<p>Phone: +91 73588 89412</p>
-<p>Location: Chennai, India</p>
-<p>LinkedIn: linkedin.com/in/rohithjp</p>
-</section>
+/* skills list */
+.skills{display:flex;flex-wrap:wrap;gap:10px}
+.skill-pill{
+  padding:8px 10px;border-radius:10px;font-weight:600;font-size:13px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border:1px solid rgba(255,255,255,0.03);
+}
 
+/* projects grid */
+.projects{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:14px;
+}
+.project-card{
+  padding:14px;border-radius:14px;
+  transition: transform .24s ease, box-shadow .24s ease;
+  cursor: pointer;
+}
+.project-card:hover{transform:translateY(-6px); box-shadow:0 18px 40px rgba(2,6,23,0.6)}
+.project-title{font-weight:700;margin:0 0 6px 0}
+.project-meta{color:var(--muted);font-size:13px;margin-bottom:8px}
 
-<footer class="footer">© 2025 Rohith Jothilakshmi Periyasamy</footer>
+/* right column cards */
+.side-card{margin-bottom:16px}
+.timeline{list-style:none;padding:0;margin:0}
+.timeline li{padding:8px 0;border-bottom:1px dashed rgba(255,255,255,0.03)}
+.timeline .role{font-weight:700}
+.timeline .meta{color:var(--muted);font-size:13px}
 
+/* footer */
+footer{margin-top:28px;text-align:center;color:var(--muted);font-size:13px}
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-<script>AOS.init({ duration: 1000, once: true });</script>
-</body>
-</html>
+/* responsive */
+@media (max-width:960px){
+  .header{grid-template-columns:1fr; padding-bottom:8px}
+  .grid{grid-template-columns:1fr}
+  .projects{grid-template-columns:1fr}
+  body{padding:20px}
+}
+
