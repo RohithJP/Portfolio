@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project 5 – PHP Website Hosting with AWS RDS</title>
+
+<link rel="stylesheet" href="../style.css?v=5000">
+
+<style>
+body {
+  padding: 40px;
+  max-width: 900px;
+  margin: auto;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+h1, h2, h3 {
+  font-family: "Orbitron";
+  color: var(--neon-blue);
+  text-shadow: 0 0 12px var(--neon-blue);
+}
+
+.section-box {
+  background: rgba(255,255,255,0.03);
+  padding: 18px 22px;
+  margin: 18px 0;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+code, pre {
+  background: rgba(255,255,255,0.05);
+  padding: 12px;
+  border-radius: 8px;
+  display: block;
+  overflow-x: auto;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+</style>
+</head>
+
+<body>
+
+<a href="../index.html" class="btn" style="margin-bottom:20px; display:inline-block;">← Back to Portfolio</a>
+
+<h1>Hosting a PHP Website on AWS with MySQL RDS</h1>
+<p><strong>Deploying a dynamic PHP website from GitHub → EC2 → RDS → Public website</strong></p>
+
+<div class="section-box">
+<h2>Project Overview</h2>
+<p><strong>Goal:</strong> Host a production-ready PHP website on AWS EC2, connect it to RDS MySQL, and make it publicly accessible.</p>
+
+<p><strong>Scenario:</strong></p>
+<ul>
+<li>Clone website from GitHub</li>
+<li>Deploy on EC2 using NGINX + PHP-FPM</li>
+<li>Create RDS MySQL and connect it</li>
+<li>Import SQL database</li>
+</ul>
+
+<p>This project demonstrates real-world Linux, DB, web server, and cloud deployment skills.</p>
+</div>
+
+<div class="section-box">
+<h2>Learning Objectives</h2>
+<ul>
+<li>Launch & configure EC2</li>
+<li>Install & configure NGINX</li>
+<li>Install PHP & PHP-FPM</li>
+<li>Create RDS MySQL DB</li>
+<li>Import SQL data</li>
+<li>Connect PHP → RDS</li>
+<li>Troubleshoot 502 / 500 errors</li>
+<li>Manage Linux permissions, security groups, networking</li>
+</ul>
+</div>
+
+<div class="section-box">
+<h2>Architecture</h2>
+<p><strong>Flow:</strong></p>
+<p>[GitHub Repository] → Clone → [EC2 Ubuntu] → [NGINX + PHP-FPM] → [RDS MySQL] → [Users]</p>
+
+<ul>
+<li>EC2 (Ubuntu 22.04)</li>
+<li>NGINX Web Server</li>
+<li>PHP-FPM</li>
+<li>AWS RDS (MySQL)</li>
+<li>Linux permissions & AWS security groups</li>
+</ul>
+</div>
+
+<div class="section-box">
+<h2>1⃣ EC2 Instance Setup</h2>
+
+<pre><code>chmod 400 mykey.pem
+ssh -i "mykey.pem" ubuntu@&lt;EC2-PUBLIC-IP&gt;
+
+sudo apt update && sudo apt upgrade -y
+sudo apt install git unzip curl -y
+</code></pre>
+</div>
+
+<div class="section-box">
+<h2>2⃣ NGINX Installation & Configuration</h2>
+
+<pre><code>sudo apt install nginx -y
+sudo systemctl start nginx
+sudo systemctl enable nginx
+</code></pre>
+
+<p>Remove default site:</p>
+<pre><code>sudo rm /etc/nginx/sites-enabled/default
+</code></pre>
+
+<h3>Create custom site:</h3>
+<pre><code>sudo nano /etc/nginx/sites-available/mywebsite
+</code></pre>
+
+<h3>NGINX config:</h3>
+<pre><code>server {
+    listen 80;
+    server_name _;
+
+    root /var/www/html/mywebsite;
+    index index.php index.html index.htm;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/run/php/php8.2-fpm.sock;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+}
+</code></pre>
+
+<h3>Enable site:</h3>
+<pre><code>sudo ln -s /etc/nginx/sites-available/mywebsite /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl reload nginx
+</code></pre>
+</div>
+
+<div class="section-box">
+<h2>3⃣ PHP & PHP-FPM Installation</h2>
+
+<pre><code>sudo apt install php php-fpm php-mysql php-mbstring php-xml -y
+php -v
+sudo systemctl enable php8.2-fpm
+</code></pre>
+
+<p>Test PHP:</p>
+<pre><code>sudo nano /var/www/html/mywebsite/test.php
+</code></pre>
+
+```php
+<?php phpinfo(); ?>
