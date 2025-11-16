@@ -1,104 +1,136 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rohith J. Periyasamy – AWS Cloud Engineer</title>
-<link rel="stylesheet" href="style.css?v=7">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rohith J. Periyasamy — Cyberpunk Portfolio</title>
+  <meta name="description" content="Rohith J. Periyasamy — AWS Cloud Engineer. Cyberpunk portfolio with projects, experience and contact." />
+  <link rel="stylesheet" href="style.css?v=12">
 </head>
-
 <body>
+  <!-- canvas background for particles -->
+  <canvas id="bg-canvas"></canvas>
 
-<header class="nav">
-  <div class="logo">ROHITH JP</div>
-  <nav>
-    <a href="#projects">Projects</a>
-    <a href="#experience">Experience</a>
-    <a href="#skills">Skills</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+  <!-- top nav -->
+  <header id="topbar" class="topbar">
+    <div class="brand">ROHITH JP</div>
+    <nav class="nav">
+      <a href="#home" class="nav-link active">Home</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#experience" class="nav-link">Experience</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+    <button id="menu-toggle" class="menu-btn" aria-label="menu">☰</button>
+  </header>
 
-<section class="hero">
-  <h1 class="title">AWS CLOUD ENGINEER</h1>
-  <p class="subtitle">
-    Production-grade AWS · Automation · Observability · Infrastructure · DevOps
-  </p>
+  <main id="home" class="wrap">
 
-  <div class="button-group">
-    <a href="#projects" class="btn">VIEW PROJECTS</a>
-    <a href="#contact" class="btn-outline">CONTACT</a>
-  </div>
-</section>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-left">
+        <div class="eyebrow">AWS Cloud Engineer</div>
+        <h1 class="glitch" data-text="ROHITH J. PERIYASAMY">ROHITH J. PERIYASAMY</h1>
+        <p class="lead">
+          Production-grade AWS • Automation • Observability • Secure Infrastructure
+        </p>
 
-<section id="projects" class="section">
-  <h2 class="section-title">PROJECTS</h2>
+        <div class="cta">
+          <a class="btn btn-primary" href="#projects">View Projects</a>
+          <a class="btn btn-ghost" href="#contact">Get in touch</a>
+        </div>
 
-  <div class="card-grid">
+        <div class="meta">
+          <span class="pill">VPC</span>
+          <span class="pill">EC2</span>
+          <span class="pill">RDS</span>
+          <span class="pill">CloudWatch</span>
+          <span class="pill">Terraform</span>
+        </div>
+      </div>
 
-    <div class="card">
-      <h3>Multi-Tier WordPress</h3>
-      <p>EC2 · RDS · ALB · VPC · CloudWatch</p>
-    </div>
+      <div class="hero-right">
+        <div class="profile hologram">
+          <div class="profile-name">Rohith J. Periyasamy</div>
+          <div class="profile-role">AWS Cloud Engineer</div>
+          <div class="profile-links">
+            <a href="mailto:rohithjpu1@gmail.com" title="Email">✉</a>
+            <a href="tel:+917358889412" title="Phone">📞</a>
+            <a href="https://github.com/RohithJP" target="_blank" title="GitHub">GH</a>
+            <a href="https://linkedin.com/in/rohith-jothilakshmi-periyasamy" target="_blank" title="LinkedIn">in</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <div class="card">
-      <h3>EC2 – S3 Automated Pipeline</h3>
-      <p>Bash · AWS CLI · Deploy Automation</p>
-    </div>
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <h2 class="section-title">Highlighted Projects</h2>
+      <div class="cards">
+        <article class="card">
+          <div class="card-head">Multi-Tier WordPress</div>
+          <div class="card-sub">EC2 · RDS · ALB · VPC · CloudWatch</div>
+          <p>Hardened VPC, private app subnets, multi-AZ RDS and monitoring dashboards.</p>
+          <a class="card-cta" href="projects/wordpress-multitier.html">Read more →</a>
+        </article>
 
-    <div class="card">
-      <h3>Centralized Logging</h3>
-      <p>CloudWatch · SNS · Metric Filters</p>
-    </div>
+        <article class="card">
+          <div class="card-head">EC2 — S3 Deployment Pipeline</div>
+          <div class="card-sub">Bash · AWS CLI</div>
+          <p>Idempotent automation for static hosting and EC2 updates — fast reproducible deploys.</p>
+          <a class="card-cta" href="projects/ec2-s3-pipeline.html">Read more →</a>
+        </article>
 
-    <div class="card">
-      <h3>SFTP → S3 Secure Workflow</h3>
-      <p>IAM · S3 · CloudTrail</p>
-    </div>
+        <article class="card">
+          <div class="card-head">Centralized Logging</div>
+          <div class="card-sub">Rsyslog → CloudWatch</div>
+          <p>Log aggregation, CloudWatch metric filters and SNS alerts for critical events.</p>
+          <a class="card-cta" href="projects/centralized-logging.html">Read more →</a>
+        </article>
 
-  </div>
-</section>
+        <article class="card">
+          <div class="card-head">Secure SFTP → S3</div>
+          <div class="card-sub">Transfer Family · S3 · IAM</div>
+          <p>Secure file transfer integrated with S3, object-level logging and lifecycle rules.</p>
+          <a class="card-cta" href="projects/sftp-s3-workflow.html">Read more →</a>
+        </article>
+      </div>
+    </section>
 
-<section id="experience" class="section">
-  <h2 class="section-title">EXPERIENCE</h2>
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section">
+      <h2 class="section-title">Experience</h2>
 
-  <div class="card">
-    <h3>Cloud Engineer – RR IT Solutions</h3>
-    <p>Jun 2024 – Present</p>
-    <p>Built secure AWS infra: VPC, EC2, RDS, automation & monitoring.</p>
-  </div>
+      <div class="timeline">
+        <div class="event">
+          <div class="event-head">Cloud Engineer — RR IT Solutions</div>
+          <div class="event-sub">Jun 2024 — Present</div>
+          <p>Built and maintained production AWS environments: VPC, EC2, RDS, IAM and automated deployments.</p>
+        </div>
 
-  <div class="card">
-    <h3>Cloud Intern – Ahnaizn Business Group (UK)</h3>
-    <p>Jan 2022 – Jan 2023</p>
-    <p>Assisted in deployments, log pipelines and cloud automation.</p>
-  </div>
-</section>
+        <div class="event">
+          <div class="event-head">Cloud Assistant (Intern) — Ahnaizn Business Group (UK)</div>
+          <div class="event-sub">Jan 2022 — Jan 2023</div>
+          <p>Supported migrations, observability stacks and deployment processes across environments.</p>
+        </div>
+      </div>
+    </section>
 
-<section id="skills" class="section">
-  <h2 class="section-title">SKILLS</h2>
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <h2 class="section-title">Core Skills</h2>
+      <div class="skill-cloud">
+        <span>EC2</span> <span>VPC</span> <span>RDS</span> <span>S3</span> <span>CloudWatch</span>
+        <span>IAM</span> <span>Bash</span> <span>AWS CLI</span> <span>Terraform</span> <span>Docker</span>
+      </div>
+    </section>
 
-  <div class="chip-group">
-    <span>EC2</span><span>VPC</span><span>RDS</span><span>S3</span>
-    <span>IAM</span><span>CloudWatch</span><span>Linux</span>
-    <span>Bash</span><span>AWS CLI</span><span>Terraform</span>
-  </div>
-</section>
+    <!-- CONTACT -->
+    <section id="contact" class="section contact">
+      <h2 class="section-title">Contact</h2>
 
-<section id="contact" class="section">
-  <h2 class="section-title">CONTACT</h2>
-
-  <div class="card">
-    <p><strong>Email:</strong> rohithjpu1@gmail.com</p>
-    <p><strong>Phone:</strong> +91 7358889412</p>
-    <p><strong>GitHub:</strong> github.com/RohithJP</p>
-    <p><strong>LinkedIn:</strong> linkedin.com/in/rohith-jothilakshmi-periyasamy</p>
-  </div>
-</section>
-
-<footer>
-  <p>© 2025 Rohith J. Periyasamy • Cyber-Neon Portfolio</p>
-</footer>
-
-</body>
-</html>
+      <div class="contact-grid">
+        <div class="card contact-card">
+          <h3>Let's work together</h3>
+          <p>Email me or use the form to get a quick reply.</p>
+          <p><strong>Email:</strong> rohith
