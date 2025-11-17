@@ -3,82 +3,92 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Linux Project L4 — Networking & File Transfer</title>
+  <title>L4 — Linux Networking & File Transfer</title>
 
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../style.css?v=25" />
+  <link rel="stylesheet" href="../style.css?v=26" />
 </head>
 
 <body>
 
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand-link" href="../../index.html">
+    <a class="brand-link" href="../index.html">
       <span class="brand-logo">ROHITH JP</span>
     </a>
     <nav class="nav">
-      <a href="../../index.html">Home</a>
+      <a href="../index.html">Home</a>
       <a class="active" href="#">Project</a>
-      <a href="../../experience/experience.html">Experience</a>
     </nav>
   </div>
 </header>
 
 <main class="container">
 
+  <!-- HERO -->
   <section class="project-hero">
     <div class="hero-title" style="font-size:32px; font-weight:700;">
       L4 — Linux Networking & Secure File Transfer
     </div>
     <p class="subtitle">
-      Practical networking tasks: SSH/SCP transfers, port scanning, firewall debugging, curl diagnostics,
-      and service connectivity troubleshooting.
+      Practical Linux networking tasks including SSH, SCP file transfers, firewall debugging, 
+      port analysis, service connectivity troubleshooting, and curl-based diagnostics.
     </p>
   </section>
 
+  <!-- OVERVIEW -->
   <section class="block">
     <h3>Project Overview</h3>
     <p>
-      This project demonstrates networking operations on Linux: secure file transfer with SCP, remote
-      host connectivity, port analysis, and troubleshooting firewall and service-level issues.
+      This project focuses on real-world Linux networking operations: analyzing active network ports,
+      securely transferring files between remote systems, debugging firewall rules, and diagnosing connectivity
+      and service issues using powerful command-line tools.
     </p>
   </section>
 
+  <!-- NETWORK TASKS -->
   <section class="block">
-    <h3>Networking Tasks</h3>
+    <h3>Networking Tasks Performed</h3>
     <ul class="exp-list">
-      <li>Transfer files using SCP with path corrections</li>
-      <li>Test endpoints using curl</li>
-      <li>Check listening ports using ss, netstat</li>
-      <li>Debug UFW and iptables firewall rules</li>
-      <li>Diagnose connection timeouts</li>
-      <li>Check PIDs bound to ports using lsof</li>
+      <li>Transferring files securely between servers using <strong>SCP</strong></li>
+      <li>Checking open and listening ports using <strong>ss</strong> and <strong>netstat</strong></li>
+      <li>Debugging network issues using <strong>ping</strong>, <strong>curl</strong>, and <strong>wget</strong></li>
+      <li>Identifying processes bound to ports using <strong>lsof -i</strong></li>
+      <li>Configuring firewall rules using <strong>ufw</strong> and <strong>iptables</strong></li>
+      <li>Debugging connection timeouts and unreachable hosts</li>
+      <li>Fixing invalid SCP path errors</li>
+      <li>Testing remote service status and HTTP endpoints</li>
     </ul>
   </section>
 
+  <!-- TROUBLESHOOTING -->
   <section class="block">
     <h3>Troubleshooting Scenarios</h3>
     <ul class="exp-list">
-      <li>Backend unreachable errors</li>
-      <li>Port already in use failures</li>
-      <li>Incorrect SCP destination path</li>
-      <li>Firewall blocking incoming/outgoing traffic</li>
-      <li>curl timing out on remote host</li>
+      <li>“Port already in use” errors caused by zombie processes</li>
+      <li>Firewall blocking external HTTP/HTTPS requests</li>
+      <li>curl: (7) Failed to connect — backend unreachable</li>
+      <li>Fixing SCP “No such file or directory” path issues</li>
+      <li>Diagnosing remote host timeouts using traceroute</li>
+      <li>Restarting crashed services and clearing stale PID files</li>
     </ul>
   </section>
 
+  <!-- ACHIEVEMENTS -->
   <section class="block">
     <h3>Achievements</h3>
     <ul class="exp-list">
-      <li>Mastered essential DevOps networking commands</li>
-      <li>Performed secure transfers between remote servers</li>
-      <li>Diagnosed real port and connectivity issues</li>
+      <li>Mastered essential Linux networking commands</li>
+      <li>Completed real-world debugging of connectivity issues</li>
+      <li>Successfully transferred files between secure servers</li>
+      <li>Developed strong understanding of port, service, and firewall interactions</li>
     </ul>
   </section>
 
-  <section class="project-nav" style="margin-top:32px; display:flex; gap:16px;">
-    <a class="btn btn-outline" href="linux-project3.html">← Previous</a>
-    <a class="btn btn-primary" href="../../index.html">Home →</a>
+  <!-- NAV -->
+  <section class="project-nav">
+    <a class="btn-nav-outline" href="project3.html">← Previous</a>
+    <a class="btn-nav-primary" href="../index.html">Home →</a>
   </section>
 
 </main>
