@@ -6,7 +6,7 @@
   <title>Project 02 — Automated Web Hosting System</title>
 
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=30" />
+  <link rel="stylesheet" href="../style.css?v=30"/>
 </head>
 
 <body>
@@ -16,6 +16,7 @@
     <a href="../index.html" class="brand-link">
       <span class="brand-logo">ROHITH JP</span>
     </a>
+
     <nav class="nav">
       <a href="../index.html">Home</a>
       <a href="project1.html">Projects</a>
@@ -25,16 +26,16 @@
   </div>
 </header>
 
+
 <main>
 
-<!-- HERO -->
 <section class="hero-small">
   <div class="container">
-    <h1 class="page-title" style="font-size:40px;font-weight:700;">
+    <h1 class="page-title" style="font-size:44px;font-weight:700;">
       02 — Automated Web Hosting System
     </h1>
     <p class="lead">
-      End-to-end static website hosting using EC2, S3, IAM Roles, Nginx, and full Bash automation.
+      Static Website Hosting using EC2, S3, IAM, Nginx and Bash Automation.
     </p>
   </div>
 </section>
@@ -46,130 +47,178 @@
     <!-- OVERVIEW -->
     <h2 class="section-title">Project Overview</h2>
     <p class="lead">
-      This project automates the complete provisioning of a static website using AWS EC2, S3, and User Data scripting.
-      The EC2 instance automatically installs Nginx, pulls content from S3, configures permissions, enables a firewall,
-      logs all setup steps, and instantly serves the website after launch.
+      This project automates the hosting of a static website using AWS EC2, S3, IAM roles, and a fully automated
+      User Data provisioning script. The EC2 instance installs Nginx, fetches content from S3, configures permissions,
+      enables the firewall, and becomes production-ready within minutes.
     </p>
 
-    <h3 class="sub-heading">Goal</h3>
+    <h3 class="sub-title">Goal</h3>
     <p>
-      To automate the deployment of a secure and production-ready static web hosting system using AWS services and Bash scripts.
+      To automate the provisioning and deployment of a static website end-to-end using AWS services and Bash scripting.
     </p>
 
-    <h3 class="sub-heading">Technologies Used</h3>
+    <h3 class="sub-title">Technologies Used</h3>
     <ul class="exp-list">
-      <li>AWS EC2 (Ubuntu 22.04)</li>
-      <li>AWS S3 (Static file storage)</li>
-      <li>IAM Role (Credential-less S3 access)</li>
-      <li>AWS CLI v2</li>
-      <li>Nginx Web Server</li>
-      <li>User Data Automation</li>
-      <li>Mac Terminal + SSH</li>
+      <li>AWS EC2 – Hosting the Nginx web server</li>
+      <li>AWS S3 – Storing static HTML files</li>
+      <li>IAM Role – Credential-free secure S3 access</li>
+      <li>AWS CLI v2 – Automated S3 sync operations</li>
+      <li>Nginx – Web server for static hosting</li>
+      <li>Bash (User Data) – Automated provisioning script</li>
+      <li>Mac Terminal – Deployment & verification</li>
     </ul>
+
+    <h3 class="sub-title">Key Deliverable</h3>
+    <p>
+      A fully automated EC2 instance that installs Nginx, syncs files from S3, sets permissions, configures
+      the firewall, logs all steps, and serves the website immediately after launch.
+    </p>
+
 
     <!-- WORKFLOW -->
-    <h2 class="section-title">Workflow Diagram</h2>
-    <div class="workflow-box" style="max-height:200px;overflow-y:auto;">
+    <h2 class="section-title">Workflow</h2>
 
-      <pre class="flow-block" style="font-size:14px;line-height:1.55;">
-Mac Terminal
-   |
-   v
-Upload HTML site → S3 Bucket
-   |
-   v
-Launch EC2 with IAM Role + User Data
-   |
-   v
-User Data:
-  • Install Nginx
-  • Install AWS CLI v2
-  • Sync S3 → /var/www/html
-  • Fix permissions
-  • Enable firewall
-   |
-   v
-Website Automatically Live
-      </pre>
+    <div class="workflow-container" style="
+      background:#0a0f14;
+      border:1px solid #2ec4ff30;
+      padding:22px;
+      border-radius:16px;
+      margin-top:14px;
+      box-shadow:0 0 18px #0e3a53 inset, 0 0 12px #2ec4ff50;
+      overflow-x:auto;
+    ">
 
+      <svg width="900" height="330" viewBox="0 0 900 330">
+
+        <!-- Step 1 -->
+        <rect x="50" y="20" width="300" height="60" rx="12"
+          fill="#05131a" stroke="#2ec4ff" stroke-width="2"/>
+        <text x="200" y="57" text-anchor="middle" fill="#2ec4ff"
+          font-family="IBM Plex Mono" font-size="14">
+          Developer (Mac Terminal)
+        </text>
+
+        <!-- Arrow -->
+        <line x1="200" y1="80" x2="200" y2="115"
+          stroke="#2ec4ff" stroke-width="2"/>
+        <polygon points="200,120 195,110 205,110" fill="#2ec4ff"/>
+
+        <!-- Step 2 -->
+        <rect x="50" y="130" width="300" height="60" rx="12"
+          fill="#05131a" stroke="#7e3cff" stroke-width="2"/>
+        <text x="200" y="165" text-anchor="middle" fill="#7e3cff"
+          font-family="IBM Plex Mono" font-size="14">
+          S3 Bucket (Static Files)
+        </text>
+
+        <!-- Arrow -->
+        <line x1="200" y1="190" x2="200" y2="225"
+          stroke="#7e3cff" stroke-width="2"/>
+        <polygon points="200,230 195,220 205,220" fill="#7e3cff"/>
+
+        <!-- Step 3 -->
+        <rect x="50" y="240" width="300" height="60" rx="12"
+          fill="#05131a" stroke="#ff9900" stroke-width="2"/>
+        <text x="200" y="275" text-anchor="middle" fill="#ff9900"
+          font-family="IBM Plex Mono" font-size="14">
+          EC2 Instance (User Data Automation)
+        </text>
+
+        <!-- Arrow to next box -->
+        <line x1="350" y1="270" x2="430" y2="270"
+          stroke="#2ec4ff" stroke-width="2"/>
+        <polygon points="435,270 425,265 425,275" fill="#2ec4ff"/>
+
+        <!-- Step 4 -->
+        <rect x="450" y="240" width="360" height="60" rx="12"
+          fill="#05131a" stroke="#2ec4ff" stroke-width="2"/>
+        <text x="630" y="275" text-anchor="middle" fill="#2ec4ff"
+          font-family="IBM Plex Mono" font-size="14">
+          NGINX Serves Website Immediately
+        </text>
+
+      </svg>
     </div>
 
-    <!-- WHAT I LEARNED -->
+
+    <!-- SECTION: WHAT I LEARNED -->
     <h2 class="section-title">What I Learned</h2>
     <ul class="exp-list">
-      <li>Using IAM Roles instead of static AWS credentials</li>
-      <li>Debugging EC2 User Data execution failures</li>
-      <li>Fixing Nginx 403 errors and permission issues</li>
-      <li>Configuring UFW firewall for secure deployments</li>
-      <li>Automating deployments with S3 and AWS CLI</li>
-      <li>Understanding Nginx web root structure</li>
+      <li>Deep understanding of EC2, S3, IAM, Nginx and provisioning automation</li>
+      <li>Debugging User Data scripts and AWS CLI errors</li>
+      <li>Fixing permission issues leading to Nginx 403 Forbidden</li>
+      <li>Configuring HTTPS using self-signed certificates</li>
+      <li>Networking concepts like SG rules and firewall configuration</li>
     </ul>
 
-    <!-- TECHNIQUES THAT WORKED -->
+
+    <!-- SECTION: TECHNIQUES -->
     <h2 class="section-title">Techniques That Worked</h2>
     <ul class="exp-list">
-      <li>User Data for automatic provisioning</li>
-      <li>IAM Role → EC2 for secure S3 access</li>
-      <li>aws s3 sync for deployment automation</li>
-      <li>www-data ownership for correct permissions</li>
-      <li>Logging everything to /var/log/site_setup.log</li>
+      <li>IAM Role instead of static credentials</li>
+      <li>`aws s3 sync` for fast deployments</li>
+      <li>Logging system: `/var/log/site_setup.log`</li>
+      <li>Correct web root permissions fixing 403 errors</li>
+      <li>Consistent Nginx document root setup</li>
     </ul>
+
 
     <!-- TROUBLESHOOTING -->
     <h2 class="section-title">Troubleshooting & Fixes</h2>
+    <ul class="exp-list">
+      <li><strong>Default Nginx Welcome Page:</strong> removed default HTML file</li>
+      <li><strong>403 Forbidden:</strong> incorrect permissions → fixed with `www-data` ownership</li>
+      <li><strong>AWS CLI not found:</strong> installed AWS CLI v2 bundle</li>
+      <li><strong>HTTPS Privacy Error:</strong> using self-signed certs for testing</li>
+      <li><strong>User Data not running:</strong> instance relaunched with correct script</li>
+    </ul>
 
-    <div class="exp-preview">
-      <ul class="exp-list">
-        <li><strong>Default Nginx Page</strong> → Removed default index file</li>
-        <li><strong>403 Forbidden</strong> → Incorrect permissions → fixed with proper ownership</li>
-        <li><strong>AWS CLI not found</strong> → Installed AWS CLI v2 manually</li>
-        <li><strong>SSL Browser Warning</strong> → Self-signed cert (expected)</li>
-        <li><strong>User Data not executing</strong> → Relaunched instance with correct script</li>
-      </ul>
-    </div>
 
     <!-- RUNBOOK -->
     <h2 class="section-title">Step-by-Step Runbook</h2>
-
-    <h3 class="sub-heading">Mac Terminal</h3>
     <pre class="code-block">
+# 1. Create S3 bucket & upload site
 aws s3 mb s3://rohit-static-site-2025
 aws s3 sync ./site/ s3://rohit-static-site-2025/
 
+# 2. SSH into EC2
 ssh -i ~/.ssh/webKey.pem ubuntu@&lt;public-ip&gt;
 
+# 3. View logs
 sudo tail -n 50 /var/log/site_setup.log
     </pre>
 
-    <h3 class="sub-heading">AWS Console Tasks</h3>
-    <ul class="exp-list">
-      <li>Create IAM Role → AmazonS3ReadOnlyAccess</li>
-      <li>Create Security Group → SSH, HTTP, HTTPS</li>
-      <li>Create Key Pair → chmod 400</li>
-      <li>Launch EC2 → Attach IAM Role + User Data</li>
-    </ul>
 
     <!-- USER DATA SCRIPT -->
     <h2 class="section-title">Final User Data Script</h2>
-    <pre class="code-block">
-#!/bin/bash
+
+    <div style="
+      background:#0a0f14;
+      border:1px solid #7e3cff40;
+      border-radius:14px;
+      padding:20px;
+      margin-top:12px;
+      box-shadow:0 0 18px #2d1b47 inset, 0 0 14px #7e3cff50;
+    ">
+    <pre class="code-block" style="white-space:pre-wrap;font-size:14px;line-height:1.55;">#!/bin/bash
 set -e
 LOG="/var/log/site_setup.log"
 echo "=== Site setup started at $(date) ===" >> $LOG
 
-apt-get update -y >> $LOG 2>&1
-apt-get install -y nginx python3-pip unzip curl ufw >> $LOG 2>&1
+apt update -y >> $LOG
+apt install -y nginx unzip curl ufw >> $LOG
 
+# Install AWS CLI v2
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" \
-  -o "/tmp/awscliv2.zip" >> $LOG 2>&1
-unzip /tmp/awscliv2.zip -d /tmp >> $LOG 2>&1
-/tmp/aws/install >> $LOG 2>&1
+  -o "/tmp/awscliv2.zip" >> $LOG
+unzip /tmp/awscliv2.zip -d /tmp >> $LOG
+/tmp/aws/install >> $LOG
 
 systemctl enable nginx
 systemctl start nginx
 
 rm -rf /var/www/html/*
-aws s3 sync s3://rohit-static-site-2025 /var/www/html >> $LOG 2>&1
+aws s3 sync s3://rohit-static-site-2025 /var/www/html >> $LOG
 
 chown -R www-data:www-data /var/www/html
 chmod -R 755 /var/www/html
@@ -179,39 +228,40 @@ ufw allow 'Nginx Full'
 ufw --force enable
 
 echo "=== Site setup finished at $(date) ===" >> $LOG
-    </pre>
+</pre>
+    </div>
 
-    <!-- SECURITY -->
-    <h2 class="section-title">Security & Production Notes</h2>
-    <ul class="exp-list">
-      <li>Restrict SSH to your IP</li>
-      <li>Use IAM Roles instead of static keys</li>
-      <li>Use S3 + CloudFront for better scalability</li>
-      <li>Plan HTTPS using Certbot</li>
-    </ul>
 
     <!-- NEXT STEPS -->
-    <h2 class="section-title">Next Steps & Improvements</h2>
+    <h2 class="section-title">Next Steps</h2>
     <ul class="exp-list">
-      <li>CI/CD for S3 deployments</li>
-      <li>CloudFront CDN + HTTPS</li>
-      <li>Infrastructure as Code (Terraform)</li>
-      <li>CloudWatch monitoring</li>
+      <li>Implement CI/CD for automated deployments</li>
+      <li>Use CloudFront for CDN + SSL + caching</li>
+      <li>Deploy using Terraform or CloudFormation</li>
+      <li>Monitor uptime using CloudWatch</li>
     </ul>
 
+    <!-- CONCLUSION -->
+    <h2 class="section-title">Conclusion</h2>
+    <p>
+      This project successfully automated the deployment of a static website using EC2, S3, IAM, Nginx, and Bash scripting.
+      It demonstrates strong AWS fundamentals, automation expertise, Linux configuration, and debugging skills.
+    </p>
+
     <!-- BUTTONS -->
-    <div style="margin-top:40px;text-align:center;">
-      <a class="btn btn-strong" href="https://github.com/RohithJP/Projects/tree/main" target="_blank">View Repo</a>
-
-      <a class="btn btn-outline-strong" style="margin-left:12px;" href="project1.html">← Previous</a>
-
-      <a class="btn btn-strong" style="margin-left:12px;" href="project3.html">Next →</a>
+    <div class="project-nav" style="margin-top:28px;">
+      <a class="btn btn-outline-strong" href="project1.html">← Previous</a>
+      <a class="btn btn-strong" href="project3.html">Next →</a>
+      <a class="btn btn-primary" href="https://github.com/RohithJP/Projects/tree/main" target="_blank" style="margin-left:12px;">
+        View Repo →
+      </a>
     </div>
 
   </div>
 </section>
 
 </main>
+
 
 <footer class="site-footer">
   <div class="container">
