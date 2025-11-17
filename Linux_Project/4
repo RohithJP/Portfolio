@@ -1,0 +1,63 @@
+<!-- save as: linux-networking-file-transfer.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Linux Networking & Secure File Transfer — Portfolio</title>
+  <meta name="description" content="SSH, SCP, port debugging, ss/netstat checks, curl diagnostics, and firewall troubleshooting." />
+  <style>
+    :root{--bg:#041022;--card:#071329;--accent:#f59e0b;--muted:#a9bed0;--maxw:960px}
+    body{margin:0;background:linear-gradient(180deg,var(--bg),#00111a);color:#f8fbff;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;padding:30px;display:flex;justify-content:center}
+    .wrap{width:100%;max-width:var(--maxw)}
+    header{display:flex;gap:14px;align-items:center;margin-bottom:16px}
+    .icon{width:60px;height:60px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#f472b6);display:flex;align-items:center;justify-content:center;color:#061226;font-weight:800}
+    h1{margin:0;font-size:20px}
+    .card{background:rgba(255,255,255,0.02);padding:20px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.65)}
+    h2{margin-top:10px}
+    ul{color:var(--muted);padding-left:18px}
+    .tools{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .badge{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:999px}
+    .cta{margin-top:14px}
+    a.btn{padding:10px 12px;border-radius:8px;text-decoration:none;font-weight:700}
+    a.primary{background:var(--accent);color:#061226}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <div class="icon">NW</div>
+      <div>
+        <h1>Linux Networking & Secure File Transfer</h1>
+        <p style="color:var(--muted);margin:6px 0 0">Practical work on SSH/SCP, port analysis, firewall debugging and endpoint diagnostics for web services.</p>
+      </div>
+    </header>
+
+    <section class="card" aria-labelledby="overview">
+      <h2 id="overview">Project Overview</h2>
+      <p style="color:var(--muted)">Designed and executed file transfer operations and networking troubleshooting to fix connectivity and service-binding issues.</p>
+
+      <h2>Tasks & Achievements</h2>
+      <ul>
+        <li>Implemented reliable SCP transfers and diagnosed common errors (paths, permissions, auth).</li>
+        <li>Inspected active ports and service bindings using <code>ss -tulnp</code> and <code>lsof</code>.</li>
+        <li>Diagnosed firewall-related failures and validated rules with UFW and iptables checks.</li>
+        <li>Used <code>curl</code>, <code>ping</code>, and <code>traceroute</code> for endpoint testing and latency diagnosis.</li>
+      </ul>
+
+      <h2>Tools</h2>
+      <div class="tools">
+        <span class="badge">SSH</span>
+        <span class="badge">SCP</span>
+        <span class="badge">ss / netstat</span>
+        <span class="badge">curl</span>
+        <span class="badge">UFW / iptables</span>
+      </div>
+
+      <div class="cta">
+        <a class="btn primary" href="#">Open Diagnostics Cheat Sheet</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
