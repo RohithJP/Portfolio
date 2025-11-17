@@ -1,74 +1,229 @@
-<!-- ================================
-     NEW WORKFLOW DIAGRAM — PROJECT 4
-=================================== -->
-<section class="section-dark">
-  <h2 class="section-title">Architecture Workflow</h2>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Project 04 — Secure File Transfer & Storage Workflow</title>
 
-  <div class="arch-diagram">
-    <svg class="workflow-svg" viewBox="0 0 1220 150" xmlns="http://www.w3.org/2000/svg">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css?v=42" />
+</head>
 
-      <!-- India Team -->
-      <rect x="10" y="45" width="200" height="55" rx="12"
-            fill="#05131a" stroke="#2ec4ff" stroke-width="1.8"/>
-      <text x="110" y="78" text-anchor="middle" fill="#2ec4ff" font-size="13">
-        India Dev Team (SFTP Upload)
-      </text>
+<body>
 
-      <!-- EC2 SFTP Server -->
-      <rect x="240" y="45" width="220" height="55" rx="12"
-            fill="#05131a" stroke="#7e3cff" stroke-width="1.8"/>
-      <text x="350" y="78" text-anchor="middle" fill="#7e3cff" font-size="13">
-        EC2 SFTP Server (Chrooted Users)
-      </text>
-
-      <!-- Automation Script -->
-      <rect x="490" y="45" width="230" height="55" rx="12"
-            fill="#05131a" stroke="#2ec4ff" stroke-width="1.8"/>
-      <text x="605" y="78" text-anchor="middle" fill="#2ec4ff" font-size="13">
-        Automation Script (Cron + AWS CLI)
-      </text>
-
-      <!-- S3 Storage -->
-      <rect x="750" y="45" width="230" height="55" rx="12"
-            fill="#05131a" stroke="#ff9900" stroke-width="1.8"/>
-      <text x="865" y="78" text-anchor="middle" fill="#ff9900" font-size="13">
-        S3 Bucket (Versioned + Audit Logs)
-      </text>
-
-      <!-- UK Team -->
-      <rect x="1010" y="45" width="200" height="55" rx="12"
-            fill="#05131a" stroke="#2ec4ff" stroke-width="1.8"/>
-      <text x="1110" y="78" text-anchor="middle" fill="#2ec4ff" font-size="13">
-        UK Sales Team (Download Files)
-      </text>
-
-      <!-- Arrows -->
-      <line x1="210" y1="72" x2="240" y2="72" stroke="#2ec4ff" stroke-width="2"/>
-      <line x1="460" y1="72" x2="490" y2="72" stroke="#7e3cff" stroke-width="2"/>
-      <line x1="720" y1="72" x2="750" y2="72" stroke="#2ec4ff" stroke-width="2"/>
-      <line x1="980" y1="72" x2="1010" y2="72" stroke="#ff9900" stroke-width="2"/>
-
-    </svg>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand-link" href="../index.html">
+      <span class="brand-logo">ROHITH JP</span>
+    </a>
+    <nav class="nav">
+      <a href="../index.html">Home</a>
+      <a class="active" href="#">Project</a>
+      <a href="../experience/experience.html">Experience</a>
+    </nav>
   </div>
+</header>
 
-  <h2 class="section-title">Detailed Explanation</h2>
+<main class="container">
 
-  <p class="lead">
-    This secure workflow automates file transfers between remote teams using a hardened EC2 SFTP server
-    and S3 versioning for safe recovery.
-  </p>
+  <!-- HERO -->
+  <section class="project-hero">
+    <div class="hero-title" style="font-size:34px; font-weight:700;">
+      04 — Secure File Transfer & Storage Workflow
+    </div>
+    <p class="subtitle">
+      Secure daily file exchange using SFTP on EC2 with automated uploads to a versioned S3 bucket — chrooted users, IAM roles, and recoverable storage.
+    </p>
+  </section>
 
-  <ul class="exp-list">
-    <li><strong>India Dev Team:</strong> Uploads files securely via SFTP using isolated chrooted directories.</li>
+  <!-- WORKFLOW -->
+  <section class="block">
+    <h3>Workflow</h3>
 
-    <li><strong>EC2 SFTP Server:</strong> Only SFTP is enabled, no shell access. IAM role attached for S3 upload permissions.</li>
+    <div class="workflow-container" style="
+      background:#0a0f14;
+      border:1px solid rgba(46,196,255,0.18);
+      padding:18px;
+      border-radius:14px;
+      box-shadow:0 0 18px rgba(14,58,83,0.14) inset, 0 0 12px rgba(46,196,255,0.08);
+      overflow-x:auto;
+      margin-top:12px;
+    ">
+      <svg width="1200" height="220" viewBox="0 0 1200 220" xmlns="http://www.w3.org/2000/svg" style="min-width:1000px;height:220px;">
+        <!-- India Dev Team -->
+        <rect x="20" y="30" width="230" height="60" rx="12" fill="#05131a" stroke="#2ec4ff" stroke-width="1.8"/>
+        <text x="135" y="66" text-anchor="middle" fill="#2ec4ff" font-family="IBM Plex Mono" font-size="13">India Dev Team (SFTP Client)</text>
 
-    <li><strong>Cron Automation:</strong> Every minute, an AWS CLI script syncs <code>/uploads</code> to S3, preserving timestamps.</li>
+        <!-- Arrow to EC2 -->
+        <line x1="250" y1="60" x2="300" y2="60" stroke="#2ec4ff" stroke-width="2.5"/>
+        <polygon points="305,60 295,55 295,65" fill="#2ec4ff"/>
 
-    <li><strong>S3 Versioning:</strong> Ensures every uploaded file retains its history — perfect for rollback and audit.</li>
+        <!-- EC2 SFTP -->
+        <rect x="300" y="20" width="260" height="80" rx="12" fill="#05131a" stroke="#7e3cff" stroke-width="1.8"/>
+        <text x="430" y="52" text-anchor="middle" fill="#7e3cff" font-family="IBM Plex Mono" font-size="13">EC2 SFTP Server (chrooted)</text>
+        <text x="430" y="70" text-anchor="middle" fill="#9fb8c7" font-family="IBM Plex Mono" font-size="11">/home/sftp_user/uploads</text>
 
-    <li><strong>UK Sales Team:</strong> Accesses the latest version or retrieves older revisions through version history.</li>
+        <!-- Arrow to Upload Script -->
+        <line x1="560" y1="60" x2="620" y2="60" stroke="#7e3cff" stroke-width="2.5"/>
+        <polygon points="625,60 615,55 615,65" fill="#7e3cff"/>
 
-    <li><strong>Security Layers:</strong> Chroot restrictions, IAM least-privilege, CloudWatch logs, and strict SG rules.</li>
-  </ul>
-</section>
+        <!-- Upload Script -->
+        <rect x="620" y="20" width="200" height="80" rx="12" fill="#05131a" stroke="#2ec4ff" stroke-width="1.8"/>
+        <text x="720" y="52" text-anchor="middle" fill="#2ec4ff" font-family="IBM Plex Mono" font-size="13">Upload Script (cron)</text>
+        <text x="720" y="70" text-anchor="middle" fill="#9fb8c7" font-family="IBM Plex Mono" font-size="11">aws s3 sync /uploads → s3://bucket</text>
+
+        <!-- Arrow to S3 -->
+        <line x1="820" y1="60" x2="860" y2="60" stroke="#2ec4ff" stroke-width="2.5"/>
+        <polygon points="865,60 855,55 855,65" fill="#2ec4ff"/>
+
+        <!-- S3 Bucket -->
+        <rect x="860" y="20" width="280" height="80" rx="12" fill="#05131a" stroke="#ff9900" stroke-width="1.8"/>
+        <text x="1000" y="52" text-anchor="middle" fill="#ff9900" font-family="IBM Plex Mono" font-size="13">S3 Bucket (versioned)</text>
+        <text x="1000" y="70" text-anchor="middle" fill="#9fb8c7" font-family="IBM Plex Mono" font-size="11">Versioning: Enabled — Recovery & Audit</text>
+
+        <!-- Arrow to UK Sales (down arrow) -->
+        <line x1="1000" y1="100" x2="1000" y2="140" stroke="#ff9900" stroke-width="2.0"/>
+        <polygon points="1000,145 995,135 1005,135" fill="#ff9900"/>
+
+        <!-- UK Sales Team -->
+        <rect x="900" y="150" width="200" height="50" rx="10" fill="#05131a" stroke="#2ec4ff" stroke-width="1.6"/>
+        <text x="1000" y="183" text-anchor="middle" fill="#2ec4ff" font-family="IBM Plex Mono" font-size="12">UK Sales Team (Download)</text>
+
+      </svg>
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section class="block">
+    <h3>Project Overview</h3>
+    <p>
+      Built a secure, auditable daily file transfer workflow using OpenSSH SFTP on an EC2 host with chrooted users, automated uploads to an S3 bucket, and S3 versioning for recovery.
+      This ensures secure exchange of product files between the India development team and the UK sales team.
+    </p>
+  </section>
+
+  <section class="block">
+    <h3>Goal</h3>
+    <p>
+      Transfer daily product files securely, store them centrally with versioning for recovery, and automate the pipeline to reduce manual steps and prevent leak of credentials.
+    </p>
+  </section>
+
+  <section class="block">
+    <h3>Learning Objectives</h3>
+    <ul class="exp-list">
+      <li>Configure Linux EC2 as an SFTP server (OpenSSH).</li>
+      <li>Implement chroot-based user isolation for secure uploads.</li>
+      <li>Automate S3 uploads using cron and AWS CLI.</li>
+      <li>Attach IAM roles to EC2 for secure S3 access.</li>
+      <li>Enable S3 versioning and test restores.</li>
+      <li>Troubleshoot networking and permission issues.</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h3>Architecture</h3>
+    <p class="lead">India Dev Team → SFTP → EC2 SFTP Server → Upload Script → S3 Bucket (Versioned) → UK Sales Team</p>
+    <ul class="exp-list">
+      <li>EC2: Ubuntu / Amazon Linux acting as SFTP endpoint</li>
+      <li>SFTP: OpenSSH with internal-sftp and chroot</li>
+      <li>S3: Versioning enabled for file recovery</li>
+      <li>Security: IAM roles, minimal SG exposure, chroot permissions</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h3>Implementation Steps</h3>
+
+    <h4>1️⃣ EC2 Setup</h4>
+    <pre class="code-block">sudo apt update && sudo apt upgrade -y
+sudo apt install openssh-server -y
+# Configure Security Group to allow SSH/SFTP from team IPs</pre>
+
+    <h4>2️⃣ User Management & Isolation</h4>
+    <pre class="code-block">sudo adduser sftp_user
+sudo mkdir -p /home/sftp_user/uploads
+sudo chown root:root /home/sftp_user
+sudo chmod 755 /home/sftp_user
+sudo chown sftp_user:sftp_user /home/sftp_user/uploads</pre>
+
+    <p>sshd_config snippet:</p>
+    <pre class="code-block">Subsystem sftp internal-sftp
+
+Match User sftp_user
+    ChrootDirectory /home/sftp_user
+    ForceCommand internal-sftp
+    AllowTCPForwarding no
+    X11Forwarding no</pre>
+
+    <h4>3️⃣ Automate Upload to S3</h4>
+    <p>Install AWS CLI (v2), attach IAM Role to EC2, create upload script and cron job:</p>
+    <pre class="code-block"># upload_s3.sh
+#!/bin/bash
+aws s3 sync /home/sftp_user/uploads s3://projrct4-buck --exact-timestamps
+
+# add to crontab (run hourly)
+0 * * * * /home/sftp_user/upload_s3.sh</pre>
+
+    <h4>4️⃣ S3 Configuration</h4>
+    <pre class="code-block"># enable versioning
+aws s3api put-bucket-versioning --bucket projrct4-buck --versioning-configuration Status=Enabled</pre>
+
+    <p>Test restore from the console or with the CLI's version-id when needed.</p>
+  </section>
+
+  <section class="block">
+    <h3>Troubleshooting & Lessons Learned</h3>
+    <ul class="exp-list">
+      <li><strong>sshd restart errors</strong> — caused by incorrect chroot ownership (chroot dir must be root-owned).</li>
+      <li><strong>AWS CLI credential issues</strong> — solved by attaching an IAM role to EC2 instead of using keys on disk.</li>
+      <li><strong>Cron job failures</strong> — ensure the script is executable and uses full paths; check cron logs.</li>
+      <li><strong>Version restore</strong> — practice restoring older versions via console or using <code>aws s3api list-object-versions</code>.</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h3>Cost-Saving Tips</h3>
+    <ul class="exp-list">
+      <li>Use t2.micro / free-tier instances for low-traffic testing.</li>
+      <li>Stop EC2 when not in use.</li>
+      <li>Use S3 lifecycle policies to clean test objects.</li>
+      <li>Avoid public S3 exposure — use presigned URLs or IAM-based access.</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h3>Future Enhancements</h3>
+    <ul class="exp-list">
+      <li>Enable S3 server-side encryption (SSE) for objects.</li>
+      <li>Integrate CloudWatch metrics/alarms for failed uploads.</li>
+      <li>Use Lambda for event-driven downstream processing (validation, thumbnails, ingestion).</li>
+      <li>Support multiple SFTP users with separate chroot directories.</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h3>Outcome</h3>
+    <p>
+      A secure file transfer pipeline was implemented with chrooted SFTP users, automated S3 syncing, 
+      and S3 versioning enabled — delivering a recoverable, auditable, and low-maintenance solution
+      for daily cross-team file exchange.
+    </p>
+  </section>
+
+  <!-- NAVIGATION -->
+  <section class="project-nav" style="margin-top:35px; display:flex; gap:16px;">
+    <a class="btn btn-outline" href="project3.html">← Previous</a>
+    <a class="btn btn-primary" href="project5.html">Next →</a>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <small>© 2025 Rohith Jothilakshmi Periyasamy</small>
+  </div>
+</footer>
+
+</body>
+</html>
