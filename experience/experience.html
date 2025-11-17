@@ -1,103 +1,117 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Work Experience - Rohith JP</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Work Experience — Rohith J. Periyasamy</title>
 
-  <link rel="stylesheet" href="../style.css" />
-  <style>
-    .exp-container {
-      max-width: 900px;
-      margin: 50px auto;
-      padding: 20px;
-    }
-    .exp-card {
-      background: rgba(20,20,30,0.7);
-      border: 1px solid var(--neon-blue);
-      border-radius: 14px;
-      padding: 25px;
-      margin-bottom: 25px;
-      box-shadow: 0 0 18px var(--neon-blue);
-      transition: 0.3s;
-    }
-    .exp-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 0 22px var(--neon-purple);
-    }
-    h2 {
-      font-family: "Orbitron";
-      margin-bottom: 20px;
-      color: var(--neon-purple);
-      text-shadow: 0 0 12px var(--neon-purple);
-    }
-    .role {
-      font-size: 22px;
-      color: var(--neon-blue);
-      text-shadow: 0 0 12px var(--neon-blue);
-      font-family: "Orbitron";
-    }
-    .company {
-      margin-top: 6px;
-      font-size: 16px;
-      opacity: 0.9;
-    }
-    .duration {
-      margin-top: 5px;
-      font-size: 14px;
-      color: #aaa;
-    }
-    .desc {
-      margin-top: 12px;
-      line-height: 1.6;
-      color: var(--text);
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css?v=7" />
 </head>
 
 <body>
 
-  <div class="nav">
-    <div class="logo">ROHITH JP</div>
-    <div>
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="brand">
+      <a href="../index.html" class="brand-link"><span class="brand-logo">ROHITH JP</span></a>
+    </div>
+
+    <nav class="nav">
       <a href="../index.html">Home</a>
       <a href="../projects/project1.html">Projects</a>
-      <a href="#">Experience</a>
-    </div>
+      <a href="experience.html" class="active">Experience</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
   </div>
+</header>
 
-  <div class="exp-container">
 
-    <h2>Professional Experience</h2>
+<main class="experience-page">
 
-    <div class="exp-card">
-      <div class="role">Desktop Support Engineer</div>
-      <div class="company">Allied Digital Services (UK)</div>
-      <div class="duration">2024 — Present</div>
-
-      <div class="desc">
-        • Providing L1/L2 technical support to end-users across UK branches.<br>
-        • Troubleshooting laptops, network issues, Active Directory, O365, hardware faults.<br>
-        • Managing incidents via ServiceNow & meeting SLA timelines.<br>
-        • Supporting remote sites with VPN connectivity & secure access.<br>
-        • Handling onboarding/offboarding and asset management.
-      </div>
+  <section class="hero-small">
+    <div class="container">
+      <h1 class="page-title">Professional Work Experience</h1>
+      <p class="lead">
+        A detailed breakdown of my cloud engineering roles, responsibilities, and achievements.
+      </p>
     </div>
+  </section>
 
-    <div class="exp-card">
-      <div class="role">Technical Support Associate</div>
-      <div class="company">Sainsbury’s</div>
-      <div class="duration">2023 — 2024</div>
 
-      <div class="desc">
-        • Customer-facing technical support for POS systems and store infrastructure.<br>
-        • Diagnosing payment terminal issues, barcode systems & inventory tablets.<br>
-        • Ensured smooth daily store operations and system availability.<br>
-        • Provided first-line troubleshooting and escalation support.
-      </div>
+  <!-- =========================
+       EXPERIENCE BLOCK 1
+       ========================= -->
+  <section class="section-light">
+    <div class="container exp-block">
+
+      <h2 class="exp-company">RR IT Solutions — London, UK</h2>
+      <div class="exp-role">AWS Cloud Engineer</div>
+      <div class="exp-dates">Jun 2024 — Present</div>
+
+      <h3 class="exp-subtitle">Duties & Responsibilities</h3>
+      <ul class="exp-list">
+        <li>Designing and deploying secure AWS architectures using VPC, EC2, RDS, ALB, ASG and CloudWatch.</li>
+        <li>Automating infrastructure using bash scripting and Infrastructure-as-Code approaches.</li>
+        <li>Implementing monitoring, centralized logging and production troubleshooting.</li>
+        <li>Managing deployments, patching schedules, backup policies and environment maintenance.</li>
+        <li>Working closely with development teams to ensure high-availability and scalable environments.</li>
+      </ul>
+
+      <h3 class="exp-subtitle">Key Achievements</h3>
+      <ul class="exp-list">
+        <li>Reduced deployment time by 65% using automated EC2 bootstrapping and S3 sync workflows.</li>
+        <li>Improved system reliability by building proactive CloudWatch dashboards and custom alarms.</li>
+        <li>Enhanced security posture by implementing IAM least-privilege, NACL hardening and SG reviews.</li>
+        <li>Resolved multiple live production outages by troubleshooting network and application layers.</li>
+      </ul>
+
     </div>
+  </section>
 
+
+  <!-- ======================
+       EXPERIENCE BLOCK 2
+       (If you want to add older jobs)
+       =======================-->
+  <section class="section-light">
+    <div class="container exp-block">
+
+      <h2 class="exp-company">Sainsbury’s — London, UK</h2>
+      <div class="exp-role">Technical Support Associate</div>
+      <div class="exp-dates">Dec 2023 — Apr 2024</div>
+
+      <h3 class="exp-subtitle">Duties & Responsibilities</h3>
+      <ul class="exp-list">
+        <li>Provided L1/L2 IT support for POS, system crashes, account access, printers and network issues.</li>
+        <li>Managed incident tickets, escalations and system diagnostics.</li>
+        <li>Ensured minimal downtime by applying rapid troubleshooting procedures.</li>
+      </ul>
+
+      <h3 class="exp-subtitle">Achievements</h3>
+      <ul class="exp-list">
+        <li>Resolved 200+ support issues monthly with consistent 95% positive feedback.</li>
+        <li>Reduced ticket backlog by improving communication flow and triage accuracy.</li>
+      </ul>
+
+    </div>
+  </section>
+
+
+  <section class="section-compact">
+    <div class="container">
+      <a class="btn btn-primary" href="../index.html">← Back to Home</a>
+    </div>
+  </section>
+
+</main>
+
+
+<footer class="site-footer">
+  <div class="container">
+    <small>© 2025 Rohith J. Periyasamy — AWS Cloud Engineer</small>
   </div>
+</footer>
 
 </body>
 </html>
