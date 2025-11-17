@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Project 1 — Multi-Tier WordPress Deployment</title>
+  <title>Project 01 — Multi-Tier WordPress Deployment</title>
 
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=1" />
+  <link rel="stylesheet" href="../style.css?v=22" />
 </head>
 
 <body>
@@ -21,6 +21,7 @@
       <a href="../index.html">Home</a>
       <a class="active" href="#">Project</a>
       <a href="../experience/experience.html">Experience</a>
+      <a href="../index.html#contact">Contact</a>
     </nav>
   </div>
 </header>
@@ -29,48 +30,49 @@
 
   <!-- HERO -->
   <section class="project-hero">
-    <div class="title">Multi-Tier WordPress Deployment</div>
-    <div class="subtitle">
-      A complete 3-tier WordPress infrastructure built using NGINX reverse proxy, Apache/PHP web tier,
-      and MySQL database tier — deployed with strong networking, tier-based security, and backup automation.
-    </div>
+    <div class="hero-title">01 — Multi-Tier WordPress Deployment</div>
+    <p class="subtitle">
+      A complete 3-tier WordPress infrastructure using NGINX reverse proxy, Apache/PHP web tier, and MySQL database tier —
+      deployed with strict networking, SG rules, backups, and security hardening.
+    </p>
   </section>
 
   <!-- WORKFLOW -->
   <section class="block">
     <h3>Workflow</h3>
 
-    <div class="arch-diagram" style="margin-top:20px;">
-      <svg viewBox="0 0 1100 180" xmlns="http://www.w3.org/2000/svg" class="workflow-svg">
+    <div class="arch-diagram" style="margin-top:20px; overflow-x:auto;">
+      <svg viewBox="0 0 1500 180" xmlns="http://www.w3.org/2000/svg"
+           class="workflow-svg" style="min-width:1500px;">
 
         <!-- Internet -->
-        <rect x="10" y="50" width="230" height="60" rx="12"
+        <rect x="10" y="50" width="250" height="60" rx="12"
               fill="#05131a" stroke="#2ec4ff" stroke-width="2"/>
-        <text x="125" y="85" text-anchor="middle" fill="#2ec4ff"
+        <text x="135" y="85" text-anchor="middle" fill="#2ec4ff"
               font-family="IBM Plex Mono" font-size="13">Internet / Clients</text>
 
         <!-- Proxy -->
-        <rect x="280" y="50" width="260" height="60" rx="12"
+        <rect x="300" y="50" width="300" height="60" rx="12"
               fill="#05131a" stroke="#7e3cff" stroke-width="2"/>
-        <text x="410" y="85" text-anchor="middle" fill="#7e3cff"
+        <text x="450" y="85" text-anchor="middle" fill="#7e3cff"
               font-family="IBM Plex Mono" font-size="13">Reverse Proxy (Nginx)</text>
 
         <!-- Web -->
-        <rect x="580" y="50" width="260" height="60" rx="12"
+        <rect x="650" y="50" width="300" height="60" rx="12"
               fill="#05131a" stroke="#2ec4ff" stroke-width="2"/>
-        <text x="710" y="85" text-anchor="middle" fill="#2ec4ff"
+        <text x="800" y="85" text-anchor="middle" fill="#2ec4ff"
               font-family="IBM Plex Mono" font-size="13">Web Server (Apache + PHP)</text>
 
         <!-- DB -->
-        <rect x="880" y="50" width="260" height="60" rx="12"
+        <rect x="1000" y="50" width="300" height="60" rx="12"
               fill="#05131a" stroke="#ff9900" stroke-width="2"/>
-        <text x="1010" y="85" text-anchor="middle" fill="#ff9900"
+        <text x="1150" y="85" text-anchor="middle" fill="#ff9900"
               font-family="IBM Plex Mono" font-size="13">MySQL Database Server</text>
 
         <!-- Arrows -->
-        <line x1="240" y1="80" x2="280" y2="80" stroke="#2ec4ff" stroke-width="3"/>
-        <line x1="540" y1="80" x2="580" y2="80" stroke="#7e3cff" stroke-width="3"/>
-        <line x1="840" y1="80" x2="880" y2="80" stroke="#ff9900" stroke-width="3"/>
+        <line x1="260" y1="80" x2="300" y2="80" stroke="#2ec4ff" stroke-width="3"/>
+        <line x1="600" y1="80" x2="650" y2="80" stroke="#7e3cff" stroke-width="3"/>
+        <line x1="950" y1="80" x2="1000" y2="80" stroke="#ff9900" stroke-width="3"/>
 
       </svg>
     </div>
@@ -80,10 +82,8 @@
   <div class="block">
     <h3>Project Overview</h3>
     <p>
-      This project implements a production-style multi-tier WordPress application inside AWS,
-      separating the reverse proxy, web server, and database server into isolated subnets.
-      The deployment follows real-world practices such as bastion access, tier-based
-      security groups, automated backups, and hardened SSH authentication.
+      This project delivers a production-style multi-tier WordPress application across isolated subnets,
+      hardened network perimeter, automated backups, and fully documented operational workflow.
     </p>
   </div>
 
@@ -91,8 +91,8 @@
   <div class="block">
     <h3>Goal</h3>
     <p>
-      Deploy a secure 3-tier WordPress infrastructure using AWS EC2, following real-world
-      reliability, scalability, and security standards.
+      Deploy a secure 3-tier WordPress infrastructure using AWS EC2,
+      following real-world reliability, scalability, and security best practices.
     </p>
   </div>
 
@@ -100,100 +100,68 @@
   <div class="block">
     <h3>Architecture</h3>
 
-    <p><strong>Internet → Nginx Reverse Proxy → Apache/PHP Web Server → MySQL Database</strong></p>
-
-    <ul>
-      <li>Public Subnet (10.0.1.0/24) — Reverse Proxy</li>
-      <li>Private Subnet (10.0.2.0/24) — Web Tier</li>
-      <li>Private Subnet (10.0.3.0/24) — Database Tier</li>
+    <ul class="exp-list">
+      <li>Public Subnet (10.0.1.0/24) → Reverse Proxy</li>
+      <li>Private Subnet (10.0.2.0/24) → Web Tier</li>
+      <li>Private Subnet (10.0.3.0/24) → Database Tier</li>
     </ul>
   </div>
 
-  <!-- SETUP -->
+  <!-- AWS SETUP -->
   <div class="block">
     <h3>VPC & AWS Console Setup</h3>
-
-    <p>Step-by-step AWS manual configuration:</p>
-
-    <ul>
-      <li>Create VPC: <strong>10.0.0.0/16</strong></li>
-      <li>Create subnets: public, web-private, db-private</li>
-      <li>Attach Internet Gateway</li>
-      <li>Create route tables for public & private subnets</li>
-      <li>Launch NAT Gateway for outbound updates</li>
-      <li>Create tier-based security groups</li>
-    </ul>
-  </div>
-
-  <!-- EC2 -->
-  <div class="block">
-    <h3>EC2 Instance Deployment</h3>
-
-    <ul>
-      <li><strong>reverse-proxy</strong> — Ubuntu 24.04 (public subnet)</li>
-      <li><strong>web-server</strong> — Ubuntu 24.04 (private subnet)</li>
-      <li><strong>database-server</strong> — Ubuntu 24.04 (private subnet)</li>
-    </ul>
+    <p>Configured networking, NAT, routing tables, and security groups following best practices.</p>
   </div>
 
   <!-- TROUBLESHOOTING -->
   <div class="block">
-    <h3>Troubleshooting & Fixes</h3>
-
-    <ul>
-      <li>Fixed SSH access using ProxyJump</li>
-      <li>Resolved key mismatch by regenerating PEM pair</li>
-      <li>Corrected MySQL user host permissions</li>
-      <li>Enabled Apache rewrite for WordPress</li>
-      <li>Correct Nginx → Apache reverse proxy pass</li>
+    <h3>Troubleshooting</h3>
+    <ul class="exp-list">
+      <li>Private subnet SSH issues → Fixed using ProxyJump chain</li>
+      <li>MySQL host access denied → Corrected user@host patterns</li>
+      <li>Apache directory permissions → Ownership fixes for www-data</li>
+      <li>Nginx reverse proxy misrouting → Corrected upstream backend definition</li>
     </ul>
   </div>
 
   <!-- TECHNIQUES LEARNED -->
   <div class="block">
     <h3>Techniques Learned</h3>
-
-    <ul>
-      <li>Designing multi-tier architectures</li>
-      <li>Reverse proxy load forwarding</li>
-      <li>Secure DB host pattern usage</li>
-      <li>Linux service debugging</li>
-      <li>SSH bastion chaining</li>
+    <ul class="exp-list">
+      <li>Full VPC design (public/private subnets, NAT, routing)</li>
+      <li>Reverse proxying WordPress through NGINX</li>
+      <li>MySQL DB hardening and remote access configuration</li>
+      <li>Secure multi-tier EC2 SSH access using ProxyJump</li>
+      <li>Automation via backup scripts & user management</li>
     </ul>
   </div>
 
   <!-- ACHIEVEMENTS -->
   <div class="block">
     <h3>Achievements</h3>
-
-    <ul>
-      <li>Full 3-tier WordPress deployment</li>
-      <li>Backup automation configured</li>
-      <li>Security hardened with SSH keys + firewalls</li>
-      <li>End-to-end functional with reverse proxy routing</li>
+    <ul class="exp-list">
+      <li>Fully deployed 3-tier production-style WordPress stack</li>
+      <li>Proper network isolation and hardened security groups</li>
+      <li>Backup automation + user/role-based access</li>
+      <li>Application accessible through NGINX reverse proxy</li>
     </ul>
   </div>
 
   <!-- REPO + NAVIGATION -->
-  <div class="block card">
-    <h3>Repo & Docs</h3>
-    <p class="card-text">All configuration files, scripts, and notes are included in the repository.</p>
-
-    <a class="btn btn-primary"
-       href="https://github.com/RohithJP/Projects/tree/main"
-       target="_blank">View Repo</a>
-
-    <div style="margin-top:20px; display:flex; gap:16px;">
-      <a class="btn btn-outline" href="project2.html">← Previous</a>
-      <a class="btn btn-primary" href="project2.html">Next →</a>
-    </div>
-  </div>
+  <section class="project-nav">
+    <a class="btn btn-primary" href="https://github.com/RohithJP/Projects/tree/main" target="_blank">View Repo</a>
+    <a class="btn btn-outline-strong" href="../index.html">← Back</a>
+    <a class="btn btn-strong" href="project2.html">Next →</a>
+  </section>
 
 </main>
 
 <footer class="site-footer">
-  <div class="container"><small>© 2025 Rohith J. Periyasamy</small></div>
+  <div class="container">
+    <small>© 2025 Rohith J. Periyasamy — AWS Cloud Engineer</small>
+  </div>
 </footer>
 
 </body>
 </html>
+
