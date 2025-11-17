@@ -1,93 +1,267 @@
-<!-- ================================
-     PROJECT 6 — WORKFLOW DIAGRAM
-=================================== -->
-<section class="section-dark">
-  <h2 class="section-title">Architecture Workflow</h2>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Project 06 — Django CRUD + MySQL RDS</title>
 
-  <div class="arch-diagram">
-    <svg class="workflow-svg" viewBox="0 0 1350 160" xmlns="http://www.w3.org/2000/svg">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css?v=60"/>
+</head>
 
-      <!-- Developer -->
-      <rect x="10" y="45" width="200" height="60" rx="12"
-            fill="#05131a" stroke="#2ec4ff" stroke-width="1.8"/>
-      <text x="110" y="78" text-anchor="middle" fill="#2ec4ff" font-size="13">
-        Developer Updates App
-      </text>
+<body>
 
-      <!-- Git Pull / Deployment -->
-      <rect x="240" y="45" width="240" height="60" rx="12"
-            fill="#05131a" stroke="#7e3cff" stroke-width="1.8"/>
-      <text x="360" y="78" text-anchor="middle" fill="#7e3cff" font-size="13">
-        EC2 Deployment (Git Pull)
-      </text>
-
-      <!-- Web Stack -->
-      <rect x="510" y="45" width="240" height="60" rx="12"
-            fill="#05131a" stroke="#2ec4ff" stroke-width="1.8"/>
-      <text x="630" y="78" text-anchor="middle" fill="#2ec4ff" font-size="13">
-        NGINX + PHP-FPM Stack
-      </text>
-
-      <!-- Database -->
-      <rect x="780" y="45" width="240" height="60" rx="12"
-            fill="#05131a" stroke="#ff9900" stroke-width="1.8"/>
-      <text x="900" y="78" text-anchor="middle" fill="#ff9900" font-size="13">
-        MySQL Database (RDS/EC2)
-      </text>
-
-      <!-- Users -->
-      <rect x="1050" y="45" width="240" height="60" rx="12"
-            fill="#05131a" stroke="#2ec4ff" stroke-width="1.8"/>
-      <text x="1170" y="78" text-anchor="middle" fill="#2ec4ff" font-size="13">
-        Public Users / Browser
-      </text>
-
-      <!-- Arrows -->
-      <line x1="210" y1="75" x2="240" y2="75" stroke="#2ec4ff" stroke-width="2"/>
-      <line x1="480" y1="75" x2="510" y2="75" stroke="#7e3cff" stroke-width="2"/>
-      <line x1="750" y1="75" x2="780" y2="75" stroke="#2ec4ff" stroke-width="2"/>
-      <line x1="1020" y1="75" x2="1050" y2="75" stroke="#ff9900" stroke-width="2"/>
-
-    </svg>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand-link" href="../index.html">
+      <span class="brand-logo">ROHITH JP</span>
+    </a>
+    <nav class="nav">
+      <a href="../index.html">Home</a>
+      <a class="active" href="#">Project</a>
+      <a href="../experience/experience.html">Experience</a>
+    </nav>
   </div>
+</header>
 
-  <h2 class="section-title">Detailed Explanation</h2>
+<main class="container">
 
-  <p class="lead">
-    This project is an optimized version of the PHP + MySQL deployment, focusing on fixing socket issues,
-    improving DB connectivity, and applying production-grade tuning.
-  </p>
+  <!-- HERO -->
+  <section class="project-hero">
+    <div class="hero-title" style="font-size:34px;font-weight:700;">
+      Django CRUD Web App — AWS EC2 + RDS MySQL Deployment
+    </div>
+    <p class="subtitle">
+      Deploying a Django-based Student CRUD web application on EC2, configuring Gunicorn, connecting it to
+      Amazon RDS MySQL, resolving migration issues, and making it publicly accessible with secure networking.
+    </p>
+  </section>
 
-  <ul class="exp-list">
-    <li>
-      <strong>Developer Workflow:</strong> Code updates pushed to GitHub. EC2 pulls changes directly.
-    </li>
+  <!-- WORKFLOW -->
+  <section class="block">
+    <h3>Workflow</h3>
 
-    <li>
-      <strong>EC2 Deployment:</strong> Old files removed, permissions adjusted, PHP-FPM reloaded automatically.
-    </li>
+    <div class="arch-diagram" style="margin-top:18px; overflow-x:auto;">
+      <svg viewBox="0 0 1500 150" xmlns="http://www.w3.org/2000/svg" style="min-width:1200px;height:150px;">
 
-    <li>
-      <strong>NGINX + PHP-FPM:</strong> Improved upstream configuration, fixed socket mismatches, and optimized worker processes.
-    </li>
+        <!-- GitHub/Local -->
+        <rect x="10" y="40" width="240" height="55" rx="10"
+              fill="#05131a" stroke="#2ec4ff" stroke-width="1.8"/>
+        <text x="130" y="72" text-anchor="middle" fill="#2ec4ff"
+              font-family="IBM Plex Mono" font-size="12">GitHub / Local Project</text>
 
-    <li>
-      <strong>Database Layer:</strong> Could be MySQL on EC2 or RDS. Host-based user rules corrected,
-      security tightened, and performance settings improved.
-    </li>
+        <!-- EC2 Django -->
+        <rect x="280" y="40" width="300" height="55" rx="10"
+              fill="#05131a" stroke="#7e3cff" stroke-width="1.8"/>
+        <text x="430" y="72" text-anchor="middle" fill="#7e3cff"
+              font-family="IBM Plex Mono" font-size="12">EC2 (Django + Gunicorn)</text>
 
-    <li>
-      <strong>End Users:</strong> Receive a stable, fast PHP site with no 502/500 errors.
-    </li>
+        <!-- RDS -->
+        <rect x="610" y="40" width="300" height="55" rx="10"
+              fill="#05131a" stroke="#ff9900" stroke-width="1.8"/>
+        <text x="760" y="72" text-anchor="middle" fill="#ff9900"
+              font-family="IBM Plex Mono" font-size="12">RDS MySQL Database</text>
 
-    <li>
-      <strong>Key Improvements Over Project 5:</strong>
-      <ul>
-        <li>Fixed PHP-FPM socket mismatch</li>
-        <li>Corrected file permissions (www-data)</li>
-        <li>Improved DB host rules ('user'@'%')</li>
-        <li>Better error logging and debugging</li>
-      </ul>
-    </li>
-  </ul>
-</section>
+        <!-- Browser -->
+        <rect x="950" y="40" width="260" height="55" rx="10"
+              fill="#05131a" stroke="#2ec4ff" stroke-width="1.8"/>
+        <text x="1080" y="72" text-anchor="middle" fill="#2ec4ff"
+              font-family="IBM Plex Mono" font-size="12">Browser / Users</text>
+
+        <!-- Arrows -->
+        <line x1="250" y1="67" x2="280" y2="67" stroke="#2ec4ff" stroke-width="2.5"/>
+        <line x1="580" y1="67" x2="610" y2="67" stroke="#7e3cff" stroke-width="2.5"/>
+        <line x1="910" y1="67" x2="950" y2="67" stroke="#ff9900" stroke-width="2.5"/>
+
+      </svg>
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section class="block">
+    <h3>Project Overview</h3>
+    <p>
+      The goal is to deploy a Django Student CRUD application on EC2, configure its backend with RDS MySQL,
+      perform migrations, resolve common Django/AWS errors, and make the site publicly available using secure
+      networking, Linux permissions, and Python virtual environments.
+    </p>
+  </section>
+
+  <section class="block">
+    <h3>Learning Objectives</h3>
+    <ul class="exp-list">
+      <li>Configure EC2 for Django hosting</li>
+      <li>Install Python, pip, venv and dependencies</li>
+      <li>Create AWS RDS MySQL and allow EC2 inbound access</li>
+      <li>Connect Django to external RDS databases</li>
+      <li>Perform CRUD operations using Django ORM</li>
+      <li>Fix common Django errors and MySQL connection issues</li>
+      <li>Understand Linux file permissions & security groups</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h3>Architecture</h3>
+    <p class="lead">
+      GitHub → EC2 (Django + Gunicorn) → RDS MySQL → Browser
+    </p>
+    <ul class="exp-list">
+      <li>EC2: Ubuntu 22.04</li>
+      <li>Django Web App (Python 3.12)</li>
+      <li>Gunicorn (WSGI server)</li>
+      <li>RDS MySQL (studentdb)</li>
+      <li>Security groups controlling DB & HTTP access</li>
+    </ul>
+  </section>
+
+  <!-- IMPLEMENTATION -->
+  <section class="block">
+    <h3>Implementation Steps</h3>
+
+    <h4>1️⃣ EC2 Instance Setup</h4>
+    <pre class="code-block">
+chmod 400 mykey.pem
+ssh -i "mykey.pem" ubuntu@&lt;EC2-PUBLIC-IP&gt;
+
+sudo apt update && sudo apt upgrade -y
+sudo apt install git python3-pip python3-venv build-essential libmysqlclient-dev -y
+    </pre>
+
+    <h4>2️⃣ Django Project Setup</h4>
+    <pre class="code-block">
+mkdir ~/djangoapp
+cd ~/djangoapp
+python3 -m venv venv
+source venv/bin/activate
+
+pip install --upgrade pip
+pip install django mysqlclient gunicorn
+
+django-admin startproject studentcrud
+cd studentcrud
+python manage.py startapp students
+
+mkdir -p students/templates students/static
+    </pre>
+
+    <h4>3️⃣ RDS MySQL Setup</h4>
+    <pre class="code-block">
+CREATE DATABASE studentdb CHARACTER SET utf8mb4;
+CREATE USER 'studentuser'@'%' IDENTIFIED BY 'StrongPassword123!';
+GRANT ALL PRIVILEGES ON studentdb.* TO 'studentuser'@'%';
+FLUSH PRIVILEGES;
+    </pre>
+
+    <h4>4️⃣ Connect Django to RDS</h4>
+    <pre class="code-block">
+# settings.py
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'studentdb',
+        'USER': 'studentuser',
+        'PASSWORD': 'StrongPassword123!',
+        'HOST': '&lt;RDS-ENDPOINT&gt;',
+        'PORT': '3306',
+    }
+}
+
+INSTALLED_APPS = [
+    # default apps...
+    'students',
+]
+    </pre>
+
+    <h4>5️⃣ Models & Forms</h4>
+    <pre class="code-block">
+# students/models.py
+class Student(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)
+    created_at = models.DateTimeField(auto_now_add=True)
+</pre>
+
+    <pre class="code-block">
+# students/forms.py
+class StudentForm(forms.ModelForm):
+    class Meta:
+        model = Student
+        fields = ['name', 'email']
+</pre>
+
+    <h4>6️⃣ Views (CRUD)</h4>
+    <pre class="code-block">
+students/views.py
+index, add_student, edit_student, delete_student implemented using Django ORM
+    </pre>
+
+    <h4>7️⃣ URLs & Templates</h4>
+    <pre class="code-block">
+# students/urls.py
+urlpatterns = [
+  path('', views.index, name='index'),
+  path('add/', views.add_student, name='add_student'),
+  path('edit/&lt;int:id&gt;/', views.edit_student, name='edit_student'),
+  path('delete/&lt;int:id&gt;/', views.delete_student, name='delete_student'),
+]
+    </pre>
+
+    <p class="lead">
+      Templates created for adding, editing, listing, and deleting students.
+    </p>
+
+    <h4>8️⃣ Migrations & Server</h4>
+    <pre class="code-block">
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py runserver 0.0.0.0:8000
+    </pre>
+  </section>
+
+  <!-- TROUBLESHOOTING -->
+  <section class="block">
+    <h3>Troubleshooting & Mistakes</h3>
+    <table style="width:100%; color:var(--muted); font-family:var(--mono); font-size:14px;">
+      <tr><td><strong>OperationalError (2005)</strong></td><td>Wrong RDS endpoint</td><td>Correct endpoint & SG rules</td></tr>
+      <tr><td><strong>Access denied</strong></td><td>User privileges missing</td><td>Grant DB rights in RDS</td></tr>
+      <tr><td><strong>Unknown database</strong></td><td>DB not created</td><td>Create DB before migrate</td></tr>
+      <tr><td><strong>django-admin not found</strong></td><td>Env not active</td><td>source venv/bin/activate</td></tr>
+      <tr><td><strong>mysqlclient install fails</strong></td><td>Missing libs</td><td>sudo apt install libmysqlclient-dev</td></tr>
+    </table>
+  </section>
+
+  <section class="block">
+    <h3>Lessons Learned</h3>
+    <ul class="exp-list">
+      <li>Django + MySQL requires proper dev packages</li>
+      <li>Virtual environments ensure clean dependency setups</li>
+      <li>Security groups must be configured correctly for RDS</li>
+      <li>Migrations fail if DB or user permissions are incorrect</li>
+      <li>Stack traces reveal exact configuration errors</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h3>Outcome</h3>
+    <p>
+      The Django CRUD Student Management app was deployed successfully on EC2,
+      connected to RDS MySQL, migrations applied, and the app is fully functional with
+      create/edit/delete features and stable backend connectivity.
+    </p>
+  </section>
+
+  <!-- NAVIGATION -->
+  <section class="project-nav" style="margin-top:35px; display:flex; gap:16px;">
+    <a class="btn btn-outline" href="project5.html">← Previous</a>
+    <a class="btn btn-primary" href="project7.html">Next →</a>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container"><small>© 2025 Rohith Jothilakshmi Periyasamy</small></div>
+</footer>
+
+</body>
+</html>
