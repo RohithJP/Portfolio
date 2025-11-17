@@ -1,115 +1,251 @@
-<!-- ================================
-     PROJECT 7 — WORKFLOW DIAGRAM
-=================================== -->
-<section class="section-dark">
-  <h2 class="section-title">Architecture Workflow</h2>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Project 07 — Private DB + Public Web Architecture</title>
 
-  <div class="arch-diagram">
-    <svg class="workflow-svg" viewBox="0 0 1500 200" xmlns="http://www.w3.org/2000/svg">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css?v=61"/>
+</head>
 
-      <!-- Internet -->
-      <rect x="10" y="60" width="200" height="70" rx="14"
-            fill="#05131a" stroke="#2ec4ff" stroke-width="2"/>
-      <text x="110" y="102" text-anchor="middle" fill="#2ec4ff" font-size="14">
-        Internet / User Browser
-      </text>
+<body>
 
-      <!-- Public Subnet (Web EC2) -->
-      <rect x="260" y="40" width="300" height="110" rx="14"
-            fill="#05131a" stroke="#7e3cff" stroke-width="2"/>
-      <text x="410" y="85" text-anchor="middle" fill="#7e3cff" font-size="14">
-        Public Subnet (10.10.1.0/24)
-      </text>
-      <text x="410" y="110" text-anchor="middle" fill="#9fb8c7" font-size="12">
-        Web EC2 — Nginx + PHP
-      </text>
-
-      <!-- Private Subnet (DB EC2) -->
-      <rect x="620" y="40" width="340" height="110" rx="14"
-            fill="#05131a" stroke="#ff9900" stroke-width="2"/>
-      <text x="790" y="85" text-anchor="middle" fill="#ff9900" font-size="14">
-        Private Subnet (10.10.2.0/24)
-      </text>
-      <text x="790" y="110" text-anchor="middle" fill="#9fb8c7" font-size="12">
-        MySQL Database EC2
-      </text>
-
-      <!-- Optional NAT -->
-      <rect x="1010" y="60" width="220" height="70" rx="14"
-            fill="#05131a" stroke="#2ec4ff" stroke-width="2"/>
-      <text x="1120" y="102" text-anchor="middle" fill="#2ec4ff" font-size="13">
-        (Optional) NAT Gateway
-      </text>
-
-      <!-- Arrows -->
-      <line x1="210" y1="95" x2="260" y2="95" stroke="#2ec4ff" stroke-width="2"/>
-      <line x1="560" y1="95" x2="620" y2="95" stroke="#7e3cff" stroke-width="2"/>
-      <line x1="960" y1="95" x2="1010" y2="95" stroke="#ff9900" stroke-width="2"/>
-
-    </svg>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand-link" href="../index.html">
+      <span class="brand-logo">ROHITH JP</span>
+    </a>
+    <nav class="nav">
+      <a href="../index.html">Home</a>
+      <a class="active" href="#">Project</a>
+      <a href="../experience/experience.html">Experience</a>
+    </nav>
   </div>
+</header>
 
-  <!-- Explanation Section -->
-  <h2 class="section-title">Detailed Explanation</h2>
+<main class="container">
 
-  <p class="lead">
-    This project demonstrates a production-ready **two-tier AWS architecture** where the web server runs
-    in a public subnet while the MySQL database runs in a fully isolated private subnet. Strict networking,
-    security group references, and NACL rules ensure secure and predictable communication.
-  </p>
+  <!-- HERO -->
+  <section class="project-hero">
+    <div class="hero-title" style="font-size:34px;font-weight:700;">
+      07 — Private Database + Public Web Server Deployment (AWS VPC Architecture)
+    </div>
+    <p class="subtitle">
+      A fully secured two-tier AWS architecture with a public-facing NGINX + PHP web server and a private MySQL database,
+      connected through strict VPC segmentation, security groups, and real-world enterprise best practices.
+    </p>
+  </section>
 
-  <ul class="exp-list">
+  <!-- WORKFLOW -->
+  <section class="block">
+    <h3>Workflow</h3>
 
-    <li>
-      <strong>Internet User Access:</strong>
-      Users reach the application through the public web server hosted on an EC2 instance. Only HTTP/HTTPS
-      ports are exposed to the internet to follow least-privilege security.
-    </li>
+    <div class="arch-diagram" style="margin-top:18px; overflow-x:auto;">
+      <svg viewBox="0 0 1500 150" xmlns="http://www.w3.org/2000/svg" style="min-width:1250px;height:150px;">
 
-    <li>
-      <strong>Public Subnet — Web EC2:</strong>
-      Hosts Nginx + PHP. Accepts public traffic, processes requests, and communicates with the database tier.
-      It has a security group that allows:
-      <ul>
-        <li>HTTP/HTTPS from anywhere</li>
-        <li>SSH only from admin IP</li>
-      </ul>
-    </li>
+        <!-- Browser -->
+        <rect x="20" y="40" width="240" height="55" rx="10"
+              fill="#05131a" stroke="#2ec4ff" stroke-width="1.8"/>
+        <text x="140" y="72" text-anchor="middle" fill="#2ec4ff"
+              font-family="IBM Plex Mono" font-size="12">Browser / Users</text>
 
-    <li>
-      <strong>Private Subnet — DB EC2:</strong>
-      MySQL is installed on a separate EC2 instance with <strong>no public IP</strong>. It is accessible only
-      from the Web EC2 using a security group reference (not IP-based). Database user rules (e.g.,
-      <code>user@10.10.%</code>) allow VPC-restricted authentication.
-    </li>
+        <!-- Public EC2 -->
+        <rect x="300" y="40" width="300" height="55" rx="10"
+              fill="#05131a" stroke="#7e3cff" stroke-width="1.8"/>
+        <text x="450" y="72" text-anchor="middle" fill="#7e3cff"
+              font-family="IBM Plex Mono" font-size="12">Public EC2 (NGINX + PHP)</text>
 
-    <li>
-      <strong>Security Groups:</strong>
-      <ul>
-        <li><strong>sg_web:</strong> Allows HTTP/HTTPS + SSH</li>
-        <li><strong>sg_db:</strong> Allows MySQL (3306) <strong>only from sg_web</strong></li>
-      </ul>
-      The SG reference ensures DB is completely hidden from the outside world.
-    </li>
+        <!-- Private EC2 (DB) -->
+        <rect x="650" y="40" width="320" height="55" rx="10"
+              fill="#05131a" stroke="#ff9900" stroke-width="1.8"/>
+        <text x="810" y="72" text-anchor="middle" fill="#ff9900"
+              font-family="IBM Plex Mono" font-size="12">Private EC2 (MySQL Database)</text>
 
-    <li>
-      <strong>NACL Rules:</strong>
-      Stateless rules applied at subnet level. Correct ephemeral port return paths are essential to avoid dropped packets.
-    </li>
+        <!-- Arrows -->
+        <line x1="260" y1="67" x2="300" y2="67" stroke="#2ec4ff" stroke-width="2.5"/>
+        <line x1="600" y1="67" x2="650" y2="67" stroke="#7e3cff" stroke-width="2.5"/>
 
-    <li>
-      <strong>Optional NAT Gateway:</strong>
-      Used for installing packages (apt update) on the private instance. Can be disabled after setup to avoid extra billing.
-    </li>
+      </svg>
+    </div>
+  </section>
 
-    <li>
-      <strong>Traffic Flow Summary:</strong>
-      <ul>
-        <li>User → Public EC2 (Nginx/PHP)</li>
-        <li>Public EC2 → Database EC2 (3306)</li>
-        <li>Private EC2 never communicates directly with the internet</li>
-      </ul>
-    </li>
+  <!-- PROJECT OBJECTIVE -->
+  <section class="block">
+    <h3>Project Objective</h3>
+    <p>
+      The goal was to build a secure and production-like AWS environment consisting of a public-facing
+      web server and a completely private database server inside a VPC, exactly how enterprises design
+      secure applications.
+    </p>
+    <ul class="exp-list">
+      <li>Public EC2 hosting website (NGINX + PHP)</li>
+      <li>Private EC2 hosting MySQL database</li>
+      <li>1 Public subnet + 1 Private subnet</li>
+      <li>No NAT gateway (cost saving)</li>
+      <li>Database accessible only from public EC2 private IP</li>
+    </ul>
+  </section>
 
-  </ul>
-</section>
+  <!-- ARCHITECTURE -->
+  <section class="block">
+    <h3>AWS Architecture</h3>
+
+    <h4>VPC Configuration</h4>
+    <ul class="exp-list">
+      <li>VPC CIDR: 10.10.0.0/16</li>
+      <li>Public Subnet: 10.10.1.0/24</li>
+      <li>Private Subnet: 10.10.2.0/24</li>
+      <li>IGW attached → for public EC2 access</li>
+      <li>Private subnet: no NAT / no internet</li>
+    </ul>
+
+    <h4>Security Groups</h4>
+    <ul class="exp-list">
+      <li><strong>sg_web (Public EC2)</strong>: HTTP/HTTPS + SSH</li>
+      <li><strong>sg_db (Private EC2)</strong>: MySQL 3306 allowed ONLY from sg_web</li>
+    </ul>
+  </section>
+
+  <!-- EC2 SETUP -->
+  <section class="block">
+    <h3>EC2 Setup</h3>
+
+    <h4>Public EC2 (Web Server)</h4>
+    <ul class="exp-list">
+      <li>Ubuntu 24.04</li>
+      <li>Installed NGINX, PHP 8.3, PHP-FPM</li>
+      <li>Cloned site to <code>/var/www/sms_site</code></li>
+    </ul>
+
+    <h4>Private EC2 (Database)</h4>
+    <ul class="exp-list">
+      <li>Installed MySQL server</li>
+      <li><code>bind-address = 0.0.0.0</code> to allow VPC access</li>
+      <li>Listening on port 3306 for internal VPC networks</li>
+    </ul>
+  </section>
+
+  <!-- DB CONFIG -->
+  <section class="block">
+    <h3>Database Configuration</h3>
+    <pre class="code-block">
+CREATE USER 'sms_user'@'10.10.%' IDENTIFIED BY 'StrongSmsPassword!23';
+GRANT ALL PRIVILEGES ON sms_db.* TO 'sms_user'@'10.10.%';
+FLUSH PRIVILEGES;
+    </pre>
+
+    <p>Database imported via:</p>
+    <pre class="code-block">
+mysql -h 10.10.2.137 -u sms_user -p sms_db < studentmsdb.sql
+    </pre>
+  </section>
+
+  <!-- WEB SERVER CONFIG -->
+  <section class="block">
+    <h3>Web Server Configuration</h3>
+    <p>NGINX site configuration:</p>
+
+    <pre class="code-block">
+server {
+  listen 80;
+  root /var/www/sms_site;
+  index index.php index.html;
+
+  location / {
+    try_files $uri $uri/ /index.php?$query_string;
+  }
+
+  location ~ \.php$ {
+    include snippets/fastcgi-php.conf;
+    fastcgi_pass unix:/run/php/php8.3-fpm.sock;
+  }
+}
+    </pre>
+  </section>
+
+  <!-- MAJOR ISSUE -->
+  <section class="block">
+    <h3>Major Issue — HTTP 500 (Database Connection Failure)</h3>
+
+    <p><strong>Root Cause:</strong> Only one dbconnection.php file was updated.  
+      The site had 3 separate config folders (user/admin/includes).</p>
+
+    <p><strong>Fix:</strong> Updated both user + admin config files to:</p>
+
+    <pre class="code-block">
+define('DB_HOST','10.10.2.137');
+define('DB_USER','sms_user');
+define('DB_PASS','StrongSmsPassword!23');
+define('DB_NAME','sms_db');
+    </pre>
+
+    <p><strong>Result:</strong></p>
+    <ul class="exp-list">
+      <li>Login works</li>
+      <li>Admin dashboard works</li>
+      <li>User pages work</li>
+    </ul>
+  </section>
+
+  <!-- CHALLENGES -->
+  <section class="block">
+    <h3>Challenges & Fixes</h3>
+    <ul class="exp-list">
+      <li><strong>SSH to private EC2 failed</strong> → fixed SG inbound rules</li>
+      <li><strong>MySQL rejected connections</strong> → bind-address updated</li>
+      <li><strong>Host not allowed</strong> → user created with <code>10.10.%</code></li>
+      <li><strong>Login broken</strong> → updated all config files</li>
+      <li><strong>NAT confusion</strong> → learned private DB doesn’t need internet</li>
+      <li><strong>Public IP changed</strong> → only SSH commands updated</li>
+    </ul>
+  </section>
+
+  <!-- VALIDATION -->
+  <section class="block">
+    <h3>Final Architecture Validation</h3>
+    <ul class="exp-list">
+      <li>Browser → Public EC2 (NGINX)</li>
+      <li>Public EC2 → Private EC2 MySQL via private IP</li>
+      <li>Database accessible only through sg_web SG</li>
+      <li>Private EC2 completely isolated from the internet</li>
+    </ul>
+  </section>
+
+  <!-- RE-RUN CHECKLIST -->
+  <section class="block">
+    <h3>Re-run Checklist</h3>
+    <ul class="exp-list">
+      <li>Public EC2 has public IP + SG allows HTTP</li>
+      <li>Private EC2 has no public IP</li>
+      <li>MySQL bind-address = 0.0.0.0</li>
+      <li>MySQL user host: 10.10.%</li>
+      <li>All PHP files use correct DB credentials</li>
+      <li>Connectivity test: <code>nc -zv &lt;private-db-ip&gt; 3306</code></li>
+    </ul>
+  </section>
+
+  <!-- OUTCOME -->
+  <section class="block">
+    <h3>Outcome</h3>
+    <p>
+      You successfully built a real-world two-tier infrastructure with strict security boundaries,
+      database isolation, secure NGINX/PHP deployment, and full VPC control. This mirrors actual
+      enterprise production design.
+    </p>
+  </section>
+
+  <!-- NAVIGATION BUTTONS -->
+  <section class="project-nav" style="margin-top:35px; display:flex; gap:16px;">
+    <a class="btn btn-outline" href="project6.html">← Previous</a>
+    <a class="btn btn-primary" href="../index.html">Finish →</a>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container"><small>© 2025 Rohith Jothilakshmi Periyasamy</small></div>
+</footer>
+
+</body>
+</html>
