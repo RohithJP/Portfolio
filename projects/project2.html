@@ -3,11 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <title>Project 02 — Automated EC2 Hosting (User Data + S3 Sync)</title>
 
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=22">
+  <link rel="stylesheet" href="../style.css?v=30">
 </head>
 
 <body>
@@ -15,7 +14,6 @@
 <header class="site-header">
   <div class="container header-inner">
     <a href="../index.html" class="brand-link"><span class="brand-logo">ROHITH JP</span></a>
-
     <nav class="nav">
       <a href="../index.html">Home</a>
       <a href="project1.html">Projects</a>
@@ -30,67 +28,69 @@
 <section class="hero-small">
   <div class="container">
     <h1 class="page-title">02 — Automated EC2 Static Hosting</h1>
-    <p class="lead">
-      Fully automated EC2 provisioning using User Data + S3 sync for fast static hosting.
-    </p>
+    <p class="lead">Fully automated EC2 provisioning using User Data + S3 sync for fast, zero-touch deployments.</p>
   </div>
 </section>
 
 <section class="section-light">
   <div class="container">
 
-    <h2 class="section-title">Overview</h2>
-    <p class="lead">
-      This project deploys a lightweight static hosting setup using EC2 and automatic S3 syncing.
-    </p>
+    <!-- NEW WORKFLOW -->
+    <h2 class="section-title">Architecture Workflow</h2>
 
-    <h2 class="section-title">Architecture Setup</h2>
-    <ul class="exp-list">
-      <li>EC2 Ubuntu server</li>
-      <li>Nginx auto-installed</li>
-      <li>S3 bucket for static site source</li>
-      <li>Cron job for automatic S3 sync</li>
-      <li>IAM role for S3 access</li>
-    </ul>
+    <div class="arch-diagram">
+      <svg class="workflow-svg" viewBox="0 0 1250 150" xmlns="http://www.w3.org/2000/svg">
 
-    <h2 class="section-title">User Data Script</h2>
-    <pre class="code-block">
-#!/bin/bash
-apt update -y
-apt install nginx awscli -y
-aws s3 sync s3://my-static-site-bucket /var/www/html/
-systemctl start nginx
-echo "*/5 * * * * root aws s3 sync s3://my-static-site-bucket /var/www/html/" >> /etc/crontab
-    </pre>
+        <!-- Developer -->
+        <rect x="10" y="45" width="180" height="50" rx="12"
+              fill="#05131a" stroke="#2ec4ff" stroke-width="1.8"/>
+        <text x="100" y="77" text-anchor="middle" font-size="13" fill="#2ec4ff">Developer Updates Files</text>
 
-    <h2 class="section-title">What I Achieved</h2>
-    <ul class="exp-list">
-      <li>Zero-touch deployments</li>
-      <li>Automatic content updates</li>
-      <li>Hardened IAM access</li>
-      <li>Production-ready static hosting</li>
-    </ul>
+        <!-- S3 -->
+        <rect x="220" y="45" width="200" height="50" rx="12"
+              fill="#05131a" stroke="#ff9900" stroke-width="1.8"/>
+        <text x="320" y="77" text-anchor="middle" font-size="13" fill="#ff9900">Files Uploaded to S3</text>
 
-    <h2 class="section-title">Source Code</h2>
-    <a class="btn-nav-primary" href="https://github.com/RohithJP/Projects/tree/main/Project2" target="_blank">
-      View Repo
-    </a>
+        <!-- EC2 -->
+        <rect x="450" y="45" width="220" height="50" rx="12"
+              fill="#05131a" stroke="#7e3cff" stroke-width="1.8"/>
+        <text x="560" y="77" text-anchor="middle" font-size="13" fill="#7e3cff">EC2 Boot + User Data Provisioning</text>
 
-    <div class="project-nav">
-      <a class="btn-nav-outline" href="project1.html">← Previous</a>
-      <a class="btn-nav-primary" href="project3.html">Next →</a>
+        <!-- Nginx -->
+        <rect x="700" y="45" width="220" height="50" rx="12"
+              fill="#05131a" stroke="#2ec4ff" stroke-width="1.8"/>
+        <text x="810" y="77" text-anchor="middle" font-size="13" fill="#2ec4ff">Nginx Serves Static Website</text>
+
+        <!-- Cron -->
+        <rect x="950" y="45" width="250" height="50" rx="12"
+              fill="#05131a" stroke="#2ec4ff" stroke-width="1.8"/>
+        <text x="1075" y="77" text-anchor="middle" font-size="13" fill="#2ec4ff">Cron Auto-Sync → Updates Every 5 Min</text>
+
+        <!-- Arrows -->
+        <line x1="190" y1="70" x2="220" y2="70" stroke="#2ec4ff" stroke-width="2"/>
+        <line x1="420" y1="70" x2="450" y2="70" stroke="#ff9900" stroke-width="2"/>
+        <line x1="670" y1="70" x2="700" y2="70" stroke="#7e3cff" stroke-width="2"/>
+        <line x1="920" y1="70" x2="950" y2="70" stroke="#2ec4ff" stroke-width="2"/>
+
+      </svg>
     </div>
 
-  </div>
-</section>
+    <!-- Detailed Explanation -->
+    <h2 class="section-title">Detailed Explanation</h2>
 
-</main>
+    <p class="lead">
+      This project automates static website hosting by combining EC2 + User Data + S3 synchronization,
+      eliminating manual deployment steps entirely.
+    </p>
 
-<footer class="site-footer">
-  <div class="container">
-    <small>© 2025 Rohith Jothilakshmi Periyasamy — AWS Cloud Engineer</small>
-  </div>
-</footer>
+    <ul class="exp-list">
+      <li><strong>S3 Bucket:</strong> Acts as the central source of truth for website content. Developers upload assets directly.</li>
 
-</body>
-</html>
+      <li><strong>User Data Automation:</strong> On EC2 launch, Nginx and AWS CLI are auto-installed and the website is pulled instantly.</li>
+
+      <li><strong>Nginx Hosting:</strong> Serves the static files efficiently with near-zero latency and minimal compute resource usage.</li>
+
+      <li><strong>Cron-Based Auto Sync:</strong> Every 5 minutes the EC2 instance re-syncs with S3 ensuring content is always updated.</li>
+
+      <li><strong>Benefits:</strong> Zero manual deployment, repeatable builds, scalable architecture, and perfect for hosting documentation, portfolios, or marketing sites.</li>
+    </ul>
