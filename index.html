@@ -8,6 +8,39 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css?v=9" />
   <meta name="description" content="Rohith J. Periyasamy — AWS Cloud Engineer. Showcasing secure cloud architectures, automation, and production-grade deployments.">
+  <style>
+    /* small inline styles for dropdown positioning (keeps theme CSS untouched) */
+    .projects-dropdown { position: relative; display: inline-block; }
+    .projects-dropdown-menu {
+      position: absolute;
+      top: 36px;
+      left: 0;
+      background: rgba(5,13,20,0.95);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 8px;
+      border-radius: 8px;
+      min-width: 180px;
+      display: none;
+      z-index: 200;
+    }
+    .projects-dropdown-menu a {
+      display: block;
+      padding: 8px 10px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .projects-dropdown-menu a:hover { color: #fff; background: rgba(255,255,255,0.02); border-radius:6px; }
+    .projects-dropdown.open .projects-dropdown-menu { display: block; }
+    /* small visual indicator for selected project set */
+    .selected-label { color: var(--accent); font-weight:700; margin-left:8px; font-family: var(--mono); }
+    /* keep hero name inline styling minimal — CSS handles fonts/colors */
+    .hero-title .first-name { color: #0066ff; } /* Rohith in blue */
+    .hero-title .rest-name { color: inherit; }   /* rest uses page color */
+    @media (max-width:720px) {
+      .projects-dropdown-menu { right: 0; left: auto; }
+    }
+  </style>
 </head>
 
 <body>
@@ -16,9 +49,19 @@
       <a href="index.html" class="brand-link">
         <span class="brand-logo">ROHITH JP</span>
       </a>
-      <nav class="nav">
+
+      <nav class="nav" aria-label="Main navigation">
         <a href="index.html">Home</a>
-        <a href="AWS Projects/project1.html">Projects</a>
+
+        <!-- Projects dropdown -->
+        <span class="projects-dropdown" id="projectsDropdown">
+          <a href="#" id="projectsToggle" aria-haspopup="true" aria-expanded="false">Projects</a>
+          <div class="projects-dropdown-menu" role="menu" aria-labelledby="projectsToggle">
+            <a href="#" role="menuitem" data-projectset="aws" id="projectsAws">AWS Projects</a>
+            <a href="#" role="menuitem" data-projectset="linux" id="projectsLinux">Linux Projects</a>
+          </div>
+        </span>
+
         <a href="experience/experience.html">Experience</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -30,21 +73,33 @@
       <div class="container hero-grid">
         <div class="hero-left">
           <div class="eyebrow">Cloud Portfolio</div>
-          <h1 class="hero-title">
-            <span style="color:#ff6600;">ROHITH JOTHILAKSHMI</span><br/>
-            <span class="hero-last" style="color:#0066ff;">PERIYASAMY</span>
+          <h1 class="hero-title" aria-label="Rohith Jothilakshmi Periyasamy">
+            <!-- Rohith in blue, the rest uses page color (inherit) -->
+            <span class="first-name" style="font-family:var(--mono); font-size:48px; font-weight:700;">ROHITH</span>
+            <br/>
+            <span class="rest-name" style="font-family:var(--mono); font-size:42px; font-weight:700;">JOTHILAKSHMI PERIYASAMY</span>
           </h1>
+
           <p class="hero-sub">AWS Cloud Engineer • VPC Architecture • Automation • Monitoring • Secure Deployments</p>
 
-          <ul class="meta-list">
+          <!-- Meta lists toggle between AWS / Linux -->
+          <ul class="meta-list" id="metaAws">
             <li><strong>Focus:</strong> EC2 • VPC • RDS • IAM • CloudWatch • ASG • ALB/NLB • Automation (Bash/AWS CLI)</li>
             <li><strong>Core Skills:</strong> Terraform (basic) • Git • Docker • Linux • Monitoring • Multi-Tier Deployments</li>
             <li><strong>Tagline:</strong> Building secure, scalable, automated AWS cloud environments.</li>
             <li><strong>Location:</strong> Chennai, India</li>
             <li><strong>Contact:</strong> +91 73588 89412</li>
           </ul>
-        </div>
 
+          <ul class="meta-list" id="metaLinux" style="display:none">
+            <li><strong>Focus:</strong> Linux System Administration • Server Hardening • Networking • Automation • Security</li>
+            <li><strong>Core Skills:</strong> Bash • systemd • SSH • NGINX • UFW/iptables • SCP/SFTP • grep/sed/awk • strace/journalctl</li>
+            <li><strong>Used In Projects:</strong> User management, permission hardening, cron automation, service recovery, port & firewall debugging, SCP transfers, CTF-style forensics.</li>
+            <li><strong>Location:</strong> Chennai, India</li>
+            <li><strong>Contact:</strong> +91 73588 89412</li>
+          </ul>
+
+        </div>
         <div class="hero-right">
           <div class="card summary-card">
             <h3 class="card-title">Professional Summary</h3>
@@ -82,7 +137,7 @@
 
         <aside>
           <h3 class="section-title small">Core Skills</h3>
-          <div class="skills-list">
+          <div class="skills-list" id="skillsAws">
             <span>AWS EC2</span>
             <span>VPC / Subnets</span>
             <span>RDS / MySQL</span>
@@ -92,83 +147,89 @@
             <span>Bash</span>
             <span>Django / PHP</span>
           </div>
+
+          <div class="skills-list" id="skillsLinux" style="display:none">
+            <span>Bash</span>
+            <span>systemd</span>
+            <span>SSH / SCP</span>
+            <span>NGINX</span>
+            <span>UFW / iptables</span>
+            <span>grep / sed / awk</span>
+            <span>tar / gzip</span>
+            <span>journalctl</span>
+          </div>
         </aside>
       </div>
     </section>
 
     <!-- AWS PROJECTS SECTION -->
-    <section class="section section-dark">
+    <section class="section section-dark" id="projectsSection">
       <div class="container">
-        <h2 class="section-title">AWS Projects</h2>
-        <p class="lead">Production-style deployments showcasing AWS networking, automation, logging and secure architecture.</p>
+        <h2 class="section-title" id="projectsTitle">AWS Projects</h2>
+        <p class="lead" id="projectsLead">Production-style deployments showcasing AWS networking, automation, logging and secure architecture.</p>
 
-        <div class="projects-grid">
+        <div class="projects-grid" id="projectsGrid">
 
-          <a class="project-card" href="AWS Projects/project1.html">
-            <div class="proj-index">01</div>
-            <div class="proj-body"><h3>Multi-Tier WordPress Architecture</h3><p>Nginx → Apache → MySQL with full VPC segmentation.</p></div>
-          </a>
+          <!-- AWS set (default) -->
+          <div data-set="aws">
+            <a class="project-card" href="AWS Projects/project1.html">
+              <div class="proj-index">01</div>
+              <div class="proj-body"><h3>Multi-Tier WordPress Architecture</h3><p>Nginx → Apache → MySQL with full VPC segmentation.</p></div>
+            </a>
 
-          <a class="project-card" href="AWS Projects/project2.html">
-            <div class="proj-index">02</div>
-            <div class="proj-body"><h3>Automated EC2 Hosting</h3><p>Self-provisioning EC2 with User Data + S3 sync automation.</p></div>
-          </a>
+            <a class="project-card" href="AWS Projects/project2.html">
+              <div class="proj-index">02</div>
+              <div class="proj-body"><h3>Automated EC2 Hosting</h3><p>Self-provisioning EC2 with User Data + S3 sync automation.</p></div>
+            </a>
 
-          <a class="project-card" href="AWS Projects/project3.html">
-            <div class="proj-index">03</div>
-            <div class="proj-body"><h3>Centralised Logging Pipeline</h3><p>Rsyslog collector + CloudWatch metrics + structured logs.</p></div>
-          </a>
+            <a class="project-card" href="AWS Projects/project3.html">
+              <div class="proj-index">03</div>
+              <div class="proj-body"><h3>Centralised Logging Pipeline</h3><p>Rsyslog collector + CloudWatch metrics + structured logs.</p></div>
+            </a>
 
-          <a class="project-card" href="AWS Projects/project4.html">
-            <div class="proj-index">04</div>
-            <div class="proj-body"><h3>Secure SFTP → S3 Workflow</h3><p>Chrooted SFTP users + automated versioned uploads.</p></div>
-          </a>
+            <a class="project-card" href="AWS Projects/project4.html">
+              <div class="proj-index">04</div>
+              <div class="proj-body"><h3>Secure SFTP → S3 Workflow</h3><p>Chrooted SFTP users + automated versioned uploads.</p></div>
+            </a>
 
-          <a class="project-card" href="AWS Projects/project5.html">
-            <div class="proj-index">05</div>
-            <div class="proj-body"><h3>PHP Website + RDS</h3><p>PHP-FPM + MySQL on hardened AWS stack.</p></div>
-          </a>
+            <a class="project-card" href="AWS Projects/project5.html">
+              <div class="proj-index">05</div>
+              <div class="proj-body"><h3>PHP Website + RDS</h3><p>PHP-FPM + MySQL on hardened AWS stack.</p></div>
+            </a>
 
-          <a class="project-card" href="AWS Projects/project6.html">
-            <div class="proj-index">06</div>
-            <div class="proj-body"><h3>Django CRUD App</h3><p>Django + Gunicorn on EC2 with secure RDS networking.</p></div>
-          </a>
+            <a class="project-card" href="AWS Projects/project6.html">
+              <div class="proj-index">06</div>
+              <div class="proj-body"><h3>Django CRUD App</h3><p>Django + Gunicorn on EC2 with secure RDS networking.</p></div>
+            </a>
 
-          <a class="project-card" href="AWS Projects/project7.html">
-            <div class="proj-index">07</div>
-            <div class="proj-body"><h3>Two-Tier VPC Architecture</h3><p>Public web + private DB tier with strict routing.</p></div>
-          </a>
+            <a class="project-card" href="AWS Projects/project7.html">
+              <div class="proj-index">07</div>
+              <div class="proj-body"><h3>Two-Tier VPC Architecture</h3><p>Public web + private DB tier with strict routing.</p></div>
+            </a>
+          </div>
 
-        </div>
-      </div>
-    </section>
+          <!-- Linux set (hidden until selected) -->
+          <div data-set="linux" style="display:none">
+            <a class="project-card" href="Linux_Project/project1.html">
+              <div class="proj-index">01</div>
+              <div class="proj-body"><h3>Linux System Administration</h3><p>25+ CLI tasks: users, permissions, cron, processes.</p></div>
+            </a>
 
-    <!-- LINUX PROJECTS SECTION -->
-    <section class="section section-light">
-      <div class="container">
-        <h2 class="section-title">Linux Projects</h2>
-        <p class="lead">Practical Linux system administration, networking, server hosting and security challenges.</p>
+            <a class="project-card" href="Linux_Project/project2.html">
+              <div class="proj-index">02</div>
+              <div class="proj-body"><h3>Ubuntu Server Hosting</h3><p>NGINX, Node.js, ports, services & deployment fixes.</p></div>
+            </a>
 
-        <div class="projects-grid">
-        <a class="project-card" href="Linux_Project/project1.html">
-            <div class="proj-index">L1</div>
-            <div class="proj-body"><h3>Linux System Administration</h3><p>25+ CLI tasks: users, permissions, cron, processes.</p></div>
-          </a>
+            <a class="project-card" href="Linux_Project/project3.html">
+              <div class="proj-index">03</div>
+              <div class="proj-body"><h3>Linux Security & CTF Challenges</h3><p>Password extraction, encoding, file forensics.</p></div>
+            </a>
 
-          <a class="project-card" href="Linux_Project/project2.html">
-            <div class="proj-index">L2</div>
-            <div class="proj-body"><h3>Ubuntu Server Hosting</h3><p>NGINX, Node.js, ports, services & deployment fixes.</p></div>
-          </a>
-
-          <a class="project-card" href="Linux_Project/project3.html">
-            <div class="proj-index">L3</div>
-            <div class="proj-body"><h3>Linux Security & CTF Challenges</h3><p>Password extraction, encoding, file forensics.</p></div>
-          </a>
-
-          <a class="project-card" href="Linux_Project/project4.html">
-            <div class="proj-index">L4</div>
-            <div class="proj-body"><h3>Linux Networking & File Transfer</h3><p>SSH/SCP, firewall debugging, curl diagnostics.</p></div>
-          </a>
+            <a class="project-card" href="Linux_Project/project4.html">
+              <div class="proj-index">04</div>
+              <div class="proj-body"><h3>Linux Networking & File Transfer</h3><p>SSH/SCP, firewall debugging, curl diagnostics.</p></div>
+            </a>
+          </div>
 
         </div>
       </div>
@@ -194,5 +255,101 @@
     </div>
   </footer>
 
+  <!-- Inline JS to handle projects dropdown and switching -->
+  <script>
+    (function(){
+      const dropdown = document.getElementById('projectsDropdown');
+      const toggle = document.getElementById('projectsToggle');
+      const menu = dropdown.querySelector('.projects-dropdown-menu');
+
+      // Toggle dropdown open/close
+      toggle.addEventListener('click', function(e){
+        e.preventDefault();
+        dropdown.classList.toggle('open');
+        const expanded = dropdown.classList.contains('open');
+        toggle.setAttribute('aria-expanded', String(expanded));
+      });
+
+      // Close if clicked outside
+      document.addEventListener('click', function(e){
+        if (!dropdown.contains(e.target)) {
+          dropdown.classList.remove('open');
+          toggle.setAttribute('aria-expanded','false');
+        }
+      });
+
+      // Elements for switching
+      const awsLink = document.getElementById('projectsAws');
+      const linuxLink = document.getElementById('projectsLinux');
+      const awsMeta = document.getElementById('metaAws');
+      const linuxMeta = document.getElementById('metaLinux');
+      const skillsAws = document.getElementById('skillsAws');
+      const skillsLinux = document.getElementById('skillsLinux');
+      const projectsTitle = document.getElementById('projectsTitle');
+      const projectsLead = document.getElementById('projectsLead');
+      const projectsGrid = document.getElementById('projectsGrid');
+      const sets = projectsGrid.querySelectorAll('[data-set]');
+
+      function showSet(name){
+        // update dropdown visual state
+        dropdown.classList.remove('open');
+        toggle.setAttribute('aria-expanded','false');
+
+        // show/hide meta and skills
+        if(name === 'linux'){
+          awsMeta.style.display = 'none';
+          linuxMeta.style.display = '';
+          skillsAws.style.display = 'none';
+          skillsLinux.style.display = '';
+          // update title & lead
+          projectsTitle.textContent = 'Selected Project: Linux';
+          projectsLead.textContent = 'Practical Linux system administration, networking, hosting and security challenges.';
+        } else {
+          awsMeta.style.display = '';
+          linuxMeta.style.display = 'none';
+          skillsAws.style.display = '';
+          skillsLinux.style.display = 'none';
+          projectsTitle.textContent = 'AWS Projects';
+          projectsLead.textContent = 'Production-style deployments showcasing AWS networking, automation, logging and secure architecture.';
+        }
+
+        // swap project grids
+        sets.forEach(el=>{
+          if(el.getAttribute('data-set') === name) {
+            el.style.display = '';
+          } else {
+            el.style.display = 'none';
+          }
+        });
+
+        // update URL hash so user can share (optional)
+        if(name === 'linux'){
+          history.replaceState(null, '', '#projects=linux');
+        } else {
+          history.replaceState(null, '', '#projects=aws');
+        }
+      }
+
+      // wire up click handlers
+      awsLink.addEventListener('click', function(e){ e.preventDefault(); showSet('aws'); });
+      linuxLink.addEventListener('click', function(e){ e.preventDefault(); showSet('linux'); });
+
+      // initialize based on hash (if any)
+      (function initFromHash(){
+        const h = location.hash.replace('#','');
+        if(h === 'projects=linux' || h.includes('linux')) {
+          showSet('linux');
+        } else {
+          showSet('aws');
+        }
+      })();
+
+      // keyboard accessibility: allow Enter on toggle
+      toggle.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle.click(); }
+      });
+
+    })();
+  </script>
 </body>
 </html>
