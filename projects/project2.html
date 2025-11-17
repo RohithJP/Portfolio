@@ -7,138 +7,90 @@
   <title>Project 02 — Automated EC2 Hosting (User Data + S3 Sync)</title>
 
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=12">
+  <link rel="stylesheet" href="../style.css?v=22">
 </head>
 
 <body>
 
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="../index.html" class="brand-link">
-        <span class="brand-logo">ROHITH JP</span>
-      </a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="../index.html" class="brand-link"><span class="brand-logo">ROHITH JP</span></a>
 
-      <nav class="nav">
-        <a href="../index.html">Home</a>
-        <a href="project1.html">Projects</a>
-        <a href="../experience/experience.html">Experience</a>
-        <a href="../index.html#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+    <nav class="nav">
+      <a href="../index.html">Home</a>
+      <a href="project1.html">Projects</a>
+      <a href="../experience/experience.html">Experience</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
 
-  <!-- MAIN -->
-  <main>
-    <section class="hero-small">
-      <div class="container">
-        <h1 class="page-title">02 — Automated EC2 Static Hosting</h1>
-        <p class="lead">
-          Fully automated EC2 provisioning using User Data + S3 sync.  
-          Ideal for fast static deployments & version-controlled website hosting.
-        </p>
-      </div>
-    </section>
+<main>
 
-    <!-- PROJECT CONTENT -->
-    <section class="section-light">
-      <div class="container">
+<section class="hero-small">
+  <div class="container">
+    <h1 class="page-title">02 — Automated EC2 Static Hosting</h1>
+    <p class="lead">
+      Fully automated EC2 provisioning using User Data + S3 sync for fast static hosting.
+    </p>
+  </div>
+</section>
 
-        <!-- OVERVIEW -->
-        <h2 class="section-title">Overview</h2>
-        <p class="lead">
-          This project deploys a lightweight static website hosting solution using EC2 and
-          automated S3 syncing. A single EC2 instance boots, installs Nginx, pulls website
-          files from S3, and continuously stays in sync using a cron-based automation loop.
-        </p>
+<section class="section-light">
+  <div class="container">
 
-        <!-- ARCHITECTURE -->
-        <h2 class="section-title">Architecture Setup</h2>
-        <ul class="exp-list">
-          <li>EC2 instance running Ubuntu (t2.micro – free tier)</li>
-          <li>S3 bucket storing the static website source files</li>
-          <li>User Data script for auto-provisioning Nginx + AWS CLI</li>
-          <li>Cron job every 5 minutes for auto-sync updates</li>
-          <li>Security Groups allowing HTTP + SSH</li>
-        </ul>
+    <h2 class="section-title">Overview</h2>
+    <p class="lead">
+      This project deploys a lightweight static hosting setup using EC2 and automatic S3 syncing.
+    </p>
 
-        <!-- WORKFLOW DIAGRAM -->
-        <h2 class="section-title">Workflow Diagram</h2>
+    <h2 class="section-title">Architecture Setup</h2>
+    <ul class="exp-list">
+      <li>EC2 Ubuntu server</li>
+      <li>Nginx auto-installed</li>
+      <li>S3 bucket for static site source</li>
+      <li>Cron job for automatic S3 sync</li>
+      <li>IAM role for S3 access</li>
+    </ul>
 
-        <div class="workflow-box">
-          <div class="workflow-step">Developer Updates Files</div>
-          <div class="workflow-arrow">→</div>
-          <div class="workflow-step">Files Uploaded to S3</div>
-          <div class="workflow-arrow">→</div>
-          <div class="workflow-step">EC2 Boots & Pulls Site</div>
-          <div class="workflow-arrow">→</div>
-          <div class="workflow-step">Nginx Serves Website</div>
-          <div class="workflow-arrow">→</div>
-          <div class="workflow-step">Cron Auto-Syncs Every 5 Min</div>
-        </div>
-
-        <!-- TECHNIQUES LEARNED -->
-        <h2 class="section-title">Techniques Learned</h2>
-        <ul class="exp-list">
-          <li>User Data scripting for automated server provisioning</li>
-          <li>Configuring Nginx for static hosting</li>
-          <li>Using AWS CLI to sync S3 content</li>
-          <li>Implementing cron-based automation loops</li>
-          <li>Managing IAM roles for EC2 S3 access</li>
-        </ul>
-
-        <!-- USER DATA -->
-        <h2 class="section-title">User Data Script</h2>
-        <pre class="code-block">
+    <h2 class="section-title">User Data Script</h2>
+    <pre class="code-block">
 #!/bin/bash
 apt update -y
 apt install nginx awscli -y
-
-# pull website files
 aws s3 sync s3://my-static-site-bucket /var/www/html/
-
-# start nginx
-systemctl enable nginx
 systemctl start nginx
-
-# cron auto-sync
 echo "*/5 * * * * root aws s3 sync s3://my-static-site-bucket /var/www/html/" >> /etc/crontab
-        </pre>
+    </pre>
 
-        <!-- ACHIEVEMENTS -->
-        <h2 class="section-title">What I Achieved</h2>
-        <ul class="exp-list">
-          <li>Reduced manual deployment time from minutes to **0 seconds** (fully automated)</li>
-          <li>Production-ready static hosting with **auto-sync updates**</li>
-          <li>Hardened IAM access & optimized S3 sync performance</li>
-          <li>Setup ready for **real-world portfolio, resume site, or documentation hosting**</li>
-        </ul>
+    <h2 class="section-title">What I Achieved</h2>
+    <ul class="exp-list">
+      <li>Zero-touch deployments</li>
+      <li>Automatic content updates</li>
+      <li>Hardened IAM access</li>
+      <li>Production-ready static hosting</li>
+    </ul>
 
-        <!-- REPO -->
-        <h2 class="section-title">Source Code</h2>
-        <p class="lead">View the full repo, scripts, and configuration files.</p>
+    <h2 class="section-title">Source Code</h2>
+    <a class="btn-nav-primary" href="https://github.com/RohithJP/Projects/tree/main/Project2" target="_blank">
+      View Repo
+    </a>
 
-        <a class="btn btn-strong" href="https://github.com/RohithJP/Projects/tree/main/Project2" target="_blank">
-          View Repository →
-        </a>
-
-        <!-- NAVIGATION -->
-        <div class="project-nav">
-          <a href="project1.html" class="btn btn-outline-strong">← Previous (Project 1)</a>
-          <a href="project3.html" class="btn btn-strong">Next (Project 3) →</a>
-        </div>
-
-      </div>
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="container">
-      <small>© 2025 Rohith Jothilakshmi Periyasamy — AWS Cloud Engineer</small>
+    <div class="project-nav">
+      <a class="btn-nav-outline" href="project1.html">← Previous</a>
+      <a class="btn-nav-primary" href="project3.html">Next →</a>
     </div>
-  </footer>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <small>© 2025 Rohith Jothilakshmi Periyasamy — AWS Cloud Engineer</small>
+  </div>
+</footer>
 
 </body>
 </html>
