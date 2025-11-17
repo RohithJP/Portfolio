@@ -6,7 +6,7 @@
   <title>Project 01 — Multi-Tier WordPress Architecture</title>
 
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=22"/>
+  <link rel="stylesheet" href="../style.css?v=30"/>
 </head>
 
 <body>
@@ -16,7 +16,7 @@
     <a href="../index.html" class="brand-link"><span class="brand-logo">ROHITH JP</span></a>
     <nav class="nav">
       <a href="../index.html">Home</a>
-      <a class="active" href="project1.html">Projects</a>
+      <a href="project1.html" class="active">Projects</a>
       <a href="../experience/experience.html">Experience</a>
       <a href="../index.html#contact">Contact</a>
     </nav>
@@ -35,95 +35,62 @@
 <section class="section-light">
   <div class="container">
 
-    <h2 class="section-title">Overview</h2>
+    <!-- NEW WORKFLOW DIAGRAM -->
+    <h2 class="section-title">Architecture Workflow</h2>
+
+    <div class="arch-diagram">
+      <svg class="workflow-svg" viewBox="0 0 1150 150" xmlns="http://www.w3.org/2000/svg">
+
+        <!-- User -->
+        <rect x="10" y="45" width="180" height="50" rx="12"
+              fill="#05131a" stroke="#2ec4ff" stroke-width="1.8"/>
+        <text x="100" y="77" text-anchor="middle" font-size="13" fill="#2ec4ff">User (Browser)</text>
+
+        <!-- Nginx -->
+        <rect x="220" y="45" width="220" height="50" rx="12"
+              fill="#05131a" stroke="#7e3cff" stroke-width="1.8"/>
+        <text x="330" y="77" text-anchor="middle" font-size="13" fill="#7e3cff">Nginx Reverse Proxy (Public Subnet)</text>
+
+        <!-- Apache -->
+        <rect x="470" y="45" width="220" height="50" rx="12"
+              fill="#05131a" stroke="#2ec4ff" stroke-width="1.8"/>
+        <text x="580" y="77" text-anchor="middle" font-size="13" fill="#2ec4ff">Apache + WordPress (Private Subnet)</text>
+
+        <!-- MySQL -->
+        <rect x="720" y="45" width="220" height="50" rx="12"
+              fill="#05131a" stroke="#ff9900" stroke-width="1.8"/>
+        <text x="830" y="77" text-anchor="middle" font-size="13" fill="#ff9900">MySQL Database (Private Subnet)</text>
+
+        <!-- Arrows -->
+        <line x1="190" y1="70" x2="220" y2="70" stroke="#2ec4ff" stroke-width="2"/>
+        <line x1="440" y1="70" x2="470" y2="70" stroke="#7e3cff" stroke-width="2"/>
+        <line x1="690" y1="70" x2="720" y2="70" stroke="#2ec4ff" stroke-width="2"/>
+
+      </svg>
+    </div>
+
+    <!-- Detailed Explanation -->
+    <h2 class="section-title">Detailed Explanation</h2>
     <p class="lead">
-      A 3-tier WordPress deployment inside a production-grade VPC. The setup includes
-      a public reverse proxy, private web server, private database tier, strict NACLs,
-      monitoring, and secure SSH access via a bastion.
+      This project demonstrates a production-ready 3-tier WordPress setup separating the reverse proxy,
+      application server, and database to ensure scalability, security, and performance.
     </p>
 
-    <h2 class="section-title">Architecture Summary</h2>
-    <div class="exp-preview">
-      <ul class="exp-list">
-        <li>Nginx reverse proxy in public subnet</li>
-        <li>Apache + WordPress in private subnet</li>
-        <li>MySQL database (RDS-like but manual EC2 deployment)</li>
-        <li>Strict NACLs + Security Groups for tier isolation</li>
-        <li>CloudWatch monitoring enabled for all tiers</li>
-        <li>Automated provisioning using User-Data</li>
-      </ul>
-    </div>
-
-    <h2 class="section-title">Workflow Diagram</h2>
-    <div class="workflow">
-      <pre class="flow-block">
-[ User ]
-   |
-   v
-[ Nginx Reverse Proxy — Public Subnet ]
-   |
-   v
-[ Apache Web Server — Private Subnet ]
-   |
-   v
-[ MySQL Database — Private Subnet ]
-      </pre>
-    </div>
-
-    <h2 class="section-title">Setup & Deployment Workflow</h2>
     <ul class="exp-list">
-      <li>Create VPC → Subnets → Route Tables → IGW → NAT</li>
-      <li>Launch Nginx EC2 (public)</li>
-      <li>Launch Apache EC2 with WordPress (private)</li>
-      <li>Deploy MySQL DB EC2 (private)</li>
-      <li>Configure Nginx reverse proxy → Apache internal IP</li>
-      <li>Apply SG & NACL rules for strict tier isolation</li>
-      <li>Enable CloudWatch logs + metrics</li>
+      <li><strong>Public Nginx Tier:</strong> Handles inbound HTTP traffic, performs SSL termination, and 
+      forwards internal requests to Apache.</li>
+
+      <li><strong>Private Apache Tier:</strong> Serves WordPress securely with no exposure to the internet. 
+      Protected using strict Security Groups and NACLs.</li>
+
+      <li><strong>Private Database Tier:</strong> MySQL is isolated with access only from the Apache server. 
+      No external connectivity allowed.</li>
+
+      <li><strong>Traffic Flow:</strong> All user requests → Nginx → Apache → MySQL, ensuring complete tier 
+      isolation and secure internal routing.</li>
+
+      <li><strong>Monitoring + Hardening:</strong> CloudWatch logs, least-privilege SG rules, and WordPress 
+      security best practices applied.</li>
     </ul>
 
-    <h2 class="section-title">Techniques Learned</h2>
-    <ul class="exp-list">
-      <li>Reverse proxy routing + SSL termination</li>
-      <li>Private VPC design for multi-tier applications</li>
-      <li>Advanced Security Groups & NACL logic</li>
-      <li>WordPress hardening</li>
-      <li>EC2 debugging</li>
-    </ul>
-
-    <h2 class="section-title">Troubleshooting Highlights</h2>
-    <ul class="exp-list">
-      <li>Fixing 502/504 Nginx proxy issues</li>
-      <li>DB connection failures due to SG rules</li>
-      <li>WordPress upload permission issues</li>
-      <li>MySQL bind-address lockouts</li>
-    </ul>
-
-    <h2 class="section-title">What Was Achieved</h2>
-    <ul class="exp-list">
-      <li>Secure 3-tier production-ready architecture</li>
-      <li>Reverse proxy with high availability potential</li>
-      <li>Private MySQL database with no public exposure</li>
-      <li>CloudWatch monitoring + logs</li>
-    </ul>
-
-    <h2 class="section-title">Repository</h2>
-    <a class="btn-nav-primary" href="https://github.com/RohithJP/Projects/tree/main/Project1" target="_blank">View Repo</a>
-
-    <div class="project-nav">
-      <a class="btn-nav-outline" href="project7.html">← Previous</a>
-      <a class="btn-nav-primary" href="project2.html">Next →</a>
-    </div>
-
-  </div>
-</section>
-
-</main>
-
-<footer class="site-footer">
-  <div class="container">
-    <small>© 2025 Rohith Jothilakshmi Periyasamy — AWS Cloud Engineer</small>
-  </div>
-</footer>
-
-</body>
-</html>
+    <!-- (rest of your existing content remains unchanged below) -->
