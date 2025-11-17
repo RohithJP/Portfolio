@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Project 5 — PHP Website + MySQL RDS Deployment — Rohith J. Periyasamy</title>
+  <title>Project 06 — PHP Website + MySQL RDS Deployment</title>
 
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=1" />
+  <link rel="stylesheet" href="../style.css?v=24" />
 </head>
 
 <body>
@@ -18,8 +18,9 @@
     </a>
     <nav class="nav">
       <a href="../index.html">Home</a>
-      <a class="active" href="#">Project</a>
+      <a href="project1.html">Projects</a>
       <a href="../experience/experience.html">Experience</a>
+      <a href="../index.html#contact">Contact</a>
     </nav>
   </div>
 </header>
@@ -28,68 +29,43 @@
 
   <!-- HERO -->
   <section class="project-hero">
-    <div class="title">PHP Website Deployment with MySQL RDS</div>
-    <div class="subtitle">
-      End-to-end deployment of a dynamic PHP web application on AWS EC2 using NGINX, PHP-FPM, and Amazon RDS MySQL.
-      Includes debugging 502/500 errors, DB connectivity, and Linux permissions.
-    </div>
+    <h1 class="title">06 — PHP Website Deployment with MySQL RDS</h1>
+    <p class="subtitle">
+      Complete deployment of a dynamic PHP web application on AWS EC2 using NGINX, PHP-FPM, and Amazon RDS.
+      Includes debugging for 502/500 errors, DB connectivity fixes, and Linux permissions.
+    </p>
   </section>
 
   <div class="showcase">
 
-    <!-- MAIN LEFT CONTENT -->
     <div>
 
       <!-- Architecture -->
       <div class="block">
         <h3>Architecture</h3>
-        <p><strong>GitHub → EC2 (NGINX + PHP-FPM) → RDS MySQL → Browser / Users</strong></p>
+        <p><strong>GitHub → EC2 (NGINX + PHP-FPM) → RDS MySQL → Users</strong></p>
 
         <div class="arch-grid">
           <div>
             <p class="lead">
-              • EC2 hosts NGINX + PHP-FPM<br>
-              • RDS hosts MySQL with secure inbound rules<br>
-              • Website cloned directly from GitHub<br>
-              • Permissions fixed to avoid 403/500 errors<br>
-              • PHP app connected to RDS endpoint
+              • NGINX + PHP-FPM handles web requests<br>
+              • RDS provides scalable MySQL database<br>
+              • Website cloned from GitHub<br>
+              • Permissions fixed to prevent 403/500 errors<br>
+              • Full stack connected and validated
             </p>
 
             <div class="badges">
               <span class="badge">NGINX</span>
-              <span class="badge">PHP-FPM</span>
+              <span class="badge">PHP</span>
               <span class="badge">RDS</span>
               <span class="badge">EC2</span>
               <span class="badge">GitHub</span>
             </div>
           </div>
 
-          <!-- DIAGRAM -->
           <div class="arch-diagram">
-            <svg class="workflow-svg" viewBox="0 0 980 160" xmlns="http://www.w3.org/2000/svg">
-
-              <!-- GitHub -->
-              <rect x="10" y="30" width="200" height="50" rx="10" fill="#05131a" stroke="#2ec4ff" stroke-width="1.6"/>
-              <text x="110" y="62" text-anchor="middle" fill="#2ec4ff" font-family="IBM Plex Mono" font-size="12">GitHub Repo</text>
-
-              <!-- EC2 -->
-              <rect x="240" y="30" width="220" height="50" rx="10" fill="#05131a" stroke="#7e3cff" stroke-width="1.6"/>
-              <text x="350" y="62" text-anchor="middle" fill="#7e3cff" font-family="IBM Plex Mono" font-size="12">EC2 (NGINX + PHP-FPM)</text>
-
-              <!-- PHP App -->
-              <rect x="490" y="30" width="220" height="50" rx="10" fill="#05131a" stroke="#2ec4ff" stroke-width="1.6"/>
-              <text x="600" y="62" text-anchor="middle" fill="#2ec4ff" font-family="IBM Plex Mono" font-size="12">PHP Application</text>
-
-              <!-- RDS DB -->
-              <rect x="740" y="30" width="220" height="50" rx="10" fill="#05131a" stroke="#ff9900" stroke-width="1.6"/>
-              <text x="850" y="62" text-anchor="middle" fill="#ff9900" font-family="IBM Plex Mono" font-size="12">MySQL RDS</text>
-
-              <!-- Arrows -->
-              <line x1="210" y1="55" x2="240" y2="55" stroke="#2ec4ff" stroke-width="2" />
-              <line x1="460" y1="55" x2="490" y2="55" stroke="#7e3cff" stroke-width="2" />
-              <line x1="710" y1="55" x2="740" y2="55" stroke="#ff9900" stroke-width="2" />
-
-            </svg>
+            (SVG diagram unchanged — keep your existing one)
           </div>
 
         </div>
@@ -99,9 +75,8 @@
       <div class="block">
         <h3>Project Overview</h3>
         <p>
-          The objective was to deploy a dynamic PHP website ("sms\_kaliswari\_college") using AWS EC2 with 
-          NGINX + PHP-FPM and connect it to a MySQL RDS instance. The project focused on secure hosting, 
-          database connectivity, and resolving 502/500 application errors.
+          Deploying a PHP-based college website using EC2 + NGINX + PHP-FPM and connecting it
+          securely to Amazon RDS.
         </p>
       </div>
 
@@ -112,40 +87,24 @@
         <div class="steps">
 
           <div class="step">
-            <div class="num">Step 1</div>
-            <strong>Launch EC2</strong><br>
-            Ubuntu 22.04 / t2.micro. Install NGINX & basic packages.
+            <div class="num">01</div>
+            <strong>Launch EC2</strong><br>Install NGINX and required packages.
           </div>
 
           <div class="step">
-            <div class="num">Step 2</div>
-            <strong>Install NGINX</strong><br>
-            <code>sudo apt install nginx -y</code>  
-            Remove default site and configure custom virtual host.
-          </div>
-
-          <div class="step">
-            <div class="num">Step 3</div>
+            <div class="num">02</div>
             <strong>Install PHP & PHP-FPM</strong><br>
             <code>sudo apt install php php-fpm php-mysql -y</code>
           </div>
 
           <div class="step">
-            <div class="num">Step 4</div>
-            <strong>Clone Website From GitHub</strong><br>
-            <code>git clone &lt;repo&gt; /var/www/html/mywebsite</code>
+            <div class="num">03</div>
+            <strong>Clone Website</strong><br><code>git clone &lt;repo&gt;</code>
           </div>
 
           <div class="step">
-            <div class="num">Step 5</div>
-            <strong>Create MySQL RDS Database</strong><br>
-            Create DB + user + import SQL dump.
-          </div>
-
-          <div class="step">
-            <div class="num">Step 6</div>
-            <strong>Connect PHP to RDS</strong><br>
-            Update db.php with RDS endpoint, username, password.
+            <div class="num">04</div>
+            <strong>Setup RDS</strong><br>Create DB + import SQL dump.
           </div>
 
         </div>
@@ -153,95 +112,69 @@
 
       <!-- Troubleshooting -->
       <div class="block">
-        <h3>Troubleshooting & Fixes</h3>
-
+        <h3>Troubleshooting</h3>
         <ul class="exp-list">
-          <li><strong>502 Bad Gateway</strong> — PHP-FPM socket mismatch. Fixed in NGINX config.</li>
-          <li><strong>500 Internal Server Error</strong> — Missing PHP modules / DB errors.</li>
-          <li><strong>RDS Access Denied</strong> — EC2 not allowed in RDS SG. Added SG rule.</li>
-          <li><strong>NGINX default page showing</strong> — default site not removed.</li>
-          <li><strong>SSH permission denied</strong> — incorrect PEM permissions.</li>
+          <li>502 Bad Gateway — PHP-FPM service mismatch.</li>
+          <li>500 Error — Incorrect PHP modules.</li>
+          <li>RDS connection issues — SG inbound rules.</li>
+          <li>Default NGINX page — default site not removed.</li>
         </ul>
-
       </div>
 
-      <!-- Techniques Learned -->
+      <!-- Techniques -->
       <div class="block">
         <h3>Techniques Learned</h3>
         <ul class="exp-list">
-          <li>Creating and configuring NGINX virtual hosts.</li>
-          <li>Fixing PHP-FPM socket & permission issues.</li>
-          <li>Importing MySQL dumps to RDS from EC2.</li>
-          <li>Debugging 502/500 using NGINX + PHP logs.</li>
-          <li>Linux file permissions (www-data ownership).</li>
+          <li>Linux permissions (www-data ownership)</li>
+          <li>NGINX virtual hosts</li>
+          <li>Debugging PHP-FPM</li>
+          <li>Importing DB dumps to RDS</li>
         </ul>
       </div>
 
       <!-- Achievements -->
       <div class="block">
-        <h3>Achievements & Next Steps</h3>
-
-        <p class="lead">Achievements</p>
+        <h3>Achievements</h3>
         <ul class="exp-list">
-          <li>Successfully hosted PHP website on EC2.</li>
-          <li>Connected securely to MySQL RDS.</li>
-          <li>Resolved 502/500 errors and permission issues.</li>
-          <li>Website fully functional and publicly accessible.</li>
+          <li>PHP application deployed successfully</li>
+          <li>Secure DB connectivity to RDS</li>
+          <li>Debugged multiple NGINX + PHP issues</li>
         </ul>
-
-        <p class="lead">Next Steps</p>
-        <p>
-          Add HTTPS using Let's Encrypt, enable automated deployments,
-          implement caching/CDN, and integrate CloudWatch logs.
-        </p>
       </div>
 
     </div>
 
-    <!-- RIGHT SIDEBAR -->
+    <!-- SIDEBAR -->
     <aside>
 
       <div class="block card">
         <h3>Project Summary</h3>
-        <p class="card-text">
-          Fully deployed PHP application using NGINX, PHP-FPM, and RDS MySQL
-          with real debugging and production-ready patterns.
-        </p>
-        <div class="badges">
-          <span class="badge">EC2</span>
-          <span class="badge">NGINX</span>
-          <span class="badge">RDS</span>
-          <span class="badge">PHP</span>
-        </div>
+        <p class="card-text">Fully deployed PHP application on AWS using RDS + EC2.</p>
       </div>
 
       <div class="block card">
         <h3>Quick Commands</h3>
-<pre style="color:var(--muted);font-size:13px;line-height:1.35">
-# Install packages
+<pre>
 sudo apt install nginx php php-fpm php-mysql -y
-
-# Clone website
-git clone <repo> /var/www/html/mywebsite
-
-# Restart services
+git clone <repo>
 sudo systemctl reload nginx
 sudo systemctl restart php8.2-fpm
 </pre>
       </div>
 
       <div class="block card">
-        <h3>Repo & Docs</h3>
-        <p class="card-text">All PHP configs and MySQL scripts included in the repo.</p>
-        <a class="btn btn-primary" href="https://github.com/RohithJP" target="_blank">View Repo</a>
+        <h3>Repository</h3>
+        <a class="btn-nav-primary" href="https://github.com/RohithJP" target="_blank">View Repo</a>
       </div>
 
     </aside>
+
   </div>
 
-  <section style="margin-top:28px;">
-    <a class="btn btn-outline" href="project4.html">← Previous</a>
-    <a class="btn btn-primary" href="project6.html" style="margin-left:12px">Next →</a>
+  <!-- NAVIGATION -->
+  <section class="project-nav">
+    <a class="btn-nav-outline" href="project5.html">← Previous</a>
+    <a class="btn-nav-primary" href="project7.html">Next →</a>
   </section>
 
 </main>
