@@ -1,9 +1,7 @@
-/* ============================================================
-   GLOBAL THEME — DARK NEON PORTFOLIO
-   Colors: Midnight (#05131c), Neon Blue (#2ecbff), Soft Grey (#ccd9e0)
-   Fonts: Inter + IBM Plex Mono
-   Smooth animations + 3D section depth
-   ============================================================ */
+/* ============================================
+   AWS Cloud Portfolio — Modern Dark UI
+   Clean, bold, professional design
+   ============================================ */
 
 * {
   margin: 0;
@@ -11,247 +9,289 @@
   box-sizing: border-box;
 }
 
+:root {
+  --bg: #050d14;
+  --navy: #07121a;
+  --card: #0c1a22;
+  --text: #dff6ff;
+  --muted: #9fb8c7;
+  --accent: #28c9ff;
+  --accent-warm: #ff9900;
+  --mono: 'IBM Plex Mono', monospace;
+  --ui: 'Inter', sans-serif;
+}
+
+/* Global */
 body {
-  background: #05131c;
-  color: #dff7ff;
-  font-family: "Inter", sans-serif;
-  line-height: 1.7;
-  padding-bottom: 100px;
-}
-
-a {
-  color: #2ecbff;
-  text-decoration: none !important;
-  transition: 0.25s ease;
-}
-
-a:hover {
-  color: #5de1ff;
-}
-
-/* ------------------------------------------------------------
-   LAYOUT
------------------------------------------------------------- */
-
-.container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 25px;
-}
-
-.section {
-  padding: 80px 0;
-}
-
-.section-title {
-  font-size: 2.4rem;
-  font-weight: 800;
-  margin-bottom: 20px;
-  color: #e9faff;
-}
-
-/* ------------------------------------------------------------
-   HEADER — Glassmorphism Navigation Bar
------------------------------------------------------------- */
-
-.site-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  backdrop-filter: blur(12px);
-  background: rgba(5, 19, 28, 0.6);
-  border-bottom: 1px solid rgba(46, 203, 255, 0.15);
-  z-index: 1000;
-  padding: 12px 0;
-}
-
-.header-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.brand-logo {
-  color: #2ecbff;
-  font-size: 1.5rem;
-  font-weight: 800;
-  letter-spacing: 1px;
-}
-
-.nav a {
-  margin-left: 30px;
-  font-size: 1.05rem;
-  color: #c4dee9;
-  font-weight: 600;
-}
-
-.nav a:hover {
-  color: #2ecbff;
-  text-shadow: 0px 0px 8px #2ecbff;
-}
-
-/* ------------------------------------------------------------
-   HERO SECTION — Neon Title + Glow
------------------------------------------------------------- */
-
-.hero {
-  padding-top: 160px;
+  font-family: var(--ui);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
   padding-bottom: 80px;
 }
 
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 0.9fr;
-  gap: 60px;
+.container {
+  width: min(1200px, 92%);
+  margin: auto;
+}
+
+/* -------------------------------------
+   Navigation
+-------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(5, 13, 20, 0.8);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.header-inner {
+  padding: 16px 0;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+.brand-logo {
+  font-family: var(--mono);
+  font-size: 20px;
+  letter-spacing: 2px;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.nav a {
+  color: var(--muted);
+  margin-left: 22px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+}
+.nav a:hover {
+  color: #fff;
+}
+.nav .active {
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent);
+}
+
+/* -------------------------------------
+   HERO SECTION
+-------------------------------------- */
+.hero {
+  padding: 100px 0 70px;
 }
 
 .hero-title {
-  font-size: 4rem;
-  font-weight: 900;
-  line-height: 1.1;
-  letter-spacing: -1px;
-  color: #ffffff;
-  text-shadow: 0px 0px 12px rgba(46, 203, 255, 0.3);
+  font-family: var(--mono);
+  font-size: 52px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.hero-last {
+  color: var(--accent);
+  font-size: 56px;
 }
 
 .hero-sub {
-  font-size: 1.2rem;
-  margin: 25px 0;
-  color: #d3eaf3;
-  max-width: 600px;
+  max-width: 700px;
+  color: var(--muted);
+  font-size: 18px;
+  margin-top: 8px;
 }
 
-/* ------------------------------------------------------------
-   BUTTONS — Modern, Bright, Rounded
------------------------------------------------------------- */
+.hero-actions {
+  margin-top: 30px;
+  display: flex;
+  gap: 16px;
+}
 
+/* Buttons */
 .btn {
-  padding: 12px 26px;
-  border-radius: 12px;
-  font-weight: 700;
-  display: inline-block;
-  font-size: 1.1rem;
+  padding: 13px 26px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
 }
 
-.btn-strong {
-  background: #2ecbff;
-  color: #00111a;
-  box-shadow: 0px 0px 15px rgba(46, 203, 255, 0.4);
+.btn-primary {
+  background: var(--accent);
+  color: #042230;
+  border: none;
+  box-shadow: 0 8px 20px rgba(40, 200, 255, 0.3);
 }
 
-.btn-strong:hover {
-  background: #5de1ff;
-  box-shadow: 0px 0px 22px rgba(46, 203, 255, 0.7);
+.btn-outline {
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+.btn-outline:hover {
+  background: rgba(40, 200, 255, 0.1);
 }
 
-.btn-outline-strong {
-  border: 2px solid #2ecbff;
-  color: #2ecbff;
-}
-
-.btn-outline-strong:hover {
-  background: rgba(46, 203, 255, 0.12);
-}
-
-/* ------------------------------------------------------------
-   SUMMARY CARD — Premium Glass Card
------------------------------------------------------------- */
-
+/* -------------------------------------
+   PROFILE CARD (right)
+-------------------------------------- */
 .summary-card {
-  padding: 28px;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(46, 203, 255, 0.15);
-  box-shadow: 0px 0px 25px rgba(2, 138, 181, 0.15);
+  background: var(--card);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.05);
+  max-width: 380px;
 }
 
 .card-title {
-  color: #ffa24c;
-  font-size: 1.4rem;
-  margin-bottom: 15px;
-  font-weight: 800;
+  color: var(--accent-warm);
+  font-family: var(--mono);
+  margin-bottom: 10px;
 }
 
 .card-text {
-  color: #d8eef7;
-  margin-bottom: 20px;
+  color: var(--muted);
+  margin-bottom: 12px;
 }
 
-/* ------------------------------------------------------------
-   META LIST (FOCUS, CONTACT)
------------------------------------------------------------- */
-
-.meta-list {
-  list-style: none;
-  margin-top: 20px;
+.card-actions a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  margin-right: 18px;
 }
 
-.meta-list li {
-  margin-bottom: 6px;
-  color: #cde7f0;
-  font-size: 1.05rem;
+/* -------------------------------------
+   EXPERIENCE PREVIEW
+-------------------------------------- */
+.section-light {
+  padding: 50px 0;
+  border-top: 1px solid rgba(255,255,255,0.06);
 }
 
-/* ------------------------------------------------------------
-   PROJECTS PAGE — Consistent Theme
------------------------------------------------------------- */
+.section-title {
+  font-family: var(--mono);
+  color: var(--accent);
+  font-size: 24px;
+  margin-bottom: 12px;
+}
 
-.project-section {
-  padding-top: 100px;
+.lead {
+  color: var(--muted);
+  max-width: 700px;
+  margin-bottom: 18px;
+}
+
+.exp-preview {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 14px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.link-more {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* -------------------------------------
+   SKILLS LIST
+-------------------------------------- */
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skills-list span {
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* -------------------------------------
+   PROJECTS GRID
+-------------------------------------- */
+.section-dark {
+  padding: 60px 0;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 22px;
 }
 
 .project-card {
-  padding: 24px;
-  margin-bottom: 18px;
-  border: 1px solid rgba(46, 203, 255, 0.15);
-  background: rgba(255, 255, 255, 0.02);
-  border-radius: 14px;
-  transition: 0.25s;
+  background: rgba(255,255,255,0.02);
+  padding: 20px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: 0.2s;
 }
 
 .project-card:hover {
-  background: rgba(46, 203, 255, 0.08);
-  transform: translateY(-3px);
-  box-shadow: 0px 0px 14px rgba(46, 203, 255, 0.3);
+  border-color: var(--accent);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  transform: translateY(-6px);
 }
 
-.project-card h3 {
-  font-size: 1.4rem;
-  color: #ffffff;
+.proj-index {
+  font-family: var(--mono);
+  color: var(--accent-warm);
   margin-bottom: 8px;
+  font-size: 15px;
 }
 
-.project-card p {
-  color: #a9c5d1;
-  font-size: 1.05rem;
+.proj-body h3 {
+  font-size: 18px;
+  margin-bottom: 6px;
 }
 
-/* ------------------------------------------------------------
-   WORKFLOW DIAGRAM BOXES
------------------------------------------------------------- */
-
-.flow-box {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(46, 203, 255, 0.18);
-  padding: 12px 18px;
-  border-radius: 14px;
-  display: inline-block;
-  margin-right: 12px;
-  margin-bottom: 12px;
-  font-weight: 600;
-  color: #2ecbff;
-  box-shadow: 0px 0px 12px rgba(46, 203, 255, 0.15);
+.proj-body p {
+  color: var(--muted);
+  font-size: 15px;
 }
 
-/* ------------------------------------------------------------
-   FOOTER
------------------------------------------------------------- */
+/* -------------------------------------
+   Contact
+-------------------------------------- */
+.section-compact {
+  padding: 50px 0;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
 
+.contact-row {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+/* -------------------------------------
+   Footer
+-------------------------------------- */
 .site-footer {
   padding: 40px 0;
   text-align: center;
-  color: #88aab8;
-  font-size: 0.9rem;
-  margin-top: 80px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* -------------------------------------
+   Responsive
+-------------------------------------- */
+@media (max-width: 960px) {
+  .hero-title { font-size: 40px; }
+  .hero-last { font-size: 44px; }
 }
