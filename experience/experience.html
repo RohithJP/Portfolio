@@ -1,12 +1,15 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Work Experience — Rohith J. Periyasamy</title>
 
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=7" />
+
+  <!-- Main Portfolio Styles -->
+  <link rel="stylesheet" href="../style.css?v=15" />
 </head>
 
 <body>
@@ -14,12 +17,14 @@
 <header class="site-header">
   <div class="container header-inner">
     <div class="brand">
-      <a href="../index.html" class="brand-link"><span class="brand-logo">ROHITH JP</span></a>
+      <a href="../index.html" class="brand-link">
+        <span class="brand-logo">ROHITH JP</span>
+      </a>
     </div>
 
     <nav class="nav">
       <a href="../index.html">Home</a>
-      <a href="../projects/project1.html">Projects</a>
+      <a href="../index.html#projects">Projects</a>
       <a href="experience.html" class="active">Experience</a>
       <a href="../index.html#contact">Contact</a>
     </nav>
@@ -29,75 +34,88 @@
 
 <main class="experience-page">
 
+  <!-- PAGE TITLE -->
   <section class="hero-small">
     <div class="container">
-      <h1 class="page-title">Professional Work Experience</h1>
+      <h1 class="page-title">Professional Experience</h1>
       <p class="lead">
-        A detailed breakdown of my cloud engineering roles, responsibilities, and achievements.
+        A detailed overview of my cloud engineering roles, responsibilities, and achievements.
       </p>
     </div>
   </section>
 
 
-  <!-- =========================
-       EXPERIENCE BLOCK 1
-       ========================= -->
+
+  <!-- ===========================
+        EXPERIENCE — COMPANY 1
+       =========================== -->
   <section class="section-light">
     <div class="container exp-block">
 
-      <h2 class="exp-company">RR IT Solutions — London, UK</h2>
-      <div class="exp-role">AWS Cloud Engineer</div>
-      <div class="exp-dates">Jun 2024 — Present</div>
+      <h2 class="exp-company">RR IT Solutions, Chennai</h2>
+      <div class="exp-role">Cloud Engineer</div>
+      <div class="exp-dates">Jun 2024 – Present</div>
 
-      <h3 class="exp-subtitle">Duties & Responsibilities</h3>
+      <h3 class="exp-subtitle">Duties</h3>
       <ul class="exp-list">
-        <li>Designing and deploying secure AWS architectures using VPC, EC2, RDS, ALB, ASG and CloudWatch.</li>
-        <li>Automating infrastructure using bash scripting and Infrastructure-as-Code approaches.</li>
-        <li>Implementing monitoring, centralized logging and production troubleshooting.</li>
-        <li>Managing deployments, patching schedules, backup policies and environment maintenance.</li>
-        <li>Working closely with development teams to ensure high-availability and scalable environments.</li>
-      </ul>
-
-      <h3 class="exp-subtitle">Key Achievements</h3>
-      <ul class="exp-list">
-        <li>Reduced deployment time by 65% using automated EC2 bootstrapping and S3 sync workflows.</li>
-        <li>Improved system reliability by building proactive CloudWatch dashboards and custom alarms.</li>
-        <li>Enhanced security posture by implementing IAM least-privilege, NACL hardening and SG reviews.</li>
-        <li>Resolved multiple live production outages by troubleshooting network and application layers.</li>
-      </ul>
-
-    </div>
-  </section>
-
-
-  <!-- ======================
-       EXPERIENCE BLOCK 2
-       (If you want to add older jobs)
-       =======================-->
-  <section class="section-light">
-    <div class="container exp-block">
-
-      <h2 class="exp-company">Sainsbury’s — London, UK</h2>
-      <div class="exp-role">Technical Support Associate</div>
-      <div class="exp-dates">Dec 2023 — Apr 2024</div>
-
-      <h3 class="exp-subtitle">Duties & Responsibilities</h3>
-      <ul class="exp-list">
-        <li>Provided L1/L2 IT support for POS, system crashes, account access, printers and network issues.</li>
-        <li>Managed incident tickets, escalations and system diagnostics.</li>
-        <li>Ensured minimal downtime by applying rapid troubleshooting procedures.</li>
+        <li>Built and deployed AWS environments using VPC, EC2, RDS, IAM, S3, and CloudWatch following best practices.</li>
+        <li>Automated VM provisioning, deployments, and cloud operations using Bash + AWS CLI.</li>
+        <li>Designed secure VPC architectures including isolated subnets, NAT gateways, custom route tables, and IAM hardening.</li>
+        <li>Implemented centralized monitoring using CloudWatch dashboards, alarms, and log pipelines.</li>
+        <li>Supported cloud migrations, backup automation, cost optimization, and EC2/RDS performance tuning.</li>
+        <li>Improved deployment reliability through Git workflows, Docker usage, and shell automation.</li>
       </ul>
 
       <h3 class="exp-subtitle">Achievements</h3>
       <ul class="exp-list">
-        <li>Resolved 200+ support issues monthly with consistent 95% positive feedback.</li>
-        <li>Reduced ticket backlog by improving communication flow and triage accuracy.</li>
+        <li>Reduced manual operational effort and deployment time by <strong>70%</strong> through full automation.</li>
+        <li>Strengthened cloud security posture via IAM hardening, subnet isolation, and structured routing.</li>
+        <li>Enhanced system reliability using CloudWatch alerting and detailed dashboards.</li>
+        <li>Improved deployment stability using Git-based processes and Docker-enabled components.</li>
       </ul>
+
+      <h3 class="exp-subtitle">Tech Stack</h3>
+      <p class="exp-tech">EC2, VPC, RDS, S3, IAM, CloudWatch, Bash, Git, Docker, Ubuntu, Terraform (basic)</p>
 
     </div>
   </section>
 
 
+
+  <!-- ===========================
+        EXPERIENCE — COMPANY 2
+       =========================== -->
+  <section class="section-light">
+    <div class="container exp-block">
+
+      <h2 class="exp-company">Ahnaizn Business Group, UK</h2>
+      <div class="exp-role">Cloud Assistant (Intern)</div>
+      <div class="exp-dates">Jan 2022 – Jan 2023</div>
+
+      <h3 class="exp-subtitle">Duties</h3>
+      <ul class="exp-list">
+        <li>Managed EC2, RDS, and S3 resources across dev and production environments.</li>
+        <li>Configured VPC components — subnets, route tables, IGWs, NACLs, SGs — improving network security and structure.</li>
+        <li>Automated cloud tasks using Bash + AWS CLI, reducing repetitive work.</li>
+        <li>Integrated Rsyslog → CloudWatch for centralized logging and alerting.</li>
+        <li>Assisted in deploying Django and WordPress apps in multi-tier VPC setups.</li>
+      </ul>
+
+      <h3 class="exp-subtitle">Achievements</h3>
+      <ul class="exp-list">
+        <li>Reduced manual cloud workload by <strong>40%</strong> through Bash + CLI automation.</li>
+        <li>Improved network security with properly configured VPC segmentation.</li>
+        <li>Implemented centralized log monitoring for consistent visibility across Linux servers.</li>
+      </ul>
+
+      <h3 class="exp-subtitle">Tech Stack</h3>
+      <p class="exp-tech">EC2, RDS, S3, VPC, CloudWatch, Rsyslog, Bash, Ubuntu</p>
+
+    </div>
+  </section>
+
+
+  <!-- BACK BUTTON -->
   <section class="section-compact">
     <div class="container">
       <a class="btn btn-primary" href="../index.html">← Back to Home</a>
@@ -115,3 +133,4 @@
 
 </body>
 </html>
+
