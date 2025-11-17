@@ -6,7 +6,7 @@
   <title>Project 01 — Multi-Tier WordPress Architecture</title>
 
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=10"/>
+  <link rel="stylesheet" href="../style.css?v=22"/>
 </head>
 
 <body>
@@ -16,7 +16,7 @@
     <a href="../index.html" class="brand-link"><span class="brand-logo">ROHITH JP</span></a>
     <nav class="nav">
       <a href="../index.html">Home</a>
-      <a href="project1.html" class="active">Projects</a>
+      <a class="active" href="project1.html">Projects</a>
       <a href="../experience/experience.html">Experience</a>
       <a href="../index.html#contact">Contact</a>
     </nav>
@@ -35,15 +35,13 @@
 <section class="section-light">
   <div class="container">
 
-    <!-- Overview -->
     <h2 class="section-title">Overview</h2>
     <p class="lead">
-      A 3-tier WordPress deployment inside a production-grade VPC. The setup includes:
-      a public reverse proxy, private web server, private database tier, strict NACLs, 
+      A 3-tier WordPress deployment inside a production-grade VPC. The setup includes
+      a public reverse proxy, private web server, private database tier, strict NACLs,
       monitoring, and secure SSH access via a bastion.
     </p>
 
-    <!-- Architecture -->
     <h2 class="section-title">Architecture Summary</h2>
     <div class="exp-preview">
       <ul class="exp-list">
@@ -56,7 +54,6 @@
       </ul>
     </div>
 
-    <!-- Workflow -->
     <h2 class="section-title">Workflow Diagram</h2>
     <div class="workflow">
       <pre class="flow-block">
@@ -73,10 +70,9 @@
       </pre>
     </div>
 
-    <!-- Setup process -->
     <h2 class="section-title">Setup & Deployment Workflow</h2>
     <ul class="exp-list">
-      <li>Create VPC → Subnets → Route Tables → Internet Gateway → NAT</li>
+      <li>Create VPC → Subnets → Route Tables → IGW → NAT</li>
       <li>Launch Nginx EC2 (public)</li>
       <li>Launch Apache EC2 with WordPress (private)</li>
       <li>Deploy MySQL DB EC2 (private)</li>
@@ -85,43 +81,37 @@
       <li>Enable CloudWatch logs + metrics</li>
     </ul>
 
-    <!-- Techniques -->
     <h2 class="section-title">Techniques Learned</h2>
     <ul class="exp-list">
-      <li>Reverse proxy routing and SSL termination</li>
-      <li>Tiered VPC network design</li>
+      <li>Reverse proxy routing + SSL termination</li>
+      <li>Private VPC design for multi-tier applications</li>
       <li>Advanced Security Groups & NACL logic</li>
-      <li>WordPress hardening in private networks</li>
-      <li>EC2 troubleshooting & service debugging</li>
-      <li>Integration testing between Nginx → Apache → MySQL</li>
+      <li>WordPress hardening</li>
+      <li>EC2 debugging</li>
     </ul>
 
-    <!-- Troubleshooting -->
     <h2 class="section-title">Troubleshooting Highlights</h2>
     <ul class="exp-list">
-      <li>Fixing 502/504 errors when proxying Apache</li>
-      <li>Resolving DB connection failures due to SG misconfiguration</li>
-      <li>Permission issues in WordPress uploads</li>
-      <li>MySQL bind-address and firewall hardening</li>
+      <li>Fixing 502/504 Nginx proxy issues</li>
+      <li>DB connection failures due to SG rules</li>
+      <li>WordPress upload permission issues</li>
+      <li>MySQL bind-address lockouts</li>
     </ul>
 
-    <!-- Achievements -->
     <h2 class="section-title">What Was Achieved</h2>
     <ul class="exp-list">
-      <li>Fully segmented 3-tier architecture with production security</li>
-      <li>Scalable WordPress deployment with reverse proxy</li>
-      <li>Private MySQL with no direct internet exposure</li>
-      <li>Monitoring, logs, and performance insights using CloudWatch</li>
+      <li>Secure 3-tier production-ready architecture</li>
+      <li>Reverse proxy with high availability potential</li>
+      <li>Private MySQL database with no public exposure</li>
+      <li>CloudWatch monitoring + logs</li>
     </ul>
 
-    <!-- Repo -->
     <h2 class="section-title">Repository</h2>
-    <a class="btn btn-strong" href="https://github.com/RohithJP/Projects/tree/main/Project1" target="_blank">View Repo</a>
+    <a class="btn-nav-primary" href="https://github.com/RohithJP/Projects/tree/main/Project1" target="_blank">View Repo</a>
 
-    <!-- Navigation -->
     <div class="project-nav">
-      <a class="btn btn-outline-strong" href="project7.html">← Previous</a>
-      <a class="btn btn-strong" href="project2.html">Next →</a>
+      <a class="btn-nav-outline" href="project7.html">← Previous</a>
+      <a class="btn-nav-primary" href="project2.html">Next →</a>
     </div>
 
   </div>
