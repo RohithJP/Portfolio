@@ -1,0 +1,87 @@
+<!-- save as: ubuntu-web-hosting.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ubuntu Server Hosting & Web App Deployment — Portfolio</title>
+  <meta name="description" content="Deploying and troubleshooting web applications on Ubuntu: Node.js, NGINX, ports, firewall, storage and service recovery." />
+  <style>
+    :root{--bg:#071023;--card:#061223;--accent:#34d399;--muted:#9bb0c7;--maxw:1000px}
+    body{margin:0;background:linear-gradient(180deg,var(--bg),#00121b);color:#eaf6ff;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;padding:28px;display:flex;justify-content:center}
+    .wrap{max-width:var(--maxw);width:100%}
+    header{display:flex;gap:16px;align-items:center;margin-bottom:18px}
+    .badge{width:68px;height:68px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#60a5fa);display:flex;align-items:center;justify-content:center;font-weight:700;color:#04283a;font-size:20px}
+    h1{margin:0;font-size:20px}
+    p.lead{color:var(--muted);margin:6px 0 16px}
+    .card{background:rgba(255,255,255,0.02);padding:20px;border-radius:12px;box-shadow:0 10px 40px rgba(2,6,23,0.6)}
+    .cols{display:grid;grid-template-columns:1fr;gap:16px}
+    @media(min-width:920px){.cols{grid-template-columns:1fr 320px}}
+    h2{margin:0 0 8px}
+    ul{color:var(--muted);padding-left:18px}
+    .meta{background:rgba(255,255,255,0.02);padding:12px;border-radius:8px;color:var(--muted)}
+    .actions{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap}
+    a.btn{padding:10px 12px;border-radius:8px;text-decoration:none;font-weight:600}
+    a.primary{background:var(--accent);color:#002022}
+    a.ghost{border:1px solid rgba(255,255,255,0.04);color:var(--muted);background:transparent}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <div class="badge">UB</div>
+      <div>
+        <h1>Ubuntu Server Hosting & Web Application Deployment</h1>
+        <p class="lead">End-to-end deployment and troubleshooting of web apps on Ubuntu — Node.js, NGINX, firewall, ports and storage issues.</p>
+      </div>
+    </header>
+
+    <section class="card cols" aria-labelledby="overview">
+      <div>
+        <h2 id="overview">Project Overview</h2>
+        <p class="meta">Deployed production-style environments on Ubuntu and resolved real hosting issues including service failures, package lock conflicts and network debugging.</p>
+
+        <h2>Responsibilities & Tasks</h2>
+        <ul>
+          <li>Deploy Node.js app behind NGINX reverse proxy and configure systemd service files.</li>
+          <li>Diagnose "waiting for cache lock" apt errors and safely recover package manager state.</li>
+          <li>Resolve webpage not loading — analyze <code>ss -tulnp</code>, logs, and port bindings.</li>
+          <li>Fix storage-related failures and adjust server disk usage & cleanups.</li>
+          <li>Setup basic firewall rules and test endpoint connectivity using <code>curl</code>.</li>
+        </ul>
+
+        <h2>Outcome</h2>
+        <p class="meta">Stable and repeatable deployment playbook with documented fixes and monitoring commands for production readiness.</p>
+      </div>
+
+      <aside>
+        <div class="meta">
+          <strong>Technologies</strong>
+          <div style="margin-top:8px">
+            <span style="display:inline-block;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.03);margin-right:6px">Ubuntu</span>
+            <span style="display:inline-block;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.03);margin-right:6px">NGINX</span>
+            <span style="display:inline-block;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.03);margin-right:6px">Node.js</span>
+            <span style="display:inline-block;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.03)">systemd</span>
+          </div>
+        </div>
+
+        <div style="height:12px"></div>
+
+        <div class="meta">
+          <strong>Deliverables</strong>
+          <ul style="margin-top:8px;color:var(--muted)">
+            <li>Deployment guide (playbook)</li>
+            <li>Recovery steps for apt & cache lock issues</li>
+            <li>Port and service diagnostic cheatsheet</li>
+          </ul>
+        </div>
+
+        <div class="actions">
+          <a class="btn primary" href="#">Read Deployment Playbook</a>
+          <a class="btn ghost" href="#">Open Troubleshooting Log</a>
+        </div>
+      </aside>
+    </section>
+  </main>
+</body>
+</html>
