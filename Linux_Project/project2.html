@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Linux Project L2 — Ubuntu Web Hosting</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../style.css?v=25" />
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand-link" href="../../index.html">
+      <span class="brand-logo">ROHITH JP</span>
+    </a>
+    <nav class="nav">
+      <a href="../../index.html">Home</a>
+      <a class="active" href="#">Project</a>
+      <a href="../../experience/experience.html">Experience</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="project-hero">
+    <div class="hero-title" style="font-size:32px; font-weight:700;">
+      L2 — Ubuntu Server Hosting & Deployment
+    </div>
+    <p class="subtitle">
+      Deployment and troubleshooting of web applications on Ubuntu: NGINX, Node.js,
+      systemctl services, firewall rules, ports, and server reliability.
+    </p>
+  </section>
+
+  <section class="block">
+    <h3>Project Overview</h3>
+    <p>
+      This project covers deploying a Node.js web application on Ubuntu, configuring NGINX reverse proxy,
+      diagnosing port conflicts, fixing apt cache lock issues, and performing service-level monitoring &
+      debugging using systemctl and logs.
+    </p>
+  </section>
+
+  <section class="block">
+    <h3>Deployment Tasks</h3>
+    <ul class="exp-list">
+      <li>Host Node.js app with reverse proxy using NGINX</li>
+      <li>Create systemd service file for auto-start</li>
+      <li>Fix “waiting for cache lock” apt issues</li>
+      <li>Resolve port 3000/8080 conflicts</li>
+      <li>Enable UFW and configure firewall</li>
+      <li>Debug service failures using journalctl</li>
+      <li>Check running ports using ss/lsof</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h3>Troubleshooting</h3>
+    <ul class="exp-list">
+      <li>Service not starting after reboot</li>
+      <li>NGINX failing due to bad config</li>
+      <li>Port already in use (PID conflict)</li>
+      <li>curl showing backend unreachable</li>
+      <li>Failed to bind server on port issue</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h3>Achievements</h3>
+    <ul class="exp-list">
+      <li>Production-style hosting experience on Ubuntu</li>
+      <li>Reverse proxy + service automation</li>
+      <li>Debugged all port and config issues</li>
+    </ul>
+  </section>
+
+  <section class="project-nav" style="margin-top:32px; display:flex; gap:16px;">
+    <a class="btn btn-outline" href="linux-project1.html">← Previous</a>
+    <a class="btn btn-primary" href="linux-project3.html">Next →</a>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container"><small>© 2025 Rohith J. Periyasamy</small></div>
+</footer>
+
+</body>
+</html>
