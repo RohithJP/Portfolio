@@ -1,129 +1,90 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Work Experience — Rohith J. Periyasamy</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Experience — Rohith JP</title>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css?v=8">
 
-  <!-- Main Portfolio Styles -->
-  <link rel="stylesheet" href="../style.css?v=15" />
 </head>
-
 <body>
 
 <header class="site-header">
   <div class="container header-inner">
-    <div class="brand">
-      <a href="../index.html" class="brand-link">
-        <span class="brand-logo">ROHITH JP</span>
-      </a>
-    </div>
+    <a href="../index.html" class="brand-link">
+      <span class="brand-logo">ROHITH JP</span>
+    </a>
 
     <nav class="nav">
       <a href="../index.html">Home</a>
-      <a href="../index.html#projects">Projects</a>
+      <a href="../projects/project1.html">Projects</a>
       <a href="experience.html" class="active">Experience</a>
       <a href="../index.html#contact">Contact</a>
     </nav>
   </div>
 </header>
 
-
-<main class="experience-page">
-
-  <!-- PAGE TITLE -->
-  <section class="hero-small">
-    <div class="container">
-      <h1 class="page-title">Professional Experience</h1>
-      <p class="lead">
-        A detailed overview of my cloud engineering roles, responsibilities, and achievements.
-      </p>
-    </div>
+<main>
+  <section class="hero-small container">
+    <h1 class="page-title">Professional Experience</h1>
+    <p class="lead">Cloud Engineering • AWS Architecture • Automation • Monitoring</p>
   </section>
 
+  <section class="container">
 
-
-  <!-- ===========================
-        EXPERIENCE — COMPANY 1
-       =========================== -->
-  <section class="section-light">
-    <div class="container exp-block">
-
-      <h2 class="exp-company">RR IT Solutions, Chennai</h2>
+    <!-- RR IT Solutions -->
+    <div class="exp-block">
+      <div class="exp-company">RR IT Solutions — Chennai</div>
       <div class="exp-role">Cloud Engineer</div>
       <div class="exp-dates">Jun 2024 – Present</div>
 
-      <h3 class="exp-subtitle">Duties</h3>
+      <div class="exp-subtitle">Duties</div>
       <ul class="exp-list">
-        <li>Built and deployed AWS environments using VPC, EC2, RDS, IAM, S3, and CloudWatch following best practices.</li>
-        <li>Automated VM provisioning, deployments, and cloud operations using Bash + AWS CLI.</li>
-        <li>Designed secure VPC architectures including isolated subnets, NAT gateways, custom route tables, and IAM hardening.</li>
-        <li>Implemented centralized monitoring using CloudWatch dashboards, alarms, and log pipelines.</li>
-        <li>Supported cloud migrations, backup automation, cost optimization, and EC2/RDS performance tuning.</li>
-        <li>Improved deployment reliability through Git workflows, Docker usage, and shell automation.</li>
+        <li>Designed and deployed AWS architectures (VPC, EC2, RDS, IAM, CloudWatch).</li>
+        <li>Automated deployments & cloud operations using Bash + AWS CLI (70% faster releases).</li>
+        <li>Built secure VPCs: isolated subnets, NAT gateways, route tables, hardened IAM roles.</li>
+        <li>Implemented CloudWatch dashboards, alarms, and log pipelines for observability.</li>
+        <li>Performed cloud migrations, backup automation, and EC2/RDS performance tuning.</li>
+        <li>Improved deployment reliability using Git workflows, Docker, and scripted automation.</li>
       </ul>
 
-      <h3 class="exp-subtitle">Achievements</h3>
+      <div class="exp-subtitle">Tech Stack</div>
       <ul class="exp-list">
-        <li>Reduced manual operational effort and deployment time by <strong>70%</strong> through full automation.</li>
-        <li>Strengthened cloud security posture via IAM hardening, subnet isolation, and structured routing.</li>
-        <li>Enhanced system reliability using CloudWatch alerting and detailed dashboards.</li>
-        <li>Improved deployment stability using Git-based processes and Docker-enabled components.</li>
+        <li>EC2, VPC, RDS, S3, CloudWatch</li>
+        <li>IAM, Bash, Git, Docker</li>
+        <li>Ubuntu, Terraform (basic)</li>
       </ul>
-
-      <h3 class="exp-subtitle">Tech Stack</h3>
-      <p class="exp-tech">EC2, VPC, RDS, S3, IAM, CloudWatch, Bash, Git, Docker, Ubuntu, Terraform (basic)</p>
-
     </div>
-  </section>
 
+    <hr style="border-color: rgba(255,255,255,0.06); margin: 28px 0;">
 
-
-  <!-- ===========================
-        EXPERIENCE — COMPANY 2
-       =========================== -->
-  <section class="section-light">
-    <div class="container exp-block">
-
-      <h2 class="exp-company">Ahnaizn Business Group, UK</h2>
+    <!-- Ahnaizn UK -->
+    <div class="exp-block">
+      <div class="exp-company">Ahnaizn Business Group — United Kingdom</div>
       <div class="exp-role">Cloud Assistant (Intern)</div>
       <div class="exp-dates">Jan 2022 – Jan 2023</div>
 
-      <h3 class="exp-subtitle">Duties</h3>
+      <div class="exp-subtitle">Duties</div>
       <ul class="exp-list">
-        <li>Managed EC2, RDS, and S3 resources across dev and production environments.</li>
-        <li>Configured VPC components — subnets, route tables, IGWs, NACLs, SGs — improving network security and structure.</li>
-        <li>Automated cloud tasks using Bash + AWS CLI, reducing repetitive work.</li>
-        <li>Integrated Rsyslog → CloudWatch for centralized logging and alerting.</li>
-        <li>Assisted in deploying Django and WordPress apps in multi-tier VPC setups.</li>
+        <li>Managed EC2, RDS, and S3 resources across dev & production environments.</li>
+        <li>Configured VPC components including subnets, route tables, IGWs, NACLs, and SGs.</li>
+        <li>Automated frequent tasks using Bash + AWS CLI (reduced workload by 40%).</li>
+        <li>Integrated Rsyslog → CloudWatch for centralized logging.</li>
+        <li>Assisted in hosting Django and WordPress apps in multi-tier VPC setups.</li>
       </ul>
 
-      <h3 class="exp-subtitle">Achievements</h3>
+      <div class="exp-subtitle">Tech Stack</div>
       <ul class="exp-list">
-        <li>Reduced manual cloud workload by <strong>40%</strong> through Bash + CLI automation.</li>
-        <li>Improved network security with properly configured VPC segmentation.</li>
-        <li>Implemented centralized log monitoring for consistent visibility across Linux servers.</li>
+        <li>EC2, RDS, S3, VPC</li>
+        <li>CloudWatch, Rsyslog</li>
+        <li>Bash, Ubuntu</li>
       </ul>
-
-      <h3 class="exp-subtitle">Tech Stack</h3>
-      <p class="exp-tech">EC2, RDS, S3, VPC, CloudWatch, Rsyslog, Bash, Ubuntu</p>
-
     </div>
+
   </section>
-
-
-  <!-- BACK BUTTON -->
-  <section class="section-compact">
-    <div class="container">
-      <a class="btn btn-primary" href="../index.html">← Back to Home</a>
-    </div>
-  </section>
-
 </main>
-
 
 <footer class="site-footer">
   <div class="container">
@@ -133,4 +94,3 @@
 
 </body>
 </html>
-
