@@ -6,17 +6,14 @@
   <title>Project 03 — Centralized Log Management</title>
 
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=21">
+  <link rel="stylesheet" href="../style.css?v=22">
 </head>
 
 <body>
 
 <header class="site-header">
   <div class="container header-inner">
-    <a href="../index.html" class="brand-link">
-      <span class="brand-logo">ROHITH JP</span>
-    </a>
-
+    <a href="../index.html" class="brand-link"><span class="brand-logo">ROHITH JP</span></a>
     <nav class="nav">
       <a href="../index.html">Home</a>
       <a href="project1.html">Projects</a>
@@ -32,125 +29,52 @@
   <div class="container">
     <h1 class="page-title">03 — Centralized Log Management (Rsyslog + CloudWatch)</h1>
     <p class="lead">
-      Implemented secure, centralized log collection across multiple EC2 instances using Rsyslog,
-      directory templating, and AWS CloudWatch integration.
+      Implemented centralized log collection across EC2 instances using Rsyslog + CloudWatch.
+    </p>
+  </div>
+</section>
+
+<section class="section-light">
+  <div class="container">
+
+    <h2 class="section-title">Overview</h2>
+    <p class="lead">
+      Logs from multiple EC2 servers are forwarded into a single log collector instance and streamed to CloudWatch.
     </p>
 
-    <a href="https://github.com/RohithJP/Projects/tree/main/project3"
-       class="btn btn-primary" target="_blank">View Repository →</a>
-  </div>
-</section>
-
-<!-- Overview -->
-<section class="section-light">
-  <div class="container two-col">
-
-    <div>
-      <h2 class="section-title">Overview</h2>
-      <p class="lead">
-        Centralized system and application logs from multiple EC2 servers into a single Rsyslog log
-        collector instance. Logs were streamed into CloudWatch for real-time visibility, alerting, and auditing.
-      </p>
-
-      <div class="workflow-box">
-        <h3 class="workflow-title">Workflow Diagram</h3>
-        <div class="workflow-img">
-AWS Web EC2 →  
-AWS DB EC2 →  
-→ Rsyslog Log Collector (EC2) →  
-→ CloudWatch Log Group →  
-→ Metrics & Alarms
-        </div>
-      </div>
+    <h2 class="workflow-title">Workflow</h2>
+    <div class="workflow-img">
+      EC2 Web → EC2 DB → Log Collector → CloudWatch Log Groups → Metrics + Alarms
     </div>
 
-    <aside class="side-card">
-      <h3 class="section-title">Tech Stack</h3>
-      <ul class="meta-list">
-        <li>EC2 (Ubuntu 22.04)</li>
-        <li>Rsyslog TCP/UDP</li>
-        <li>CloudWatch Agent</li>
-        <li>Security Groups / VPC Networking</li>
-        <li>Linux log forwarding</li>
-      </ul>
-    </aside>
-
   </div>
 </section>
 
-<!-- Setup -->
 <section class="section-light">
   <div class="container">
-    <h2 class="section-title">Setup & Implementation</h2>
 
-    <div class="exp-block">
-
-      <h3 class="exp-subtitle">1. Log Collector EC2 Setup</h3>
-      <ul class="exp-list">
-        <li>Created <code>/var/log/remote</code> folder with syslog ownership</li>
-        <li>Enabled Rsyslog TCP/UDP listeners (port 514)</li>
-        <li>Implemented hostname-based directory templates</li>
-        <li>Restarted and enabled Rsyslog service</li>
-      </ul>
-
-      <h3 class="exp-subtitle">2. Web & DB Server Setup</h3>
-      <ul class="exp-list">
-        <li>Forwarded all logs using TCP over private VPC</li>
-        <li>Configured secure Rsyslog forwarding rules</li>
-        <li>Restarted Rsyslog on all servers</li>
-      </ul>
-
-      <h3 class="exp-subtitle">3. Testing & Verification</h3>
-      <ul class="exp-list">
-        <li>Validated forwarding via <code>logger -p local0.info</code></li>
-        <li>Verified auto-creation of hostname log folders</li>
-        <li>Checked CloudWatch log groups for real-time logs</li>
-      </ul>
-
-    </div>
-  </div>
-</section>
-
-<!-- Troubleshooting -->
-<section class="section-light">
-  <div class="container">
     <h2 class="section-title">Troubleshooting</h2>
     <ul class="exp-list">
-      <li>Fixed Rsyslog permissions preventing log creation</li>
-      <li>Resolved UDP packet drops via Security Group changes</li>
-      <li>Corrected template syntax errors</li>
-      <li>Used <code>journalctl -u rsyslog -f</code> for live debugging</li>
-      <li>Ensured CloudWatch Agent mapped correct log file paths</li>
+      <li>Rsyslog permission fixes</li>
+      <li>UDP packet drops resolved</li>
+      <li>Template syntax corrected</li>
+      <li>journalctl for realtime debugging</li>
     </ul>
+
   </div>
 </section>
 
-<!-- Achievements -->
-<section class="section-light">
-  <div class="container">
-    <h2 class="section-title">What I Achieved</h2>
-    <ul class="exp-list">
-      <li>Centralized Linux logs from multiple EC2 servers</li>
-      <li>Real-time CloudWatch monitoring & alarms</li>
-      <li>Structured hostname-based log storage</li>
-      <li>Improved auditability and troubleshooting</li>
-      <li>Hardened pipeline security with VPC internal routing</li>
-    </ul>
-  </div>
-</section>
-
-<!-- Repository -->
 <section class="section-light">
   <div class="container">
     <h2 class="section-title">Repository</h2>
-    <a class="btn btn-strong" 
-       href="https://github.com/RohithJP/Projects/tree/main/project3" 
-       target="_blank">View Repo</a>
 
-    <!-- Navigation -->
+    <a class="btn-nav-primary" href="https://github.com/RohithJP/Projects/tree/main/project3" target="_blank">
+      View Repo
+    </a>
+
     <div class="project-nav">
-      <a class="btn btn-outline-strong" href="project2.html">← Previous</a>
-      <a class="btn btn-strong" href="project4.html">Next →</a>
+      <a class="btn-nav-outline" href="project2.html">← Previous</a>
+      <a class="btn-nav-primary" href="project4.html">Next →</a>
     </div>
 
   </div>
