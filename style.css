@@ -1,58 +1,68 @@
-/* ==========================================================
-   PREMIUM CLOUD PORTFOLIO — style.css
-   Executive-level UI • Clean • Modern • Apple-style Smooth
-   ========================================================== */
+/* ============================================================
+   GLOBAL THEME — DARK NEON PORTFOLIO
+   Colors: Midnight (#05131c), Neon Blue (#2ecbff), Soft Grey (#ccd9e0)
+   Fonts: Inter + IBM Plex Mono
+   Smooth animations + 3D section depth
+   ============================================================ */
 
-/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-:root {
-  --bg: #020b12;
-  --bg-2: #061822;
-  --text: #dff7ff;
-  --muted: #98b6c7;
-
-  --accent: #2ec4ff;
-  --accent-soft: rgba(46,196,255,0.15);
-  --accent-hard: rgba(46,196,255,0.4);
-
-  --orange: #ff9900;
-
-  --glass: rgba(255,255,255,0.06);
-  --glass-light: rgba(255,255,255,0.08);
-
-  --mono: 'IBM Plex Mono', monospace;
-  --ui: 'Inter', system-ui, Arial;
+body {
+  background: #05131c;
+  color: #dff7ff;
+  font-family: "Inter", sans-serif;
+  line-height: 1.7;
+  padding-bottom: 100px;
 }
 
-html, body {
-  height: 100%;
-  background: linear-gradient(180deg, var(--bg), #03131a 1400px);
-  color: var(--text);
-  font-family: var(--ui);
-  -webkit-font-smoothing: antialiased;
-  line-height: 1.6;
+a {
+  color: #2ecbff;
+  text-decoration: none !important;
+  transition: 0.25s ease;
 }
 
-/* CONTAINER */
+a:hover {
+  color: #5de1ff;
+}
+
+/* ------------------------------------------------------------
+   LAYOUT
+------------------------------------------------------------ */
+
 .container {
-  width: min(1200px, 92%);
-  margin: 0 auto;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 25px;
 }
 
-/* HEADER */
+.section {
+  padding: 80px 0;
+}
+
+.section-title {
+  font-size: 2.4rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  color: #e9faff;
+}
+
+/* ------------------------------------------------------------
+   HEADER — Glassmorphism Navigation Bar
+------------------------------------------------------------ */
+
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 999;
+  width: 100%;
+  backdrop-filter: blur(12px);
+  background: rgba(5, 19, 28, 0.6);
+  border-bottom: 1px solid rgba(46, 203, 255, 0.15);
+  z-index: 1000;
   padding: 12px 0;
-  background: rgba(2,10,18,0.55);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(255,255,255,0.03);
 }
 
 .header-inner {
@@ -62,228 +72,186 @@ html, body {
 }
 
 .brand-logo {
-  font-family: var(--mono);
-  font-size: 20px;
-  padding: 8px 12px;
-  color: var(--accent);
-  border-radius: 10px;
-  background: rgba(46,196,255,0.08);
-  border: 1px solid rgba(46,196,255,0.18);
-  box-shadow: 0 0 18px rgba(46,196,255,0.2);
+  color: #2ecbff;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 1px;
 }
 
-/* NAV */
 .nav a {
-  margin-left: 28px;
+  margin-left: 30px;
+  font-size: 1.05rem;
+  color: #c4dee9;
   font-weight: 600;
-  text-decoration: none;
-  color: var(--muted);
-  transition: 0.2s ease;
-  padding-bottom: 3px;
 }
 
-.nav a:hover,
-.nav .active {
-  color: var(--accent);
-  border-bottom: 1px solid var(--accent);
+.nav a:hover {
+  color: #2ecbff;
+  text-shadow: 0px 0px 8px #2ecbff;
 }
 
-/* HERO */
+/* ------------------------------------------------------------
+   HERO SECTION — Neon Title + Glow
+------------------------------------------------------------ */
+
 .hero {
-  padding: 110px 0 70px;
+  padding-top: 160px;
+  padding-bottom: 80px;
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1fr 370px;
-  gap: 44px;
-}
-
-.eyebrow {
-  font-family: var(--mono);
-  font-size: 14px;
-  color: var(--muted);
-  margin-bottom: 14px;
-  letter-spacing: 1px;
+  grid-template-columns: 1fr 0.9fr;
+  gap: 60px;
+  align-items: center;
 }
 
 .hero-title {
-  font-family: var(--mono);
-  font-size: 46px;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-
-.hero-last {
-  color: var(--accent);
-  font-size: 48px;
+  font-size: 4rem;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  color: #ffffff;
+  text-shadow: 0px 0px 12px rgba(46, 203, 255, 0.3);
 }
 
 .hero-sub {
-  color: var(--muted);
-  font-size: 16px;
-  margin-top: 6px;
-  max-width: 720px;
+  font-size: 1.2rem;
+  margin: 25px 0;
+  color: #d3eaf3;
+  max-width: 600px;
 }
 
-/* BUTTONS */
+/* ------------------------------------------------------------
+   BUTTONS — Modern, Bright, Rounded
+------------------------------------------------------------ */
+
 .btn {
-  padding: 14px 22px;
-  border-radius: 10px;
-  font-weight: 600;
-  text-decoration: none;
-  font-size: 16px;
-  transition: all .25s ease;
+  padding: 12px 26px;
+  border-radius: 12px;
+  font-weight: 700;
+  display: inline-block;
+  font-size: 1.1rem;
 }
 
-.btn-primary {
-  background: linear-gradient(90deg, rgba(46,196,255,0.25), rgba(46,196,255,0.1));
-  border: 1px solid rgba(46,196,255,0.4);
-  color: #c9f7ff;
-  box-shadow: 0 0 22px rgba(46,196,255,0.25);
+.btn-strong {
+  background: #2ecbff;
+  color: #00111a;
+  box-shadow: 0px 0px 15px rgba(46, 203, 255, 0.4);
 }
 
-.btn-primary:hover {
-  background: rgba(46,196,255,0.35);
-  transform: translateY(-2px);
+.btn-strong:hover {
+  background: #5de1ff;
+  box-shadow: 0px 0px 22px rgba(46, 203, 255, 0.7);
 }
 
-.btn-outline {
-  border: 1px solid rgba(255,255,255,0.12);
-  color: var(--muted);
-  background: rgba(255,255,255,0.02);
+.btn-outline-strong {
+  border: 2px solid #2ecbff;
+  color: #2ecbff;
 }
 
-.btn-outline:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  transform: translateY(-2px);
+.btn-outline-strong:hover {
+  background: rgba(46, 203, 255, 0.12);
 }
 
-/* META LIST */
-.meta-list {
-  list-style: none;
-  margin-top: 20px;
-  color: var(--muted);
-}
-.meta-list li {
-  margin-bottom: 6px;
-}
-
-/* RIGHT CARD */
-.card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.05);
-  padding: 22px;
-  border-radius: 14px;
-  backdrop-filter: blur(10px);
-}
+/* ------------------------------------------------------------
+   SUMMARY CARD — Premium Glass Card
+------------------------------------------------------------ */
 
 .summary-card {
-  box-shadow: 0 0 24px rgba(0,0,0,0.4);
+  padding: 28px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(46, 203, 255, 0.15);
+  box-shadow: 0px 0px 25px rgba(2, 138, 181, 0.15);
 }
 
 .card-title {
-  font-family: var(--mono);
-  font-size: 20px;
-  margin-bottom: 10px;
-  color: var(--orange);
+  color: #ffa24c;
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  font-weight: 800;
 }
 
 .card-text {
-  color: var(--muted);
-  margin-bottom: 16px;
+  color: #d8eef7;
+  margin-bottom: 20px;
 }
 
-/* EXPERIENCE PREVIEW */
-.section-light {
-  padding: 50px 0;
-  border-top: 1px solid rgba(255,255,255,0.06);
-}
+/* ------------------------------------------------------------
+   META LIST (FOCUS, CONTACT)
+------------------------------------------------------------ */
 
-.two-col {
-  display: grid;
-  grid-template-columns: 1fr 340px;
-  gap: 30px;
-}
-
-.section-title {
-  font-family: var(--mono);
-  font-size: 26px;
-  margin-bottom: 10px;
-}
-
-.lead {
-  color: var(--muted);
-  margin-bottom: 18px;
-}
-
-.exp-preview {
-  padding: 18px;
-  background: rgba(255,255,255,0.04);
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.06);
-  margin-bottom: 14px;
-}
-
-/* SKILLS */
-.skills-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.skills-list span {
-  padding: 10px 14px;
-  border-radius: 10px;
-  background: rgba(46,196,255,0.06);
-  border: 1px solid rgba(46,196,255,0.18);
-  font-size: 14px;
-  color: var(--accent);
-  font-weight: 600;
-}
-
-/* PROJECT CARDS */
-.section-dark {
-  padding: 60px 0 100px;
-}
-
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
-  gap: 22px;
+.meta-list {
+  list-style: none;
   margin-top: 20px;
 }
 
+.meta-list li {
+  margin-bottom: 6px;
+  color: #cde7f0;
+  font-size: 1.05rem;
+}
+
+/* ------------------------------------------------------------
+   PROJECTS PAGE — Consistent Theme
+------------------------------------------------------------ */
+
+.project-section {
+  padding-top: 100px;
+}
+
 .project-card {
-  padding: 20px;
-  border-radius: 12px;
-  text-decoration: none;
-  color: var(--text);
-  background: rgba(255,255,255,0.02);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,255,255,0.04);
-  transition: all .3s ease;
+  padding: 24px;
+  margin-bottom: 18px;
+  border: 1px solid rgba(46, 203, 255, 0.15);
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 14px;
+  transition: 0.25s;
 }
 
 .project-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--accent);
-  box-shadow: 0 0 24px rgba(46,196,255,0.18);
+  background: rgba(46, 203, 255, 0.08);
+  transform: translateY(-3px);
+  box-shadow: 0px 0px 14px rgba(46, 203, 255, 0.3);
 }
 
-.proj-index {
-  font-family: var(--mono);
-  font-size: 16px;
-  margin-bottom: 6px;
-  padding: 8px 12px;
-  background: rgba(46,196,255,0.12);
-  border-radius: 8px;
+.project-card h3 {
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.project-card p {
+  color: #a9c5d1;
+  font-size: 1.05rem;
+}
+
+/* ------------------------------------------------------------
+   WORKFLOW DIAGRAM BOXES
+------------------------------------------------------------ */
+
+.flow-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(46, 203, 255, 0.18);
+  padding: 12px 18px;
+  border-radius: 14px;
   display: inline-block;
-  color: var(--accent);
+  margin-right: 12px;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #2ecbff;
+  box-shadow: 0px 0px 12px rgba(46, 203, 255, 0.15);
 }
 
-.proj-body h3 {
-  font-size: 18px;
-  margin-bottom: 6px;
+/* ------------------------------------------------------------
+   FOOTER
+------------------------------------------------------------ */
+
+.site-footer {
+  padding: 40px 0;
+  text-align: center;
+  color: #88aab8;
+  font-size: 0.9rem;
+  margin-top: 80px;
 }
